@@ -20,7 +20,7 @@ Starbucks Coffee Project is a modern web application designed to simulate a fake
 5. echo "npx --no -- commitlint --edit \$1" > .husky/commit-msg
 
 - After doing these steps above, we need to gotta `.husky` and delete `pre-commit` file
-- Continue with changing `export default` `commitlint.config.js` to `module.exports` such as: 
+- Continue with changing `export default` `commitlint.config.js` to `module.exports` such as:
 
 ```
 module.exports = { extends: ["@commitlint/config-conventional"] };
