@@ -9,7 +9,11 @@ function App() {
         {/* client */}
         <Route element={<DefaultLayout />}>
           {publicRoutes.map((route) => (
-            <Route path={route.path} element={<route.component />} />
+            <Route
+              path={route.path}
+              element={<route.component />}
+              key={route.path}
+            />
           ))}
         </Route>
         {/* admin */}
