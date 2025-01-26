@@ -12,17 +12,17 @@ export const OButton = ({ text, customStyle = {} }: ButtonProps) => {
             disableTouchRipple
             variant="outlined"
             sx={{
-                height: '35px',
+                height: '30px',
                 borderRadius: '20px',
                 borderColor: '#000',
                 textTransform: 'initial',
                 padding: '7px 16px',
-                color: theme.text.textBlack,
-                ...customStyle,
+                color: theme.color.textBlack,
+
                 '&:hover': {
-                    bgcolor: theme.palette.primary.main,
                     color: theme.palette.primary.main,
                 },
+                ...customStyle,
             }}
         >
             {text}

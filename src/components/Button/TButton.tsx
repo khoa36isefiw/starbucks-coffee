@@ -18,11 +18,12 @@ export const TButton = ({ text, customStyle = {}, startIcon, endIcon }: ButtonPr
             sx={{
                 bgcolor: 'transparent',
                 textTransform: 'initial',
-                color: theme.text.textBlack,
-                ...customStyle,
+                color: theme.color.textBlack,
+
                 '&:hover': {
                     color: theme.palette.primary.main,
                 },
+                ...customStyle,
             }}
         >
             {text}
