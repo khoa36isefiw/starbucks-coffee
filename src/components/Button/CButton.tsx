@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import { theme } from '../../theme/theme';
 import { IButtonProps } from '../../interfaces/IButton';
 
-export const OButton = ({ text, customStyle = {} }: IButtonProps) => {
+export const CButton = ({ text, customStyle = {} }: IButtonProps) => {
     return (
         <Button
             disableTouchRipple
@@ -12,11 +12,11 @@ export const OButton = ({ text, customStyle = {} }: IButtonProps) => {
                 borderRadius: '20px',
                 borderColor: '#000',
                 textTransform: 'initial',
+                bgcolor: '#000',
                 padding: '7px 16px',
-                color: theme.color.textBlack,
-
+                color: '#fff',
                 '&:hover': {
-                    color: theme.palette.primary.main,
+                    cursor: 'pointer',
                 },
                 ...customStyle,
             }}

@@ -5,14 +5,17 @@ declare module '@mui/material/styles' {
     interface CustomTheme extends Theme {
         color: {
             textBlack: string;
-            hoverButtonColor: string;
+            hoverButtonColorOutlined: string;
+            hoverButtonColorContained: string;
+
         };
     }
     // allow configuration using `createTheme`
     interface CustomThemeOptions extends ThemeOptions {
         color?: {
             textBlack?: string;
-            hoverButtonColor?: string;
+            hoverButtonColorOutlined?: string;
+            hoverButtonColorContained?: string;
         };
     }
     export function createTheme(options?: CustomThemeOptions): CustomTheme;
@@ -26,7 +29,8 @@ export const theme = createTheme({
     },
     color: {
         textBlack: '#000000de',
-        hoverButtonColor: '#e5e5e5'
+        hoverButtonColorOutlined: '#e5e5e5',
+        hoverButtonColorContained: '#000000b3'
     }
 });
 

@@ -13,9 +13,9 @@ export const TButton = ({ text, customStyle = {}, startIcon, endIcon }: IButtonP
                 bgcolor: 'transparent',
                 textTransform: 'initial',
                 color: theme.color.textBlack,
-
                 '&:hover': {
                     color: theme.palette.primary.main,
+                    cursor: 'pointer',
                 },
                 ...customStyle,
             }}

@@ -14,9 +14,9 @@ export const OButton = ({ text, customStyle = {} }: IButtonProps) => {
                 textTransform: 'initial',
                 padding: '7px 16px',
                 color: theme.color.textBlack,
-
                 '&:hover': {
                     color: theme.palette.primary.main,
+                    cursor: 'pointer',
                 },
                 ...customStyle,
             }}

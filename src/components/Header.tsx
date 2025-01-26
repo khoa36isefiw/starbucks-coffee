@@ -15,6 +15,7 @@ import PlaceIcon from '@mui/icons-material/Place';
 import { theme } from '../theme/theme';
 import { OButton } from './Button/OButton';
 import { TButton } from './Button/TButton';
+import { CButton } from './Button/CButton';
 
 const pages = [
     {
@@ -149,7 +150,6 @@ function Header() {
                             }}
                             text={'Find a store'}
                         />
-
                         <OButton
                             text={'Sign in'}
                             customStyle={{
@@ -157,10 +157,21 @@ function Header() {
                                 fontWeight: 'bold',
                                 color: 'black',
                                 '&:hover': {
-                                    bgcolor: theme.color.hoverButtonColor,
+                                    bgcolor: theme.color.hoverButtonColorOutlined,
                                 },
                             }}
                         />
+                        <CButton
+                            text={'Join now'}
+                            customStyle={{
+                                mr: '16px',
+                                fontWeight: 'bold',
+                                '&:hover': {
+                                    bgcolor: '#000000b3',
+                                },
+                            }}
+                        />
+
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
