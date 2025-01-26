@@ -6,7 +6,7 @@ export const OButton = ({ text, customStyle = {} }: IButtonProps) => {
     return (
         <Button
             disableTouchRipple
-            variant="outlined"
+            variant="contained"
             sx={{
                 height: '30px',
                 borderRadius: '20px',

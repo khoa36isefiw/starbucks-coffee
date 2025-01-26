@@ -1,14 +1,8 @@
 import { Button } from '@mui/material';
 import { theme } from '../../theme/theme';
+import { IButtonProps } from '../../interfaces/IButton';
 
-type ButtonProps = {
-    text: string;
-    customStyle?: object; // another style
-    startIcon?: React.ReactNode;
-    endIcon?: React.ReactNode;
-};
-
-export const TButton = ({ text, customStyle = {}, startIcon, endIcon }: ButtonProps) => {
+export const TButton = ({ text, customStyle = {}, startIcon, endIcon }: IButtonProps) => {
     return (
         <Button
             disableTouchRipple

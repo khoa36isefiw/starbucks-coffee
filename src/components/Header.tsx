@@ -150,7 +150,17 @@ function Header() {
                             text={'Find a store'}
                         />
 
-                        <OButton text={'Sign in'} customStyle={{ mr: '16px' }}></OButton>
+                        <OButton
+                            text={'Sign in'}
+                            customStyle={{
+                                mr: '16px',
+                                fontWeight: 'bold',
+                                color: 'black',
+                                '&:hover': {
+                                    bgcolor: theme.color.hoverButtonColor,
+                                },
+                            }}
+                        />
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
