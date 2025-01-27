@@ -51,6 +51,7 @@ function Header() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+    
 
     return (
         <AppBar
@@ -61,11 +62,19 @@ function Header() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                borderBottom: '4px solid green',
             }}
         >
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <Box sx={{ mr: 3 }}>
+                    <Box
+                        sx={{
+                            mr: 3,
+                            '&:hover': {
+                                cursor: 'pointer',
+                            },
+                        }}
+                    >
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -84,6 +93,7 @@ function Header() {
                             </g>
                         </svg>
                     </Box>
+                    {/* for mobile devices */}
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
@@ -110,6 +120,7 @@ function Header() {
                         ))}
                     </Box>
 
+                    {/* for desktop */}
                     <Box
                         sx={{
                             flexGrow: 1,
@@ -118,6 +129,7 @@ function Header() {
                     >
                         {pages.map((page) => (
                             <Button
+                                disableTouchRipple
                                 key={page.link}
                                 onClick={handleCloseNavMenu}
                                 sx={{
@@ -127,8 +139,9 @@ function Header() {
                                     display: 'block',
                                     fontWeight: 'bold',
                                     textTransform: 'uppercase',
-                                    fontFamily: 'Helvetica,Arial,sans-serif',
+                                    fontFamily: 'Helvetica, Arial, sans-serif',
                                     color: 'black',
+
                                     '&:hover': {
                                         color: theme.palette.primary.main,
                                     },
