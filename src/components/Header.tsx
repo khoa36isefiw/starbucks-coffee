@@ -16,6 +16,9 @@ import { theme } from '../theme/theme';
 import { OButton } from './Button/OButton';
 import { TButton } from './Button/TButton';
 import { CButton } from './Button/CButton';
+import { useNavigate } from 'react-router-dom';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
 const pages = [
     {
@@ -24,18 +27,20 @@ const pages = [
     },
     {
         page: 'Rewards',
-        link: '/',
+        link: '/rewards',
     },
     {
         page: 'Gift cards   ',
-        link: '/',
+        link: '/gift-cards',
     },
 ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Header() {
+    const navigate = useNavigate();
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+    const [pageSelected, setPageSelected] = React.useState<string>(''); // default value is HomePage
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -51,7 +56,14 @@ function Header() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-    
+
+    const handlePageSelected = (link: string) => {
+        // navigate(link);
+        setPageSelected(link);
+        console.log(link.length);
+    };
+
+    console.log('pageSelected: ', pageSelected);
 
     return (
         <AppBar
@@ -62,7 +74,7 @@ function Header() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                borderBottom: '4px solid green',
+                // borderBottom: '4px solid green',
             }}
         >
             <Container maxWidth="xl">
@@ -100,7 +112,6 @@ function Header() {
                             aria-label="account of current user"
                             aria-controls="menu-appbar"
                             aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
                             color="inherit"
                         >
                             <MenuIcon />
@@ -108,11 +119,11 @@ function Header() {
 
                         {pages.map((page) => (
                             <Typography
+                                key={page.link}
                                 sx={{
                                     textAlign: 'center',
                                     fontWeight: 'bold',
                                     textTransform: 'uppercase',
-                                    color: 'black',
                                 }}
                             >
                                 {page.page}
@@ -131,21 +142,29 @@ function Header() {
                             <Button
                                 disableTouchRipple
                                 key={page.link}
-                                onClick={handleCloseNavMenu}
                                 sx={{
                                     my: 2,
+                                    borderRadius: 0,
+                                    height: '100px',
                                     letterSpacing: '1px',
                                     bgcolor: 'transparent',
                                     display: 'block',
                                     fontWeight: 'bold',
                                     textTransform: 'uppercase',
                                     fontFamily: 'Helvetica, Arial, sans-serif',
-                                    color: 'black',
+                                    color:
+                                        pageSelected === page.link
+                                            ? theme.palette.primary.main
+                                            : 'black',
+                                    borderBottom:
+                                        pageSelected === page.link ? '4px solid green' : 'null',
+                                    transition: 'all 0.5s',
 
                                     '&:hover': {
                                         color: theme.palette.primary.main,
                                     },
                                 }}
+                                onClick={() => handlePageSelected(page.link)}
                             >
                                 {page.page}
                             </Button>
@@ -153,16 +172,23 @@ function Header() {
                     </Box>
                     <Box sx={{ flexGrow: 0 }}>
                         <TButton
+                            disableTouchRipple
                             startIcon={<PlaceIcon />}
-                            customStyle={{
+                            sx={{
                                 bgcolor: 'transparent',
-                                color: 'black',
                                 textTransform: 'initial',
                                 fontWeight: 'bold',
                                 mr: '40px',
+                                borderRadius: 0,
+                                height: '100px',
+                                borderBottom: pageSelected === 'store' ? '4px solid green' : 'null',
+                                color:
+                                    pageSelected === 'store' ? theme.palette.primary.main : 'black',
                             }}
-                            text={'Find a store'}
-                        />
+                            onClick={() => setPageSelected('store')}
+                        >
+                            Find a store
+                        </TButton>
                         <OButton
                             text={'Sign in'}
                             customStyle={{
@@ -219,3 +245,61 @@ function Header() {
     );
 }
 export default Header;
+
+interface TabPanelProps {
+    children?: React.ReactNode;
+    index: number;
+    value: number;
+}
+
+function CustomTabPanel(props: TabPanelProps) {
+    const { children, value, index, ...other } = props;
+
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`simple-tabpanel-${index}`}
+            aria-labelledby={`simple-tab-${index}`}
+            {...other}
+        >
+            {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+        </div>
+    );
+}
+
+function a11yProps(index: number) {
+    return {
+        id: `simple-tab-${index}`,
+        'aria-controls': `simple-tabpanel-${index}`,
+    };
+}
+
+function BasicTabs() {
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+        setValue(newValue);
+    };
+
+    return (
+        <Box sx={{ width: '100%' }}>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                    <Tab label="Item One" {...a11yProps(0)} />
+                    <Tab label="Item Two" {...a11yProps(1)} />
+                    <Tab label="Item Three" {...a11yProps(2)} />
+                </Tabs>
+            </Box>
+            <CustomTabPanel value={value} index={0}>
+                Item One
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={1}>
+                Item Two
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={2}>
+                Item Three
+            </CustomTabPanel>
+        </Box>
+    );
+}
