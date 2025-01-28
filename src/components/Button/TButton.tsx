@@ -1,26 +1,15 @@
-import { Button } from '@mui/material';
+import { styled } from '@mui/system';
+import Button from '@mui/material/Button';
 import { theme } from '../../theme/theme';
-import { IButtonProps } from '../../interfaces/IButton';
 
-export const TButton = ({ text, customStyle = {}, startIcon, endIcon }: IButtonProps) => {
-    return (
-        <Button
-            disableTouchRipple
-            startIcon={startIcon}
-            endIcon={endIcon}
-            variant="text"
-            sx={{
-                bgcolor: 'transparent',
-                textTransform: 'initial',
-                color: theme.color.textBlack,
-                '&:hover': {
-                    color: theme.palette.primary.main,
-                    cursor: 'pointer',
-                },
-                ...customStyle,
-            }}
-        >
-            {text}
-        </Button>
-    );
-};
+// default styles for button is text
+export const TButton = styled(Button)(() => ({
+    transition: 'all 0.5s',
+    bgcolor: 'transparent',
+    textTransform: 'initial',
+    color: theme.color.textBlack,
+    '&:hover': {
+        color: theme.palette.primary.main,
+        cursor: 'pointer',
+    },
+}));
