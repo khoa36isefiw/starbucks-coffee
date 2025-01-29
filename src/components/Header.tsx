@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -16,6 +17,9 @@ import { theme } from '../theme/theme';
 import { OButton } from './Button/OButton';
 import { TButton } from './Button/TButton';
 import { CButton } from './Button/CButton';
+import { useNavigate } from 'react-router-dom';
+import MobileMenu from './MobileMenu';
+import { HEADER_DATA } from '../utils/constants';
 
 const pages = [
     {
@@ -24,18 +28,21 @@ const pages = [
     },
     {
         page: 'Rewards',
-        link: '/',
+        link: '/rewards',
     },
     {
         page: 'Gift cards   ',
-        link: '/',
+        link: '/gift-cards',
     },
 ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Header() {
+    const navigate = useNavigate();
+    const [toggleMenu, setToggleMenu] = React.useState(false);
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+    const [pageSelected, setPageSelected] = React.useState<string>(''); // default value is HomePage
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -52,12 +59,24 @@ function Header() {
         setAnchorElUser(null);
     };
 
+    const handlePageSelected = (link: string) => {
+        // navigate(link);
+        setPageSelected(link);
+        console.log(link.length);
+    };
+
+    const handleToggleMenu = () => {
+        setToggleMenu(!toggleMenu);
+    };
+
     return (
         <AppBar
             position="static"
             sx={{
+                zIndex: 999,
                 bgcolor: '#fff',
                 height: '100px',
+                width: '100%',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -65,7 +84,15 @@ function Header() {
         >
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <Box sx={{ mr: 3 }}>
+                    <Box
+                        sx={{
+                            flexGrow: { xs: 1, md: 0 },
+                            mr: 3,
+                            '&:hover': {
+                                cursor: 'pointer',
+                            },
+                        }}
+                    >
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -84,72 +111,95 @@ function Header() {
                             </g>
                         </svg>
                     </Box>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+
+                    {/* for mobile devices */}
+                    <Box sx={{ display: { sm: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
                             aria-label="account of current user"
                             aria-controls="menu-appbar"
                             aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
                             color="inherit"
+                            onClick={handleToggleMenu}
+                            sx={{ transition: 'all 0.5s' }}
                         >
-                            <MenuIcon />
+                            {!toggleMenu ? (
+                                <MenuIcon sx={{ color: theme.color.buttonColor }} />
+                            ) : (
+                                <CloseIcon sx={{ color: theme.color.buttonColor }} />
+                            )}
                         </IconButton>
-
-                        {pages.map((page) => (
-                            <Typography
-                                sx={{
-                                    textAlign: 'center',
-                                    fontWeight: 'bold',
-                                    textTransform: 'uppercase',
-                                    color: 'black',
-                                }}
-                            >
-                                {page.page}
-                            </Typography>
-                        ))}
+                        {toggleMenu && (
+                            <MobileMenu open={toggleMenu} onHandleClose={handleToggleMenu} />
+                        )}
                     </Box>
 
+                    {/* for desktop */}
                     <Box
                         sx={{
                             flexGrow: 1,
                             display: { xs: 'none', md: 'flex' },
                         }}
                     >
-                        {pages.map((page) => (
+                        {HEADER_DATA.map((page) => (
                             <Button
+                                disableTouchRipple
                                 key={page.link}
-                                onClick={handleCloseNavMenu}
                                 sx={{
                                     my: 2,
+                                    borderRadius: 0,
+                                    height: '100px',
                                     letterSpacing: '1px',
                                     bgcolor: 'transparent',
                                     display: 'block',
                                     fontWeight: 'bold',
                                     textTransform: 'uppercase',
-                                    fontFamily: 'Helvetica,Arial,sans-serif',
-                                    color: 'black',
+                                    fontFamily: 'Helvetica, Arial, sans-serif',
+                                    color:
+                                        pageSelected === page.link
+                                            ? theme.palette.primary.main
+                                            : 'black',
+                                    borderBottom:
+                                        pageSelected === page.link ? '4px solid green' : 'null',
+                                    transition: 'all 0.5s',
+
                                     '&:hover': {
                                         color: theme.palette.primary.main,
                                     },
                                 }}
+                                onClick={() => handlePageSelected(page.link)}
                             >
                                 {page.page}
                             </Button>
                         ))}
                     </Box>
-                    <Box sx={{ flexGrow: 0 }}>
+                    <Box
+                        sx={{
+                            flexGrow: 0,
+                            display: {
+                                xs: 'none',
+                                md: 'block',
+                            },
+                        }}
+                    >
                         <TButton
+                            disableTouchRipple
                             startIcon={<PlaceIcon />}
-                            customStyle={{
+                            sx={{
                                 bgcolor: 'transparent',
-                                color: 'black',
                                 textTransform: 'initial',
                                 fontWeight: 'bold',
                                 mr: '40px',
+                                borderRadius: 0,
+                                height: '100px',
+                                borderBottom: pageSelected === 'store' ? '4px solid green' : 'null',
+                                color:
+                                    pageSelected === 'store' ? theme.palette.primary.main : 'black',
                             }}
-                            text={'Find a store'}
-                        />
+                            onClick={() => setPageSelected('store')}
+                        >
+                            Find a store
+                        </TButton>
                         <OButton
                             text={'Sign in'}
                             customStyle={{
