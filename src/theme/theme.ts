@@ -7,6 +7,7 @@ declare module '@mui/material/styles' {
             textBlack: string;
             hoverButtonColorOutlined: string;
             hoverButtonColorContained: string;
+            buttonColor: string;
 
         };
     }
@@ -16,6 +17,7 @@ declare module '@mui/material/styles' {
             textBlack?: string;
             hoverButtonColorOutlined?: string;
             hoverButtonColorContained?: string;
+            buttonColor: string;
         };
     }
     export function createTheme(options?: CustomThemeOptions): CustomTheme;
@@ -30,7 +32,9 @@ export const theme = createTheme({
     color: {
         textBlack: '#000000de',
         hoverButtonColorOutlined: '#e5e5e5',
-        hoverButtonColorContained: '#000000b3'
+        hoverButtonColorContained: '#000000b3',
+        buttonColor: '#00000094',
+
     }
 });
 

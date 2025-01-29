@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -17,8 +18,8 @@ import { OButton } from './Button/OButton';
 import { TButton } from './Button/TButton';
 import { CButton } from './Button/CButton';
 import { useNavigate } from 'react-router-dom';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
+import MobileMenu from './MobileMenu';
+import { HEADER_DATA } from '../utils/constants';
 
 const pages = [
     {
@@ -38,6 +39,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Header() {
     const navigate = useNavigate();
+    const [toggleMenu, setToggleMenu] = React.useState(false);
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
     const [pageSelected, setPageSelected] = React.useState<string>(''); // default value is HomePage
@@ -63,24 +65,28 @@ function Header() {
         console.log(link.length);
     };
 
-    console.log('pageSelected: ', pageSelected);
+    const handleToggleMenu = () => {
+        setToggleMenu(!toggleMenu);
+    };
 
     return (
         <AppBar
             position="static"
             sx={{
+                zIndex: 999,
                 bgcolor: '#fff',
                 height: '100px',
+                width: '100%',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                // borderBottom: '4px solid green',
             }}
         >
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box
                         sx={{
+                            flexGrow: { xs: 1, md: 0 },
                             mr: 3,
                             '&:hover': {
                                 cursor: 'pointer',
@@ -105,30 +111,27 @@ function Header() {
                             </g>
                         </svg>
                     </Box>
+
                     {/* for mobile devices */}
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                    <Box sx={{ display: { sm: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
                             aria-label="account of current user"
                             aria-controls="menu-appbar"
                             aria-haspopup="true"
                             color="inherit"
+                            onClick={handleToggleMenu}
+                            sx={{ transition: 'all 0.5s' }}
                         >
-                            <MenuIcon />
+                            {!toggleMenu ? (
+                                <MenuIcon sx={{ color: theme.color.buttonColor }} />
+                            ) : (
+                                <CloseIcon sx={{ color: theme.color.buttonColor }} />
+                            )}
                         </IconButton>
-
-                        {pages.map((page) => (
-                            <Typography
-                                key={page.link}
-                                sx={{
-                                    textAlign: 'center',
-                                    fontWeight: 'bold',
-                                    textTransform: 'uppercase',
-                                }}
-                            >
-                                {page.page}
-                            </Typography>
-                        ))}
+                        {toggleMenu && (
+                            <MobileMenu open={toggleMenu} onHandleClose={handleToggleMenu} />
+                        )}
                     </Box>
 
                     {/* for desktop */}
@@ -138,7 +141,7 @@ function Header() {
                             display: { xs: 'none', md: 'flex' },
                         }}
                     >
-                        {pages.map((page) => (
+                        {HEADER_DATA.map((page) => (
                             <Button
                                 disableTouchRipple
                                 key={page.link}
@@ -170,7 +173,15 @@ function Header() {
                             </Button>
                         ))}
                     </Box>
-                    <Box sx={{ flexGrow: 0 }}>
+                    <Box
+                        sx={{
+                            flexGrow: 0,
+                            display: {
+                                xs: 'none',
+                                md: 'block',
+                            },
+                        }}
+                    >
                         <TButton
                             disableTouchRipple
                             startIcon={<PlaceIcon />}
@@ -245,61 +256,3 @@ function Header() {
     );
 }
 export default Header;
-
-interface TabPanelProps {
-    children?: React.ReactNode;
-    index: number;
-    value: number;
-}
-
-function CustomTabPanel(props: TabPanelProps) {
-    const { children, value, index, ...other } = props;
-
-    return (
-        <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`simple-tabpanel-${index}`}
-            aria-labelledby={`simple-tab-${index}`}
-            {...other}
-        >
-            {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-        </div>
-    );
-}
-
-function a11yProps(index: number) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
-}
-
-function BasicTabs() {
-    const [value, setValue] = React.useState(0);
-
-    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-        setValue(newValue);
-    };
-
-    return (
-        <Box sx={{ width: '100%' }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label="Item One" {...a11yProps(0)} />
-                    <Tab label="Item Two" {...a11yProps(1)} />
-                    <Tab label="Item Three" {...a11yProps(2)} />
-                </Tabs>
-            </Box>
-            <CustomTabPanel value={value} index={0}>
-                Item One
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={1}>
-                Item Two
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={2}>
-                Item Three
-            </CustomTabPanel>
-        </Box>
-    );
-}
