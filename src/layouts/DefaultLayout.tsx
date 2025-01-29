@@ -4,7 +4,7 @@ import Header from '../components/Header';
 
 function DefaultLayout() {
     return (
-        <Box>
+        <Box sx={{ overflow: 'hidden' }}>
             {/* Header */}
             <Header />
 
