@@ -21,20 +21,6 @@ import { useNavigate } from 'react-router-dom';
 import MobileMenu from './MobileMenu';
 import { HEADER_DATA } from '../utils/constants';
 
-const pages = [
-    {
-        page: 'Menu',
-        link: '/',
-    },
-    {
-        page: 'Rewards',
-        link: '/rewards',
-    },
-    {
-        page: 'Gift cards   ',
-        link: '/gift-cards',
-    },
-];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Header() {
@@ -75,7 +61,7 @@ function Header() {
             sx={{
                 zIndex: 999,
                 bgcolor: '#fff',
-                height: '100px',
+                height: { xs: 72, sm: 83, lg: 100 },
                 width: '100%',
                 display: 'flex',
                 alignItems: 'center',
@@ -113,7 +99,19 @@ function Header() {
                     </Box>
 
                     {/* for mobile devices */}
-                    <Box sx={{ display: { sm: 'flex', md: 'none' } }}>
+                    <Box
+                        sx={{
+                            display: { xs: 'flex', sm: 'none' },
+                            // [theme.breakpoints.down(800)]: {
+                            //     display: 'flex',
+                            // },
+                            // for only ipad mini
+                            [theme.breakpoints.between('sm', 'md')]: {
+                                // backgroundColor: 'red',
+                                display: 'flex',
+                            },
+                        }}
+                    >
                         <IconButton
                             size="large"
                             aria-label="account of current user"
@@ -138,7 +136,10 @@ function Header() {
                     <Box
                         sx={{
                             flexGrow: 1,
-                            display: { xs: 'none', md: 'flex' },
+                            display: { xs: 'none', sm: 'flex' },
+                            [theme.breakpoints.down(800)]: {
+                                display: 'none',
+                            },
                         }}
                     >
                         {HEADER_DATA.map((page) => (
@@ -178,7 +179,10 @@ function Header() {
                             flexGrow: 0,
                             display: {
                                 xs: 'none',
-                                md: 'block',
+                                sm: 'block',
+                            },
+                            [theme.breakpoints.down(800)]: {
+                                display: 'none',
                             },
                         }}
                     >
@@ -221,12 +225,12 @@ function Header() {
                                 },
                             }}
                         />
-
-                        <Tooltip title="Open settings">
+                        {/* authen */}
+                        {/* <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                             </IconButton>
-                        </Tooltip>
+                        </Tooltip> */}
                         <Menu
                             sx={{ mt: '45px' }}
                             id="menu-appbar"
