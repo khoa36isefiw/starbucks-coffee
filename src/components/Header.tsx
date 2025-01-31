@@ -73,7 +73,7 @@ function Header() {
                     <Box
                         sx={{
                             flexGrow: { xs: 1, md: 0 },
-                            mr: 3,
+                            mr: { xs: 3, sm: 1, md: 3 },
                             '&:hover': {
                                 cursor: 'pointer',
                             },
@@ -102,12 +102,8 @@ function Header() {
                     <Box
                         sx={{
                             display: { xs: 'flex', sm: 'none' },
-                            // [theme.breakpoints.down(800)]: {
-                            //     display: 'flex',
-                            // },
                             // for only ipad mini
-                            [theme.breakpoints.between('sm', 'md')]: {
-                                // backgroundColor: 'red',
+                            [theme.breakpoints.down(800)]: {
                                 display: 'flex',
                             },
                         }}
