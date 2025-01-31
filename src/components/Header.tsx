@@ -145,7 +145,8 @@ function Header() {
                                 sx={{
                                     my: 2,
                                     borderRadius: 0,
-                                    height: '100px',
+                                    // height: '100px',
+                                    height: { xs: 72, sm: 83, lg: 100 },
                                     letterSpacing: '1px',
                                     bgcolor: 'transparent',
                                     display: 'block',
