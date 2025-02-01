@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
 import { Outlet } from 'react-router-dom';
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer';
 
 function DefaultLayout() {
     return (
@@ -11,7 +12,8 @@ function DefaultLayout() {
             <main>
                 <Outlet />
             </main>
-            <footer>ahihihi</footer>
+
+            <Footer />
         </Box>
     );
 }
