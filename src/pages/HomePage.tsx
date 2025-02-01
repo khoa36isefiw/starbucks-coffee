@@ -1,5 +1,7 @@
+import { Box } from '@mui/material';
+
 function HomePage() {
-    return <div>HomePage</div>;
+    return <Box>HomePage</Box>;
 }
 
 export default HomePage;

@@ -9,7 +9,7 @@ function DefaultLayout() {
             {/* Header */}
             <Header />
 
-            <main>
+            <main style={{ height: '150vh' }}>
                 <Outlet />
             </main>
 

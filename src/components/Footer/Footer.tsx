@@ -1,10 +1,11 @@
-import { Box, Divider } from '@mui/material';
+import { Box, Divider, Typography } from '@mui/material';
 
 import FooterCol from '../FooterCol';
 import {
     about,
     businessPartners,
     careers,
+    footerData,
     footerIcon,
     orderPickup,
     social,
@@ -12,11 +13,12 @@ import {
 import { FooterIcon } from './FooterIcon';
 
 function Footer() {
+    const year = new Date().getFullYear();
     return (
         <Box
             sx={{
                 position: 'absolute',
-                bottom: 0,
+                top: '100%',
                 left: 0,
                 right: 0,
             }}
@@ -43,6 +45,25 @@ function Footer() {
                         <FooterIcon icon={path} key={index} />
                     ))}
                 </Box>
+                <Box>
+                    {footerData.map((data: string, index: number) => (
+                        <Typography
+                            key={index}
+                            sx={{
+                                my: 2,
+                                '&:hover': {
+                                    textDecoration: 'underline',
+                                    cursor: 'pointer',
+                                },
+                            }}
+                        >
+                            {data}
+                        </Typography>
+                    ))}
+                </Box>
+                <Typography sx={{ opacity: 0.65, fontSize: '14px', my: 2 }}>
+                    &copy; {year} Starbucks Coffee Company. All rights reserved.
+                </Typography>
             </Box>
         </Box>
     );
