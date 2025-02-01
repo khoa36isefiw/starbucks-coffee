@@ -1,0 +1,9 @@
+.header-icon {
+    width: 51px;
+}
+
+@media only screen and (max-width: 600px) {
+    .header-icon {
+        width: 40px;
+    }
+}
