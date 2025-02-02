@@ -8,18 +8,19 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
+
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
+
 import MenuItem from '@mui/material/MenuItem';
 import PlaceIcon from '@mui/icons-material/Place';
-import { theme } from '../theme/theme';
-import { OButton } from './Button/OButton';
-import { TButton } from './Button/TButton';
-import { CButton } from './Button/CButton';
+import { theme } from '../../theme/theme';
+import { OButton } from '../Button/OButton';
+import { TButton } from '../Button/TButton';
+import { CButton } from '../Button/CButton';
 import { useNavigate } from 'react-router-dom';
-import MobileMenu from './MobileMenu';
-import { HEADER_DATA } from '../utils/constants';
+import MobileMenu from '../MobileMenu';
+import { HEADER_DATA } from '../../utils/constants';
+import './Header.css';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -78,8 +79,10 @@ function Header() {
                                 cursor: 'pointer',
                             },
                         }}
+                        onClick={() => navigate('/')}
                     >
                         <svg
+                            className="header-icon"
                             aria-hidden="true"
                             focusable="false"
                             height="51px"

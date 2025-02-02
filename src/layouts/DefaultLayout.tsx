@@ -1,17 +1,19 @@
 import { Box } from '@mui/material';
 import { Outlet } from 'react-router-dom';
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 
 function DefaultLayout() {
     return (
-        <Box sx={{ overflow: 'hidden' }}>
+        <Box sx={{ overflow: 'hidden', minHeight: '150vh' }}>
             {/* Header */}
             <Header />
 
-            <main>
+            <Box>
                 <Outlet />
-            </main>
-            <footer>ahihihi</footer>
+            </Box>
+
+            <Footer />
         </Box>
     );
 }
