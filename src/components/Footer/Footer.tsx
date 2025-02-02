@@ -7,10 +7,12 @@ import {
     careers,
     footerData,
     footerIcon,
+    footerNewData,
     orderPickup,
     social,
 } from '../../utils/constants';
 import { FooterIcon } from './FooterIcon';
+import FooterAccordion from './FooterAccordion';
 
 function Footer() {
     const year = new Date().getFullYear();
@@ -32,12 +34,21 @@ function Footer() {
                 }}
             />
             <Box sx={{ p: 2 }}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Box sx={{ display: { md: 'flex', sm: 'none' }, justifyContent: 'space-between' }}>
                     <FooterCol title="About Us" data={about} />
                     <FooterCol title="Careers" data={careers} />
                     <FooterCol title="Social Impact" data={social} />
                     <FooterCol title="For Business Partners" data={businessPartners} />
                     <FooterCol title="Order and Pick Up" data={orderPickup} />
+                </Box>
+                <Box sx={{ display: { sm: 'block', md: 'none' } }}>
+                    {footerNewData.map((footer, index) => (
+                        <FooterAccordion
+                            title={footer.title}
+                            contents={footer.contents}
+                            key={index}
+                        />
+                    ))}
                 </Box>
                 <Divider sx={{ my: 2, borderBottomWidth: 2 }} />
                 <Box sx={{ display: 'flex' }}>
