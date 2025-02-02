@@ -34,7 +34,12 @@ function Footer() {
                 }}
             />
             <Box sx={{ p: 2 }}>
-                <Box sx={{ display: { md: 'flex', sm: 'none' }, justifyContent: 'space-between' }}>
+                <Box
+                    sx={{
+                        display: { xs: 'none', sm: 'none', md: 'flex' },
+                        justifyContent: 'space-between',
+                    }}
+                >
                     <FooterCol title="About Us" data={about} />
                     <FooterCol title="Careers" data={careers} />
                     <FooterCol title="Social Impact" data={social} />
