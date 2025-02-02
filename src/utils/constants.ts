@@ -76,4 +76,67 @@ export const footerIcon: string[] = [
 ]
 
 
+export interface IFooterData {
+    title: string;
+    contents: string[]
+}
 
+
+export const footerNewData: IFooterData[] = [
+    {
+        title: 'About Us',
+        contents: [
+            "Our Company",
+            "Our Coffee",
+            "About Starbucks",
+            "Starbucks Archive",
+            "Investor Relations",
+            "Customer Service",
+            "Contact Us"
+        ]
+    },
+    {
+        title: 'Careers',
+        contents: [
+            "Culture and Values",
+            "Inclusion, Diversity, & Belonging",
+            "College Achievement Plan",
+            "Alumni Community",
+            "U.S. Careers",
+            "International Careers",
+        ]
+    }
+    ,
+    {
+        title: 'Social Impact',
+        contents: [
+            "Communities",
+            "Starbucks Foundation",
+            "Sustainability",
+            "Environmental and Social Impact Reporting",
+        ]
+    }
+    ,
+    {
+        title: 'For Business Partners',
+        contents: [
+            "Landlord Support Center",
+            "Suppliers",
+            "Corporate Gift Card Sales",
+            "Office and Foodservice Coffee",
+        ]
+    }
+    ,
+    {
+        title: 'Order and Pick Up',
+        contents: [
+            "Order on the App",
+            "Order on the Web",
+            "Delivery",
+            "Order and Pick Up Options",
+            "Explore and Find Coffee for Home",
+        ]
+    }
+
+
+]
