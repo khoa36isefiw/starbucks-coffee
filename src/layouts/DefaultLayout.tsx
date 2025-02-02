@@ -5,13 +5,13 @@ import Footer from '../components/Footer/Footer';
 
 function DefaultLayout() {
     return (
-        <Box sx={{ overflow: 'hidden' }}>
+        <Box sx={{ overflow: 'hidden', minHeight: '150vh' }}>
             {/* Header */}
             <Header />
 
-            <main style={{ height: '150vh' }}>
+            <Box>
                 <Outlet />
-            </main>
+            </Box>
 
             <Footer />
         </Box>
