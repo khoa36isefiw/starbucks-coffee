@@ -20,7 +20,8 @@ function Footer() {
         <Box
             sx={{
                 position: 'absolute',
-                top: '100%',
+                marginTop: 'auto',
+
                 left: 0,
                 right: 0,
             }}
