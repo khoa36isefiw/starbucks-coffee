@@ -26,16 +26,26 @@ function HomeBanner({
     btnColor,
 }: HomeBananerType) {
     return (
-        <Grid2 container sx={{ mt: '32px' }}>
-            <Grid2 size={{ xs: 12, md: 6 }} order={{ xs: 2, md: reverse ? 1 : 2 }}>
+        <Grid2
+            container
+            sx={{ mt: '32px', bgcolor: bgcolor, display: 'flex', alignItems: 'center' }}
+        >
+            <Grid2 size={{ xs: 12, sm: 6 }} order={{ xs: 2, md: reverse ? 1 : 2 }}>
                 <Box
                     component={'img'}
-                    sx={{ height: '100%', width: '100%', borderRadius: 0 }}
+                    sx={{
+                        // height: { md: '83%', lg: '100%' },
+                        // width: { md: '83%', lg: '100%' },
+                        width: '100%',
+                        height: 'auto',
+                        borderRadius: 0,
+                        objectFit: 'contain',
+                    }}
                     alt={alt}
                     src={imgSrc}
                 />
             </Grid2>
-            <Grid2 size={{ xs: 12, md: 6 }} order={{ xs: 2, md: reverse ? 2 : 1 }}>
+            <Grid2 size={{ xs: 12, sm: 6 }} order={{ xs: 2, md: reverse ? 2 : 1 }}>
                 <Box
                     sx={{
                         height: '100%',
@@ -54,14 +64,20 @@ function HomeBanner({
                         sx={{
                             color: color ? color : '#fff',
                             fontWeight: 'bold',
-                            fontSize: '50px',
+                            fontSize: { xs: '28px', sm: '28px', md: '50px' },
                             letterSpacing: '2px',
                         }}
                     >
                         {title}
                     </Typography>
 
-                    <Typography sx={{ fontSize: '24px', color: color ? color : '#fff' }}>
+                    <Typography
+                        sx={{
+                            mt: 1,
+                            fontSize: { xs: '20px', sm: '28px', md: '24px' },
+                            color: color ? color : '#fff',
+                        }}
+                    >
                         {content}
                     </Typography>
                     <OButton
