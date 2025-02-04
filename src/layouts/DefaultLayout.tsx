@@ -5,7 +5,7 @@ import Footer from '../components/Footer/Footer';
 
 function DefaultLayout() {
     return (
-        <Box sx={{ overflow: 'hidden', minHeight: '150vh' }}>
+        <Box sx={{ minHeight: '150vh' }}>
             {/* Header */}
             <Header />
 
