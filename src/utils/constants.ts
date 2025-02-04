@@ -1,20 +1,40 @@
-export const HEADER_DATA: {
-    page: string;
-    link: string;
-}[] = [
-        {
-            page: 'Menu',
-            link: '/',
-        },
-        {
-            page: 'Rewards',
-            link: '/rewards',
-        },
-        {
-            page: 'Gift cards   ',
-            link: '/gift-cards',
-        },
-    ];
+import { IHeader } from "../interfaces/IHeader";
+
+export const HEADER_DATA: IHeader[] = [
+    {
+        page: 'Menu',
+        link: '/menu',
+    },
+    {
+        page: 'Rewards',
+        link: '/rewards',
+    },
+    {
+        page: 'Gift cards   ',
+        link: '/gift-cards',
+    },
+];
+
+
+
+export const MENU_HEADER_DATA: IHeader[] = [
+    {
+        page: 'Menu',
+        link: '/menu',
+    },
+    {
+        page: 'Featured',
+        link: '/featured',
+    },
+    {
+        page: 'Previous',
+        link: '/previous',
+    },
+    {
+        page: 'Favorites',
+        link: '/favorites',
+    },
+];
 
 
 export const about: string[] = [
