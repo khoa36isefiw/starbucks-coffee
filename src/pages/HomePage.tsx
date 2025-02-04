@@ -26,6 +26,7 @@ function HomePage() {
                 }
                 btnText={'Learn more'}
                 reverse={true}
+                bgcolor={'#006242'}
             />
             <HomeBanner
                 alt={
@@ -63,7 +64,7 @@ function HomePage() {
             <Box32
                 sx={{
                     fontSize: '14px',
-                    width: '50%',
+                    width: { xs: '85%', sm: '50%' },
                     textAlign: 'center',
                     padding: '32px 0',
                 }}
