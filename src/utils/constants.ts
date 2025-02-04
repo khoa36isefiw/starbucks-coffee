@@ -10,7 +10,7 @@ export const HEADER_DATA: IHeader[] = [
         link: '/rewards',
     },
     {
-        page: 'Gift cards   ',
+        page: 'Gift cards',
         link: '/gift-cards',
     },
 ];
