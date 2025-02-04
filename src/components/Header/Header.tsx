@@ -47,7 +47,7 @@ function Header() {
     };
 
     const handlePageSelected = (link: string) => {
-        // navigate(link);
+        navigate(link);
         setPageSelected(link);
         console.log(link.length);
     };
@@ -60,7 +60,7 @@ function Header() {
         <AppBar
             position="static"
             sx={{
-                zIndex: 999,
+                zIndex: 999999,
                 bgcolor: '#fff',
                 height: { xs: 72, sm: 83, lg: 100 },
                 width: '100%',
