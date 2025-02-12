@@ -1,6 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import React from 'react';
-import { about } from '../../utils/constants';
+
 type Props = {
     title: string;
     data: string[];
