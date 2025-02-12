@@ -1,6 +1,6 @@
 import { Box, Divider, Typography } from '@mui/material';
 
-import FooterCol from '../FooterCol';
+import FooterCol from './FooterCol';
 import {
     about,
     businessPartners,

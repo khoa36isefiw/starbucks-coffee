@@ -15,6 +15,7 @@ function MenuHeader() {
             <Box sx={{ ml: '107px', display: 'flex', alignItems: 'center' }}>
                 {MENU_HEADER_DATA.map((menu, index) => (
                     <Typography
+                        key={index}
                         sx={{
                             padding: '16px 0',
                             mr: '32px',
