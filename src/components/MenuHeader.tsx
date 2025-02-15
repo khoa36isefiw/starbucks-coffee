@@ -1,7 +1,9 @@
 import { Box, Typography } from '@mui/material';
 import { MENU_HEADER_DATA } from '../utils/constants';
+import { useState } from 'react';
 
 function MenuHeader() {
+    const [activeMenu, setActiveMenu] = useState('/menu');
     return (
         <Box
             sx={{
@@ -15,6 +17,7 @@ function MenuHeader() {
             <Box sx={{ ml: '107px', display: 'flex', alignItems: 'center' }}>
                 {MENU_HEADER_DATA.map((menu, index) => (
                     <Typography
+                        onClick={() => setActiveMenu(menu.link)}
                         key={index}
                         sx={{
                             padding: '16px 0',
@@ -29,7 +32,7 @@ function MenuHeader() {
                                 width: '100%',
                                 left: 0,
                                 bottom: '12px',
-                                borderBottom: '2px solid',
+                                borderBottom: menu.link === activeMenu ? '2px solid' : '',
                             },
                             '&:hover': {
                                 cursor: 'pointer',

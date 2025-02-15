@@ -34,7 +34,9 @@ function CoffeeMenuV2({ label, menuList }: MenuContentProps) {
                                     alt={item.pName}
                                     sx={{ width: 96, height: 96 }}
                                 />
-                                <Typography sx={{ ml: 2, fontSize: 18 }}>{item.pName}</Typography>
+                                <Typography sx={{ ml: 2, fontSize: 18, width: 200 }}>
+                                    {item.pName}
+                                </Typography>
                             </Box>
                         </Grid>
                     ))}
