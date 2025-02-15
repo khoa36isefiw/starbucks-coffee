@@ -75,7 +75,7 @@ function MenuContent() {
             <Grid size={{ xs: 12, md: 6, lg: 10 }}>
                 <ActiveLastBreadcrumb />
                 {menuSelected.trim() === '' ? (
-                    <CoffeeMenu />
+                    <CoffeeMenu setMenuSelected={setMenuSelected} />
                 ) : (
                     coffeeList.map((cf, index) => (
                         <CoffeeMenuV2 key={index} label={cf.pType} menuList={cf.pList} />

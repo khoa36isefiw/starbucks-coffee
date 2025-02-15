@@ -1,9 +1,12 @@
 import { Avatar, Box, Divider, Typography } from '@mui/material';
-import React from 'react';
 import Grid from '@mui/material/Grid2';
 import { menuData } from '../../assets/data/menu';
 
-function CoffeeMenu() {
+function CoffeeMenu({
+    setMenuSelected,
+}: {
+    setMenuSelected: React.Dispatch<React.SetStateAction<string>>;
+}) {
     return (
         <Box>
             {menuData.map((menu, index) => (
@@ -21,7 +24,11 @@ function CoffeeMenu() {
                     <Divider sx={{ width: '80%' }} />
                     <Grid container>
                         {menu.menu.map((item, index) => (
-                            <Grid size={{ lg: 6 }}>
+                            <Grid
+                                size={{ lg: 6 }}
+                                key={index}
+                                onClick={() => setMenuSelected(item.path)}
+                            >
                                 <Box sx={{ display: 'flex', alignItems: 'center', my: 2 }}>
                                     <Avatar
                                         src={item.image}
