@@ -1,12 +1,35 @@
-import React from 'react';
 import Grid from '@mui/material/Grid2';
 import { Box, Button, Typography } from '@mui/material';
 import { menuData } from '../assets/data/menu';
 import { theme } from '../theme/theme';
 import ActiveLastBreadcrumb from './Breadcrumb';
-import CoffeeMenu from './CoffeeMenu';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import CoffeeMenu from './CoffeeMenu/CoffeeMenu';
+import { getCoffeeListByPath } from '../utils/flatmap';
+import CoffeeMenuV2 from './CoffeeMenu/CoffeeMenuV2';
 
 function MenuContent() {
+    const navigate = useNavigate();
+    const [menuSelected, setMenuSelected] = useState<string>('');
+    const coffeeList = getCoffeeListByPath(menuSelected);
+
+    console.log('coffeeList: ', coffeeList);
+
+    const handleClickMenu = (data: string) => {
+        // menuData.forEach((item) => {
+        //     console.log(
+        //         item.menu.forEach((item) =>
+        //             console.log(item.title.toLowerCase().split(' ').join('-')),
+        //         ),
+        //     );
+        // });
+        // navigate(`/menu/${title.toLowerCase().split(' ').join('-')}/${path}`);
+        // console.log(data);
+        setMenuSelected(data);
+        // setMenuDataDetail(data);
+    };
+
     return (
         <Grid container spacing={4} sx={{ ml: '107px', mt: 4 }}>
             {/* menu/ category column */}
@@ -18,6 +41,7 @@ function MenuContent() {
                         </Typography>
                         {menu.menu.map((menuItem, index) => (
                             <Button
+                                onClick={() => handleClickMenu(menuItem.path)}
                                 disableTouchRipple
                                 key={index}
                                 sx={{
@@ -50,7 +74,13 @@ function MenuContent() {
             {/* content to show */}
             <Grid size={{ xs: 12, md: 6, lg: 10 }}>
                 <ActiveLastBreadcrumb />
-                <CoffeeMenu />
+                {menuSelected.trim() === '' ? (
+                    <CoffeeMenu />
+                ) : (
+                    coffeeList.map((cf, index) => (
+                        <CoffeeMenuV2 key={index} label={cf.pType} menuList={cf.pList} />
+                    ))
+                )}
             </Grid>
         </Grid>
     );
