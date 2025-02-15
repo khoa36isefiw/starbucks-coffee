@@ -14,7 +14,14 @@ function MenuHeader() {
                 border: '1px solid #dbd9d7',
             }}
         >
-            <Box sx={{ ml: '107px', display: 'flex', alignItems: 'center' }}>
+            <Box
+                sx={{
+                    px: { xs: 3, md: 0 },
+                    ml: { xs: 0, md: '107px' },
+                    display: 'flex',
+                    alignItems: 'center',
+                }}
+            >
                 {MENU_HEADER_DATA.map((menu, index) => (
                     <Typography
                         onClick={() => setActiveMenu(menu.link)}

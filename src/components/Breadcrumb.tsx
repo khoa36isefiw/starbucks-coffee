@@ -4,8 +4,13 @@ import Link from '@mui/material/Link';
 import { Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-export default function ActiveLastBreadcrumb() {
+interface IActiveLastBreadcrumbProps {
+    menuSelected: { [key: string]: string };
+}
+
+export default function ActiveLastBreadcrumb({ menuSelected }: IActiveLastBreadcrumbProps) {
     const navigate = useNavigate();
+    console.log('menuSelected: ', menuSelected);
     return (
         <Breadcrumbs aria-label="breadcrumb" sx={{ fontWeight: 'bold' }}>
             {/* <Typography
@@ -21,13 +26,16 @@ export default function ActiveLastBreadcrumb() {
             <Link underline="hover" color="text.primary" href="/menu" sx={{ fontSize: '18px' }}>
                 Menu
             </Link>
-            <Link
-                underline="hover"
-                color="text.primary"
-                href="/material-ui/getting-started/installation/"
-            >
-                Core
-            </Link>
+            {menuSelected.title && (
+                <Link
+                    underline="hover"
+                    color="text.primary"
+                    href="/material-ui/getting-started/installation/"
+                >
+                    {/* {(menuSelected as { title: string }).title} */}
+                    {menuSelected.title}
+                </Link>
+            )}
         </Breadcrumbs>
     );
 }
