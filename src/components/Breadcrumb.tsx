@@ -1,27 +1,33 @@
 import * as React from 'react';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
-
-function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-    event.preventDefault();
-    console.info('You clicked a breadcrumb.');
-}
+import { Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 export default function ActiveLastBreadcrumb() {
+    const navigate = useNavigate();
     return (
-        <div role="presentation" onClick={handleClick}>
-            <Breadcrumbs aria-label="breadcrumb">
-                <Link underline="hover" color="inherit" href="/">
-                    Menu
-                </Link>
-                <Link
-                    underline="hover"
-                    color="text.primary"
-                    href="/material-ui/getting-started/installation/"
-                >
-                    Core
-                </Link>
-            </Breadcrumbs>
-        </div>
+        <Breadcrumbs aria-label="breadcrumb" sx={{ fontWeight: 'bold' }}>
+            {/* <Typography
+                onClick={() => navigate('/menu')}
+                sx={{
+                    '&:hover': {
+                        cursor: 'pointer',
+                    },
+                }}
+            >
+                Menu
+            </Typography> */}
+            <Link underline="hover" color="text.primary" href="/menu" sx={{ fontSize: '18px' }}>
+                Menu
+            </Link>
+            <Link
+                underline="hover"
+                color="text.primary"
+                href="/material-ui/getting-started/installation/"
+            >
+                Core
+            </Link>
+        </Breadcrumbs>
     );
 }
