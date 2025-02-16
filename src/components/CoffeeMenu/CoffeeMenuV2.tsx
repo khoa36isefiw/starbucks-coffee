@@ -1,7 +1,7 @@
 import { Avatar, Box, Divider, Typography } from '@mui/material';
 import React from 'react';
 import Grid from '@mui/material/Grid2';
-import { menuData } from '../../assets/data/menu';
+import { menuData } from '../../data/menu';
 import { IMenuData } from '../../interfaces/IMenu';
 
 type MenuContentProps = {
@@ -34,7 +34,9 @@ function CoffeeMenuV2({ label, menuList }: MenuContentProps) {
                                     alt={item.pName}
                                     sx={{ width: 96, height: 96 }}
                                 />
-                                <Typography sx={{ ml: 2, fontSize: 18 }}>{item.pName}</Typography>
+                                <Typography sx={{ ml: 2, fontSize: 18, width: 200 }}>
+                                    {item.pName}
+                                </Typography>
                             </Box>
                         </Grid>
                     ))}

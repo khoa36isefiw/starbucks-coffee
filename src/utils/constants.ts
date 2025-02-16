@@ -24,15 +24,15 @@ export const MENU_HEADER_DATA: IHeader[] = [
     },
     {
         page: 'Featured',
-        link: '/featured',
+        link: '/menu/feature',
     },
     {
         page: 'Previous',
-        link: '/previous',
+        link: '/menu/previous',
     },
     {
         page: 'Favorites',
-        link: '/favorites',
+        link: '/menu/favorites',
     },
 ];
 
