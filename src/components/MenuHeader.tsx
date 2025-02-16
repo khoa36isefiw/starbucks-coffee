@@ -1,7 +1,15 @@
 import { Box, Typography } from '@mui/material';
 import { MENU_HEADER_DATA } from '../utils/constants';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function MenuHeader() {
+    const navigate = useNavigate();
+    const [activeMenu, setActiveMenu] = useState('/menu');
+    const handleClickMenu = (path: string) => {
+        setActiveMenu(path);
+        navigate(path);
+    };
     return (
         <Box
             sx={{
@@ -12,9 +20,17 @@ function MenuHeader() {
                 border: '1px solid #dbd9d7',
             }}
         >
-            <Box sx={{ ml: '107px', display: 'flex', alignItems: 'center' }}>
+            <Box
+                sx={{
+                    px: { xs: 3, md: 0 },
+                    ml: { xs: 0, md: '107px' },
+                    display: 'flex',
+                    alignItems: 'center',
+                }}
+            >
                 {MENU_HEADER_DATA.map((menu, index) => (
                     <Typography
+                        onClick={() => handleClickMenu(menu.link)}
                         key={index}
                         sx={{
                             padding: '16px 0',
@@ -29,7 +45,7 @@ function MenuHeader() {
                                 width: '100%',
                                 left: 0,
                                 bottom: '12px',
-                                borderBottom: '2px solid',
+                                borderBottom: menu.link === activeMenu ? '2px solid' : '',
                             },
                             '&:hover': {
                                 cursor: 'pointer',

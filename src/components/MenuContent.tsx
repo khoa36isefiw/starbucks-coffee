@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid2';
 import { Box, Button, Typography } from '@mui/material';
-import { menuData } from '../assets/data/menu';
+import { menuData } from '../data/menu';
 import { theme } from '../theme/theme';
 import ActiveLastBreadcrumb from './Breadcrumb';
 import { useNavigate } from 'react-router-dom';
@@ -11,12 +11,15 @@ import CoffeeMenuV2 from './CoffeeMenu/CoffeeMenuV2';
 
 function MenuContent() {
     const navigate = useNavigate();
-    const [menuSelected, setMenuSelected] = useState<string>('');
-    const coffeeList = getCoffeeListByPath(menuSelected);
+    const [menuSelected, setMenuSelected] = useState<{ [key: string]: string }>({
+        path: '',
+        title: '',
+    });
+    const coffeeList = getCoffeeListByPath(menuSelected.path);
 
     console.log('coffeeList: ', coffeeList);
 
-    const handleClickMenu = (data: string) => {
+    const handleClickMenu = (path: string, title: string) => {
         // menuData.forEach((item) => {
         //     console.log(
         //         item.menu.forEach((item) =>
@@ -26,14 +29,18 @@ function MenuContent() {
         // });
         // navigate(`/menu/${title.toLowerCase().split(' ').join('-')}/${path}`);
         // console.log(data);
-        setMenuSelected(data);
+        setMenuSelected({
+            path,
+            title,
+        });
         // setMenuDataDetail(data);
     };
 
     return (
-        <Grid container spacing={4} sx={{ ml: '107px', mt: 4 }}>
+        <Grid container spacing={4} sx={{ ml: { xs: '24px', md: '107px' }, mt: 4 }}>
             {/* menu/ category column */}
-            <Grid size={{ xs: 12, md: 6, lg: 2 }}>
+            {/* md --> ipad pro */}
+            <Grid size={{ xs: 12, md: 3, lg: 2 }} sx={{ display: { xs: 'none', md: 'block' } }}>
                 {menuData.map((menu, index) => (
                     <Box key={index}>
                         <Typography sx={{ fontSize: 20, fontWeight: 'bold' }}>
@@ -41,7 +48,7 @@ function MenuContent() {
                         </Typography>
                         {menu.menu.map((menuItem, index) => (
                             <Button
-                                onClick={() => handleClickMenu(menuItem.path)}
+                                onClick={() => handleClickMenu(menuItem.path, menuItem.title)}
                                 disableTouchRipple
                                 key={index}
                                 sx={{
@@ -72,9 +79,9 @@ function MenuContent() {
             </Grid>
 
             {/* content to show */}
-            <Grid size={{ xs: 12, md: 6, lg: 10 }}>
-                <ActiveLastBreadcrumb />
-                {menuSelected.trim() === '' ? (
+            <Grid size={{ xs: 12, md: 9, lg: 10 }}>
+                <ActiveLastBreadcrumb menuSelected={menuSelected} />
+                {menuSelected.path.trim() === '' ? (
                     <CoffeeMenu setMenuSelected={setMenuSelected} />
                 ) : (
                     coffeeList.map((cf, index) => (
