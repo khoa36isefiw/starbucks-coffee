@@ -1,7 +1,7 @@
 import { Avatar, Box, Divider, Typography } from '@mui/material';
 import React from 'react';
 import Grid from '@mui/material/Grid2';
-import { menuData } from '../../assets/data/menu';
+import { menuData } from '../../data/menu';
 import { IMenuData } from '../../interfaces/IMenu';
 
 type MenuContentProps = {

@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid2';
 import { Box, Button, Typography } from '@mui/material';
-import { menuData } from '../assets/data/menu';
+import { menuData } from '../data/menu';
 import { theme } from '../theme/theme';
 import ActiveLastBreadcrumb from './Breadcrumb';
 import { useNavigate } from 'react-router-dom';

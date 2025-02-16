@@ -1,10 +1,11 @@
 import { Avatar, Box, Divider, Typography, useTheme } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-import { menuData } from '../../assets/data/menu';
+import { menuData } from '../../data/menu';
 
 function CoffeeMenu({
     setMenuSelected,
 }: {
+    // get an object
     setMenuSelected: React.Dispatch<
         React.SetStateAction<{
             [key: string]: string;

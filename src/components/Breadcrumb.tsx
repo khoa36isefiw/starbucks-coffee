@@ -4,6 +4,7 @@ import Link from '@mui/material/Link';
 import { Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
+// get an object
 interface IActiveLastBreadcrumbProps {
     menuSelected: { [key: string]: string };
 }

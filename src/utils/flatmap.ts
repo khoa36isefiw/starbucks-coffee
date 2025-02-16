@@ -1,4 +1,4 @@
-import { menuData } from "../assets/data/menu"
+import { menuData } from "../data/menu"
 
 export const getCoffeeListByPath = (path: string) => {
     const coffeeLists = menuData.flatMap((category) =>
