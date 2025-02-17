@@ -160,12 +160,22 @@ function Header() {
                                         pageSelected === page.link
                                             ? theme.palette.primary.main
                                             : 'black',
-                                    borderBottom:
-                                        pageSelected === page.link ? '4px solid green' : 'null',
+                                    // borderBottom:
+                                    //     pageSelected === page.link ? '4px solid green' : 'null',
                                     transition: 'all 0.5s',
 
                                     '&:hover': {
                                         color: theme.palette.primary.main,
+                                    },
+                                    '&::before': {
+                                        position: 'absolute',
+                                        content: '""',
+                                        width: '100%',
+                                        left: 0,
+                                        bottom: 0,
+                                        borderBottom:
+                                            pageSelected === page.link ? '4px solid green' : '',
+                                        // borderBottom: '',
                                     },
                                 }}
                                 onClick={() => handlePageSelected(page.link)}
