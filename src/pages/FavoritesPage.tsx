@@ -4,7 +4,12 @@ import { BoxLeft107 } from '../components/BoxLeft107';
 
 function FavoritesPage() {
     return (
-        <BoxLeft107>
+        <BoxLeft107
+            sx={{
+                ml: { xs: 0, md: '107px' },
+                px: { xs: 3, sm: 0 },
+            }}
+        >
             <SubMenu
                 pageTitle={favoritesData.pageTitle}
                 image={favoritesData.image}

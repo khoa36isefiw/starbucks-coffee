@@ -148,7 +148,6 @@ function Header() {
                                 sx={{
                                     my: 2,
                                     borderRadius: 0,
-                                    // height: '100px',
                                     height: { xs: 72, sm: 83, lg: 100 },
                                     letterSpacing: '1px',
                                     bgcolor: 'transparent',
@@ -160,13 +159,12 @@ function Header() {
                                         pageSelected === page.link
                                             ? theme.palette.primary.main
                                             : 'black',
-                                    // borderBottom:
-                                    //     pageSelected === page.link ? '4px solid green' : 'null',
                                     transition: 'all 0.5s',
 
                                     '&:hover': {
                                         color: theme.palette.primary.main,
                                     },
+                                    // border bottom
                                     '&::before': {
                                         position: 'absolute',
                                         content: '""',
