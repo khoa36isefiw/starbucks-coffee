@@ -11,6 +11,7 @@ import { theme } from '../../theme/theme';
 import { HEADER_DATA } from '../../utils/constants';
 import { OButton } from '../Button/OButton';
 import { CButton } from '../Button/CButton';
+import { useNavigate } from 'react-router-dom';
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -22,6 +23,11 @@ const Transition = React.forwardRef(function Transition(
 });
 
 export default function MobileMenu({ open, onHandleClose }: ModalProps) {
+    const navigate = useNavigate();
+    const handleNavigate = (path: string) => {
+        navigate(path);
+        onHandleClose();
+    };
     return (
         <React.Fragment>
             <Dialog
@@ -65,12 +71,14 @@ export default function MobileMenu({ open, onHandleClose }: ModalProps) {
                                 letterSpacing: '1px',
                                 bgcolor: 'transparent',
                                 display: 'block',
-                                textTransform: 'uppercase',
+                                textTransform: 'initial',
                                 fontFamily: 'Helvetica, Arial, sans-serif',
                                 transition: 'all 0.5s',
-                                fontWeight: 500,
+
+                                fontWeight: 600,
                                 color: '#000',
                             }}
+                            onClick={() => handleNavigate(page.link)}
                         >
                             {page.page}
                         </Button>
