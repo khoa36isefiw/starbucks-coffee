@@ -4,13 +4,13 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
-import { ModalProps } from './Modal';
+import { ModalProps } from '../Modal';
 import { Close } from '@mui/icons-material';
 import { Divider, IconButton } from '@mui/material';
-import { theme } from '../theme/theme';
-import { HEADER_DATA } from '../utils/constants';
-import { OButton } from './Button/OButton';
-import { CButton } from './Button/CButton';
+import { theme } from '../../theme/theme';
+import { HEADER_DATA } from '../../utils/constants';
+import { OButton } from '../Button/OButton';
+import { CButton } from '../Button/CButton';
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {

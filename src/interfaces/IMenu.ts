@@ -19,3 +19,12 @@ export interface IMenuData {
     menuList: IMenuItem[];
 }
 
+
+
+export interface ISubMenu {
+    pageTitle: string;
+    image: string;
+    title: string;
+    content: string;
+
+}

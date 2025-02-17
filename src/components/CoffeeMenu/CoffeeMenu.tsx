@@ -1,4 +1,4 @@
-import { Avatar, Box, Divider, Typography, useTheme } from '@mui/material';
+import { Avatar, Box, Divider, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import { menuData } from '../../data/menu';
 
@@ -12,7 +12,6 @@ function CoffeeMenu({
         }>
     >;
 }) {
-    const theme = useTheme();
     return (
         <Box>
             {menuData.map((menu, index) => (
@@ -42,9 +41,6 @@ function CoffeeMenu({
                                         display: 'flex',
                                         alignItems: 'center',
                                         my: 2,
-                                        // [theme.breakpoints.down('md')]: {
-                                        //     flexDirection: 'column',
-                                        // },
                                     }}
                                 >
                                     <Avatar

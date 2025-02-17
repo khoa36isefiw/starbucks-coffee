@@ -18,7 +18,7 @@ import { OButton } from '../Button/OButton';
 import { TButton } from '../Button/TButton';
 import { CButton } from '../Button/CButton';
 import { useNavigate } from 'react-router-dom';
-import MobileMenu from '../MobileMenu';
+import MobileMenu from './MobileHeader';
 import { HEADER_DATA } from '../../utils/constants';
 import './Header.css';
 
