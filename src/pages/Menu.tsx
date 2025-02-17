@@ -1,7 +1,7 @@
 import React from 'react';
-import MenuHeader from '../components/MenuHeader';
+import MenuHeader from '../components/Header/MenuHeader';
 import { Box } from '@mui/material';
-import MenuContent from '../components/MenuContent';
+import MenuContent from '../components/CoffeeMenu/MenuContent';
 
 function Menu() {
     return (
