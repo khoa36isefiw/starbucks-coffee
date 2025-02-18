@@ -1,4 +1,3 @@
-import { Grid2 } from '@mui/material';
 import { Box, Typography } from '@mui/material';
 
 import { OButton } from '../components/Button/OButton';

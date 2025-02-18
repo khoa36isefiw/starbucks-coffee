@@ -1,16 +1,15 @@
 import Grid from '@mui/material/Grid2';
 import { Box, Button, Typography } from '@mui/material';
-import { menuData } from '../data/menu';
-import { theme } from '../theme/theme';
-import ActiveLastBreadcrumb from './Breadcrumb';
-import { useNavigate } from 'react-router-dom';
+import { menuData } from '../../data/menu';
+import { theme } from '../../theme/theme';
+import ActiveLastBreadcrumb from '../Breadcrumb';
+
 import { useState } from 'react';
-import CoffeeMenu from './CoffeeMenu/CoffeeMenu';
-import { getCoffeeListByPath } from '../utils/flatmap';
-import CoffeeMenuV2 from './CoffeeMenu/CoffeeMenuV2';
+import CoffeeMenu from './CoffeeMenu';
+import { getCoffeeListByPath } from '../../utils/flatmap';
+import CoffeeMenuV2 from './CoffeeMenuV2';
 
 function MenuContent() {
-    const navigate = useNavigate();
     const [menuSelected, setMenuSelected] = useState<{ [key: string]: string }>({
         path: '',
         title: '',
