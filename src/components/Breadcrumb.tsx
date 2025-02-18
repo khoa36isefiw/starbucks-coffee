@@ -1,7 +1,6 @@
-import * as React from 'react';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
-import { Typography } from '@mui/material';
+
 import { useNavigate } from 'react-router-dom';
 
 // get an object
@@ -31,7 +30,7 @@ export default function ActiveLastBreadcrumb({ menuSelected }: IActiveLastBreadc
                 <Link
                     underline="hover"
                     color="text.primary"
-                    href="/material-ui/getting-started/installation/"
+                    // href="/material-ui/getting-started/installation/"
                 >
                     {/* {(menuSelected as { title: string }).title} */}
                     {menuSelected.title}

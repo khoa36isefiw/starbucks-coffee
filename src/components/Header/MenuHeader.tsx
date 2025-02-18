@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { MENU_HEADER_DATA } from '../utils/constants';
+import { MENU_HEADER_DATA } from '../../utils/constants';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
