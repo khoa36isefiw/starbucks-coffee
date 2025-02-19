@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 
 import HomeBanner from '../components/HomeBanner';
-import { Box32 } from '../components/Box32';
+import { Box32 } from '../components/CustomBox/Box32';
 
 function HomePage() {
     return (

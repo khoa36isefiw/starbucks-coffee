@@ -1,8 +1,9 @@
-import { Box, Container, styled, Typography } from '@mui/material';
+import { Box, styled, Typography } from '@mui/material';
 import banner_hero from '../assets/images/starbucks-hero.webp';
 import { CButton } from '../components/Button/CButton';
 import { rewards } from '../data/rewards';
 import { theme } from '../theme/theme';
+import RatingTab from '../components/RatingTab';
 const UnderlinedText = styled('span')({
     textDecoration: 'underline',
     transition: 'all 0.5s',
@@ -98,6 +99,30 @@ function RewardsPage() {
                             </Typography>
                         </Box>
                     ))}
+                </Box>
+            </Box>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    bgcolor: theme.color.rewardTabBg,
+                    // bgcolor: '#ccc',
+                    minHeight: '80px',
+                    width: '100%',
+                }}
+            >
+                <Typography sx={{ fontWeight: 'bold', fontSize: '24px', py: '48px' }}>
+                    Get your favorites for free
+                </Typography>
+                <Box
+                    sx={{
+                        bgcolor: '#d4e9e2',
+                        width: '100%',
+                    }}
+                >
+                    <RatingTab />
                 </Box>
             </Box>
         </Box>
