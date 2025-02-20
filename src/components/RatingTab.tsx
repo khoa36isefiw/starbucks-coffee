@@ -2,6 +2,9 @@ import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import StarIcon from '@mui/icons-material/Star';
+import { Avatar, Button, Typography } from '@mui/material';
+import { theme } from '../theme/theme';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -25,56 +28,135 @@ function CustomTabPanel(props: TabPanelProps) {
     );
 }
 
-function a11yProps(index: number) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
-}
+const ratingData = [
+    {
+        id: 1,
+        image: 'https://www.starbucks.com/weblx/images/rewards/reward-tiers/25.png',
+        rate: '25',
+        title: 'Customize your drink',
+        content:
+            'Make your drink just right with an extra espresso shot or a dash of your favorite syrup.',
+    },
+    {
+        id: 2,
+        image: 'https://www.starbucks.com/weblx/images/rewards/reward-tiers/100.png',
+        rate: '100',
+        title: 'Brewed hot or iced coffee or tea, bakery item, packaged snack and more',
+        content: 'Treat yourself to an iced coffee, buttery croissant, bag of chips and more.',
+    },
+    {
+        id: 3,
+        image: 'https://www.starbucks.com/weblx/images/rewards/reward-tiers/200.png',
+        rate: '200',
+        title: 'Handcrafted drink (Cold Brew, lattes and more) or hot breakfast',
+        content:
+            'Turn good mornings great with a delicious handcrafted drink of your choice, breakfast sandwich or oatmeal on us.',
+    },
+    {
+        id: 4,
+        image: 'https://www.starbucks.com/weblx/images/rewards/reward-tiers/300.png',
+        rate: '300',
+        title: 'Sandwich, protein box or at-home coffee',
+        content:
+            'Enjoy a PM pick-me-up with a lunch sandwich, protein box or a bag of coffee—including Starbucks VIA Instant®.',
+    },
+    {
+        id: 5,
+        image: 'https://www.starbucks.com/weblx/images/rewards/reward-tiers/400.png',
+        rate: '400',
+        title: 'Select Starbucks® merchandise',
+        content:
+            'Take home a signature cup, drink tumbler or your choice of coffee merch up to $20.',
+    },
+];
 
 export default function RatingTab() {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
+        console.log('value', newValue);
     };
 
     return (
         <Box sx={{ width: '100%' }}>
             <Box
                 sx={{
-                    borderBottom: 1,
-                    borderColor: 'divider',
                     display: 'flex',
-                    alignItems: 'centetr',
+                    alignItems: 'center',
                     justifyContent: 'center',
                 }}
             >
                 <Tabs
-                    value={value}
-                    onChange={handleChange}
                     aria-label="basic tabs example"
                     sx={{
                         display: 'flex',
-                        alignItems: 'centetr',
+                        alignItems: 'center',
                         justifyContent: 'center',
+
+                        '& .MuiTabs-indicator': {
+                            height: '4px',
+                        },
                     }}
+                    onChange={handleChange}
+                    value={value}
                 >
-                    <Tab label="Item One" {...a11yProps(0)} />
-                    <Tab label="Item Two" {...a11yProps(1)} />
-                    <Tab label="Item Three" {...a11yProps(2)} />
+                    {ratingData.map((rating, index) => (
+                        <Tab
+                            key={index}
+                            label={
+                                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                    <Typography sx={{ fontSize: '24px', fontWeight: 'bold' }}>
+                                        {rating.rate}
+                                    </Typography>
+                                    <StarIcon sx={{ color: '#e0a34d', marginLeft: '8px' }} />
+                                </Box>
+                            }
+                        />
+                    ))}
                 </Tabs>
             </Box>
-            <Box sx={{ display: 'flex', alignItems: 'centetr', justifyContent: 'center' }}>
-                <CustomTabPanel value={value} index={0}>
-                    Item One
-                </CustomTabPanel>
-                <CustomTabPanel value={value} index={1}>
-                    Item Two
-                </CustomTabPanel>
-                <CustomTabPanel value={value} index={2}>
-                    Item Three
-                </CustomTabPanel>
+            <Box
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    bgcolor: '#d4e9e2',
+                    boxShadow: '-1px -4px 1px 0px rgba(0,0,0,0.06)',
+                }}
+            >
+                {ratingData.map((rating, index) => (
+                    <CustomTabPanel key={index} value={value} index={index}>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+
+                                width: 850,
+                                py: '32px',
+                            }}
+                        >
+                            <Avatar
+                                src={rating.image}
+                                sx={{
+                                    width: '375px',
+                                    height: '211px',
+                                    objectFit: 'contain',
+                                    borderRadius: 0,
+                                }}
+                            />
+                            <Box sx={{ ml: 4 }}>
+                                <Typography sx={{ fontSize: '20px', fontWeight: 'bold' }}>
+                                    {rating.content}
+                                </Typography>
+                                <Typography sx={{ fontSize: '15px', mt: 2 }}>
+                                    {rating.content}
+                                </Typography>
+                            </Box>
+                        </Box>
+                    </CustomTabPanel>
+                ))}
             </Box>
         </Box>
     );
