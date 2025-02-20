@@ -5,6 +5,8 @@ import { endlessExtra, rewards } from '../data/rewards';
 import { theme } from '../theme/theme';
 import RatingTab from '../components/RatingTab';
 import { TButton } from '../components/Button/TButton';
+import { useOpenModal } from '../hooks/useOpenModal';
+import ExtraModal from '../components/ExtraModal';
 const UnderlinedText = styled('span')({
     textDecoration: 'underline',
     transition: 'all 0.5s',
@@ -14,6 +16,7 @@ const UnderlinedText = styled('span')({
     },
 });
 function RewardsPage() {
+    const { open, handleOpen, handleClose } = useOpenModal();
     return (
         <Box>
             <Box
@@ -157,7 +160,15 @@ function RewardsPage() {
                         >
                             <Avatar
                                 src={extra.image}
-                                sx={{ width: '80px', height: '80px', mb: '24px' }}
+                                sx={{
+                                    width: '96px',
+                                    height: '96px',
+                                    mb: '24px',
+                                    '&:hover': {
+                                        cursor: 'pointer',
+                                    },
+                                }}
+                                onClick={() => handleOpen()}
                             />
                             <Typography
                                 sx={{
@@ -187,6 +198,7 @@ function RewardsPage() {
                         </Box>
                     ))}
                 </Box>
+                <ExtraModal open={open} handleClose={handleClose} />
             </Box>
         </Box>
     );
