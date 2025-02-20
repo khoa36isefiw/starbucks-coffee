@@ -1,9 +1,10 @@
-import { Box, styled, Typography } from '@mui/material';
+import { Avatar, Box, Button, styled, Typography } from '@mui/material';
 import banner_hero from '../assets/images/starbucks-hero.webp';
 import { CButton } from '../components/Button/CButton';
-import { rewards } from '../data/rewards';
+import { endlessExtra, rewards } from '../data/rewards';
 import { theme } from '../theme/theme';
 import RatingTab from '../components/RatingTab';
+import { TButton } from '../components/Button/TButton';
 const UnderlinedText = styled('span')({
     textDecoration: 'underline',
     transition: 'all 0.5s',
@@ -67,6 +68,7 @@ function RewardsPage() {
                 >
                     {rewards.map((reward) => (
                         <Box
+                            key={reward.id}
                             sx={{
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -118,11 +120,72 @@ function RewardsPage() {
                 </Typography>
                 <Box
                     sx={{
-                        bgcolor: '#d4e9e2',
+                        // bgcolor: '#d4e9e2',
                         width: '100%',
                     }}
                 >
                     <RatingTab />
+                </Box>
+            </Box>
+            {/* Endless Extras */}
+            <Box
+                sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', py: '64px' }}
+            >
+                <Typography sx={{ fontWeight: 'bold', fontSize: '24px' }}>
+                    Endless Extras
+                </Typography>
+                <Typography sx={{ width: '50%', textAlign: 'center' }}>
+                    Joining Starbucks® Rewards means unlocking access to benefits like quick and
+                    easy ordering, tasty Rewards and—yes, free coffee.
+                </Typography>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 10,
+                        px: '40px',
+                        py: '48px',
+                    }}
+                >
+                    {endlessExtra.map((extra, index) => (
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                            }}
+                        >
+                            <Avatar
+                                src={extra.image}
+                                sx={{ width: '80px', height: '80px', mb: '24px' }}
+                            />
+                            <Typography
+                                sx={{
+                                    textAlign: 'center',
+                                    fontSize: '18px',
+                                    fontWeight: 'bold',
+                                }}
+                            >
+                                {extra.title}
+                            </Typography>
+                            <Typography sx={{ textAlign: 'center', mt: '16px' }}>
+                                {extra.content}
+                            </Typography>
+                            <TButton
+                                disableTouchRipple
+                                sx={{
+                                    color: '#00754a',
+                                    fontWeight: 'bold',
+                                    textDecoration: 'underline',
+                                    '&:hover': {
+                                        bgcolor: 'transparent',
+                                    },
+                                }}
+                            >
+                                Learn more
+                            </TButton>
+                        </Box>
+                    ))}
                 </Box>
             </Box>
         </Box>
