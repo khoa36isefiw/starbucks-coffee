@@ -1,6 +1,6 @@
 import { favoritesData } from '../data/subMenu';
 import SubMenu from '../components/SubMenu';
-import { BoxLeft107 } from '../components/BoxLeft107';
+import { BoxLeft107 } from '../components/CustomBox/BoxLeft107';
 
 function FavoritesPage() {
     return (

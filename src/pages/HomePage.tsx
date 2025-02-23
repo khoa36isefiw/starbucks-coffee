@@ -1,7 +1,8 @@
 import { Box } from '@mui/material';
 
 import HomeBanner from '../components/HomeBanner';
-import { Box32 } from '../components/Box32';
+import { Box32 } from '../components/CustomBox/Box32';
+import PageTitle from '../components/PageTitle';
 
 function HomePage() {
     return (
@@ -13,6 +14,7 @@ function HomePage() {
                 alignItems: 'center',
             }}
         >
+            <PageTitle />
             <HomeBanner
                 alt={
                     "A split image showing a close-up of coffee and a barista wearing a green apron, hat and glasses while shaking a drink. There's a wordmark that reads The Starbucks Coffee Company."

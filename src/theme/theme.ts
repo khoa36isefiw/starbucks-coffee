@@ -13,7 +13,11 @@ declare module '@mui/material/styles' {
             shadowColor: string;
             hoverIconFooter: string;
             rewardColor?: string;
-            rewardTextColor: string;
+            rewardTextColor?: string;
+            rewardTabBg?: string;
+            rewardContainer?: string;
+            policyBg?: string;
+
         };
     }
     // allow configuration using `createTheme`
@@ -27,7 +31,10 @@ declare module '@mui/material/styles' {
             shadowColor?: string;
             hoverIconFooter?: string;
             rewardColor?: string;
-            rewardTextColor: string;
+            rewardTextColor?: string;
+            rewardTabBg?: string;
+            rewardContainer?: string;
+            policyBg?: string;
 
         };
     }
@@ -50,6 +57,9 @@ export const theme = createTheme({
         hoverIconFooter: '#C2C0C0FF',
         rewardColor: '#188e5a',
         rewardTextColor: '#036140',
+        rewardTabBg: '#f1f7f5',
+        rewardContainer: '#d4e9e2',
+        policyBg: '#f9f9f9'
     }
 });
 
