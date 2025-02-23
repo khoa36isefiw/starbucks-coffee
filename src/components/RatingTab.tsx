@@ -112,6 +112,7 @@ export default function RatingTab() {
                                     <StarIcon sx={{ color: '#e0a34d', marginLeft: '8px' }} />
                                 </Box>
                             }
+                            sx={{ px: 1 }}
                         />
                     ))}
                 </Tabs>
@@ -135,6 +136,10 @@ export default function RatingTab() {
 
                                 width: 850,
                                 py: '32px',
+                                [theme.breakpoints.down('sm')]: {
+                                    flexDirection: 'column',
+                                    width: '100%',
+                                },
                             }}
                         >
                             <Avatar
@@ -144,13 +149,32 @@ export default function RatingTab() {
                                     height: '211px',
                                     objectFit: 'contain',
                                     borderRadius: 0,
+                                    my: '32px',
                                 }}
                             />
                             <Box sx={{ ml: 4 }}>
-                                <Typography sx={{ fontSize: '20px', fontWeight: 'bold' }}>
+                                <Typography
+                                    sx={{
+                                        fontSize: '20px',
+                                        fontWeight: 'bold',
+                                        [theme.breakpoints.down('sm')]: {
+                                            fontSize: '16px',
+                                            textAlign: 'center',
+                                        },
+                                    }}
+                                >
                                     {rating.content}
                                 </Typography>
-                                <Typography sx={{ fontSize: '15px', mt: 2 }}>
+                                <Typography
+                                    sx={{
+                                        fontSize: '15px',
+                                        mt: 2,
+                                        [theme.breakpoints.down('sm')]: {
+                                            fontSize: '13px',
+                                            textAlign: 'center',
+                                        },
+                                    }}
+                                >
                                     {rating.content}
                                 </Typography>
                             </Box>
