@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const PageTitle = ({ title }: { title: string }) => {
+const PageTitle = ({ title }: { title?: string }) => {
     const location = useLocation();
 
     useEffect(() => {
-        document.title = `${title}: Starbucks Coffee Company`;
+        document.title = `${title ? `${title}:` : ''}Starbucks Coffee Company`;
     }, [location, title]);
 
     return null;
