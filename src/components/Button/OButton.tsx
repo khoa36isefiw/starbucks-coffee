@@ -2,11 +2,12 @@ import { Button } from '@mui/material';
 import { theme } from '../../theme/theme';
 import { IButtonProps } from '../../interfaces/IButton';
 
-export const OButton = ({ text, customStyle = {} }: IButtonProps) => {
+export const OButton = ({ text, customStyle = {}, onHandleClick }: IButtonProps) => {
     return (
         <Button
             disableTouchRipple
             variant="outlined"
+            onClick={onHandleClick}
             sx={{
                 height: '30px',
                 borderRadius: '20px',
