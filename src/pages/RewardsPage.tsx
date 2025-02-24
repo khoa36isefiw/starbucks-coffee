@@ -17,6 +17,7 @@ import ExtraModal from '../components/ExtraModal';
 import StepCard from '../components/StepCard';
 import { HeadingTypography } from '../components/Typography/HeadingTypography';
 import { flexColCenterStyle, flexRowCenterStyle } from '../utils/styles';
+import PageTitle from '../components/PageTitle';
 const UnderlinedText = styled('span')({
     textDecoration: 'underline',
     transition: 'all 0.5s',
@@ -30,15 +31,16 @@ function RewardsPage() {
 
     return (
         <Box sx={{ width: '100%' }}>
+            <PageTitle title={'Rewards'} />
             <Box
                 sx={{
                     bgcolor: '#d4e8e2',
                     height: '600px',
                     backgroundImage: `url(${banner_hero})`,
-                    backgroundSize: { xs: '200%', sm: 'auto' },
+                    backgroundSize: { xs: '200%', sm: '200%', lg: 'auto' },
                     backgroundPosition: { xs: 'bottom', sm: 'center' },
                     backgroundRepeat: 'no-repeat',
-                    padding: '32px 24px',
+                    // padding: '32px 24px',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: { xs: 'center', sm: 'flex-start' },
