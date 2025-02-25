@@ -3,7 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
-import { Avatar, Button, Typography } from '@mui/material';
+import { Avatar, Typography } from '@mui/material';
 import { theme } from '../theme/theme';
 
 interface TabPanelProps {
@@ -140,6 +140,9 @@ export default function RatingTab() {
                                     flexDirection: 'column',
                                     width: '100%',
                                 },
+                                [theme.breakpoints.down('md')]: {
+                                    width: '100%',
+                                },
                             }}
                         >
                             <Avatar
@@ -163,7 +166,7 @@ export default function RatingTab() {
                                         },
                                     }}
                                 >
-                                    {rating.content}
+                                    {rating.title}
                                 </Typography>
                                 <Typography
                                     sx={{
