@@ -8,7 +8,7 @@ function Menu() {
     return (
         <Box sx={{ minHeight: '150vh', overflow: 'visible', display: 'block' }}>
             {/* <MenuHeader /> */}
-            <PageTitle title={"Menu"} />
+            <PageTitle title={'Menu'} />
             <MenuContent />
         </Box>
     );
