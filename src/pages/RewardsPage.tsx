@@ -18,6 +18,7 @@ import StepCard from '../components/StepCard';
 import { HeadingTypography } from '../components/Typography/HeadingTypography';
 import { flexColCenterStyle, flexRowCenterStyle } from '../utils/styles';
 import PageTitle from '../components/PageTitle';
+
 const UnderlinedText = styled('span')({
     textDecoration: 'underline',
     transition: 'all 0.5s',
@@ -26,18 +27,25 @@ const UnderlinedText = styled('span')({
         cursor: 'pointer',
     },
 });
+
+const ShowOffText = styled('span')({
+    display: 'block',
+    [theme.breakpoints.down('sm')]: {
+        display: 'none',
+    },
+});
 function RewardsPage() {
     const { open, handleOpen, handleClose, index } = useOpenModal();
 
     return (
-        <Box sx={{ width: '100%' }}>
+        <Box sx={{ width: '100%', overflow: 'hidden' }}>
             <PageTitle title={'Rewards'} />
             <Box
                 sx={{
                     bgcolor: '#d4e8e2',
                     height: '600px',
                     backgroundImage: `url(${banner_hero})`,
-                    backgroundSize: { xs: '200%', sm: '200%', lg: 'auto' },
+                    backgroundSize: { xs: '200%', sm: 'cover', lg: 'auto' },
                     backgroundPosition: { xs: 'bottom', sm: 'center' },
                     backgroundRepeat: 'no-repeat',
                     // padding: '32px 24px',
@@ -47,31 +55,36 @@ function RewardsPage() {
                     justifyContent: { xs: 'flex-start', sm: 'center' },
                 }}
             >
-                <Typography
-                    sx={{
-                        fontSize: '24px',
-                        fontWeight: 'bold',
-                        maxWidth: { xs: '60%', md: '40%' },
-                        textAlign: 'center',
-                    }}
-                >
-                    FREE COFFEE IS A TAP AWAY
-                </Typography>
-                <Typography sx={{ my: 2, fontWeight: 600 }} color="text.secondary">
-                    Join now to start earning Rewards.
-                </Typography>
-                <CButton
-                    text={'Join now'}
-                    customStyle={{
-                        fontWeight: 'bold',
-                        bgcolor: '#01754a',
-                        my: 1,
-                        paddingY: 2,
-                    }}
-                />
-                <Typography>
-                    Or <UnderlinedText>join in the app</UnderlinedText> for the best experience
-                </Typography>
+                <Box sx={{ ml: 4 }}>
+                    <Typography
+                        sx={{
+                            fontSize: '24px',
+                            fontWeight: 'bold',
+                            // maxWidth: { xs: '60%', md: '40%' },
+                            textAlign: 'center',
+                            mt: { xs: 4, sm: 0 },
+                        }}
+                    >
+                        FREE COFFEE IS A TAP AWAY
+                    </Typography>
+                    <Typography sx={{ my: 2, fontWeight: 600 }} color="text.secondary">
+                        Join now to start earning Rewards.
+                    </Typography>
+                    <CButton
+                        text={'Join now'}
+                        customStyle={{
+                            fontWeight: 'bold',
+                            bgcolor: '#01754a',
+                            my: 1,
+                            paddingY: 2,
+                        }}
+                    />
+                    <Typography sx={{ display: 'flex', alignItems: 'center' }}>
+                        <ShowOffText>Or</ShowOffText>{' '}
+                        <UnderlinedText sx={{ mx: '4px' }}>join in the app</UnderlinedText>{' '}
+                        <ShowOffText>for the best experience</ShowOffText>
+                    </Typography>
+                </Box>
             </Box>
             <Box
                 sx={{ my: '64px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
@@ -314,7 +327,7 @@ function RewardsPage() {
                                     display: 'flex',
                                     alignItems: 'flex-start',
                                     justifyContent: 'space-between',
-                                    [theme.breakpoints.down('sm')]: {
+                                    [theme.breakpoints.down('md')]: {
                                         flexDirection: 'column',
                                     },
                                 }}
@@ -325,7 +338,7 @@ function RewardsPage() {
                                     </HeadingTypography>
                                     <Typography>{card.subTitle}</Typography>
                                 </Box>
-                                <Box
+                                {/* <Box
                                     sx={{
                                         display: 'flex',
                                         alignItems: 'center',
@@ -343,7 +356,31 @@ function RewardsPage() {
                                             title={step.title}
                                         />
                                     ))}
-                                </Box>
+                                </Box> */}
+                                <Grid2
+                                    container
+                                    spacing={4}
+                                    sx={{
+                                        // display: 'flex',
+                                        // alignItems: 'center',
+                                        [theme.breakpoints.down('md')]: {
+                                            mt: 2,
+                                        },
+                                        [theme.breakpoints.down('sm')]: {
+                                            flexDirection: 'column',
+                                            my: 4,
+                                        },
+                                    }}
+                                >
+                                    {card.steps.map((step, idx) => (
+                                        <StepCard
+                                            key={idx}
+                                            image={step.image}
+                                            content={step.content}
+                                            title={step.title}
+                                        />
+                                    ))}
+                                </Grid2>
                             </Box>
                             {index === 0 && <Divider sx={{ pt: '24px', mb: '48px' }} />}
                         </Box>
@@ -476,7 +513,7 @@ function RewardsPage() {
                 ))}
                 <Grid2 container spacing={4}>
                     {policyTitle.map((policy, idx) => (
-                        <Grid2 size={{ lg: 6 }} key={idx}>
+                        <Grid2 size={{ xs: 12, sm: 6, md: 6, lg: 6 }} key={idx}>
                             <HeadingTypography
                                 sx={{ color: theme.color.buttonColor, fontSize: 16 }}
                             >

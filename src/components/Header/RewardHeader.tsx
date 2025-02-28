@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material';
+import { OButton } from '../Button/OButton';
 
 function RewardHeader() {
     return (
@@ -14,7 +15,7 @@ function RewardHeader() {
             <Box
                 sx={{
                     px: { xs: 3, md: 0 },
-                    ml: { xs: 0, md: '107px' },
+                    ml: { xs: 0, sm: '107px' },
                     display: 'flex',
                     alignItems: 'center',
                 }}
@@ -31,6 +32,16 @@ function RewardHeader() {
                 >
                     Starbucks® Rewards
                 </Typography>
+
+                <OButton
+                    text={'Join in the app'}
+                    customStyle={{
+                        color: '#fff',
+                        fontWeight: 'bold',
+                        borderColor: '#fff',
+                        display: { xs: 'block', sm: 'none' },
+                    }}
+                />
             </Box>
         </Box>
     );
