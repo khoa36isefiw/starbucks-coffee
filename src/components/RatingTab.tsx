@@ -109,10 +109,15 @@ export default function RatingTab() {
                                     <Typography sx={{ fontSize: '24px', fontWeight: 'bold' }}>
                                         {rating.rate}
                                     </Typography>
-                                    <StarIcon sx={{ color: '#e0a34d', marginLeft: '8px' }} />
+                                    <StarIcon sx={{ color: '#e0a34d', marginLeft: '2px' }} />
                                 </Box>
                             }
-                            sx={{ px: 1 }}
+                            sx={{
+                                px: 1,
+                                [theme.breakpoints.down('sm')]: {
+                                    minWidth: '10px',
+                                },
+                            }}
                         />
                     ))}
                 </Tabs>

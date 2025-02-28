@@ -8,7 +8,7 @@ function PreviousPage() {
         <BoxLeft107
             sx={{
                 ml: { xs: 0, md: '107px' },
-                px: { xs: 3, sm: 0 },
+                px: { xs: 3, sm: 3, md: 0 },
             }}
         >
             <SubMenu

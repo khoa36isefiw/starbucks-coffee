@@ -44,7 +44,7 @@ function HomeBanner({
         >
             <Grid2
                 size={{ xs: 12, sm: index === 3 || index === 4 ? 12 : 6 }}
-                order={{ xs: 2, md: reverse ? 1 : 2 }}
+                order={{ xs: 2, sm: reverse ? 1 : 2 }}
             >
                 <Box
                     component={'img'}
@@ -62,7 +62,7 @@ function HomeBanner({
             </Grid2>
             <Grid2
                 size={{ xs: 12, sm: index === 3 || index === 4 ? 12 : 6 }}
-                order={{ xs: 2, md: reverse ? 2 : 1 }}
+                order={{ xs: 2, sm: reverse ? 2 : 1 }}
             >
                 <Box
                     sx={{
@@ -83,7 +83,7 @@ function HomeBanner({
                             color: color ? color : '#fff',
                             fontWeight: 'bold',
                             fontSize: {
-                                xs: '28px',
+                                xs: '24px',
                                 sm: '28px',
                                 md: !isFeauture ? '50px' : '28px',
                             },
@@ -97,8 +97,8 @@ function HomeBanner({
                         sx={{
                             mt: 1,
                             fontSize: {
-                                xs: '20px',
-                                sm: '28px',
+                                xs: '16px',
+                                sm: '20px',
                                 md: !isFeauture ? '24px' : '20px',
                             },
                             color: color ? color : '#fff',
