@@ -1,5 +1,3 @@
-import React from 'react';
-import MenuHeader from '../components/Header/MenuHeader';
 import { Box } from '@mui/material';
 import MenuContent from '../components/CoffeeMenu/MenuContent';
 import PageTitle from '../components/PageTitle';
