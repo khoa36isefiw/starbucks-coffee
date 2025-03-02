@@ -58,7 +58,7 @@ const MapComponent: React.FC = () => {
     }, []);
 
     return (
-        <LoadScript googleMapsApiKey="AIzaSyCXeGDJLtDvB8BSzh0L2UlsXahzAu8EnsI">
+        <LoadScript googleMapsApiKey={`${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`}>
             <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={12}>
                 {sLocation.map((store, index) => (
                     <Marker
