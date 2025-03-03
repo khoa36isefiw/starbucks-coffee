@@ -2,6 +2,8 @@ import { IHeader } from "../interfaces/IHeader";
 
 export const ITEM_PER_PAGE = 1;
 export const CURRENT_PAGE = 1;
+export const VISIBLE_ITEMS = 4;
+
 
 
 
