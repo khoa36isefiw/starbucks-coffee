@@ -56,6 +56,7 @@ function HomeBanner({
                         borderRadius: 0,
                         objectFit: 'contain',
                     }}
+                    loading="lazy"
                     alt={alt}
                     src={imgSrc}
                 />

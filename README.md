@@ -32,3 +32,7 @@ module.exports = { extends: ["@commitlint/config-conventional"] };
 -   Graph SQL
 -   decorator
 -   ioc - inverstion of control
+
+-   memo: tính toán giá trị
+-   callback: function
+-   useEffect: chỉ cần mấy cái thật sự cần thay đổi

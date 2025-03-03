@@ -31,6 +31,12 @@ function CoffeeMenuV2({ label, menuList }: MenuContentProps) {
                                     src={item.pImage}
                                     alt={item.pName}
                                     sx={{ width: 96, height: 96 }}
+                                    // add loading lazy for avatar
+                                    slotProps={{
+                                        img: {
+                                            loading: 'lazy',
+                                        },
+                                    }}
                                 />
                                 <Typography sx={{ ml: 2, fontSize: 18, width: 200 }}>
                                     {item.pName}

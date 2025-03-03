@@ -19,20 +19,10 @@ function MenuContent() {
     console.log('coffeeList: ', coffeeList);
 
     const handleClickMenu = (path: string, title: string) => {
-        // menuData.forEach((item) => {
-        //     console.log(
-        //         item.menu.forEach((item) =>
-        //             console.log(item.title.toLowerCase().split(' ').join('-')),
-        //         ),
-        //     );
-        // });
-        // navigate(`/menu/${title.toLowerCase().split(' ').join('-')}/${path}`);
-        // console.log(data);
         setMenuSelected({
             path,
             title,
         });
-        // setMenuDataDetail(data);
     };
 
     return (

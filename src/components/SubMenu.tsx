@@ -13,6 +13,12 @@ function SubMenu({ pageTitle, image, title, content }: ISubMenu) {
                     src={image}
                     alt={title}
                     sx={{ height: 'auto', width: '256px', borderRadius: 0 }}
+                    // add loading lazy for avatar
+                    slotProps={{
+                        img: {
+                            loading: 'lazy',
+                        },
+                    }}
                 />
 
                 <Typography sx={{ mt: '16px', fontWeight: 'bold', fontSize: '24px' }}>

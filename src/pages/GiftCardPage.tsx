@@ -78,6 +78,12 @@ function GiftCardPage() {
                             src={'https://www.starbucks.com/weblx/images/gift/group-gift-cards.png'}
                             alt="Gift Cards"
                             sx={{ height: '46px', width: '46px', borderRadius: 0 }}
+                            // add loading lazy for avatar
+                            slotProps={{
+                                img: {
+                                    loading: 'lazy',
+                                },
+                            }}
                         />
                         <Typography>
                             Effortlessly send up to 10 eGifts per purchase. Select a design to
@@ -150,6 +156,12 @@ function GiftCardPage() {
                         src={'https://www.starbucks.com/weblx/images/gift/bulk-gift-cards.jpg'}
                         alt="Gift IGiftCards"
                         sx={{ borderRadius: 0, width: '30vw', height: '30vh', objectFit: 'cover' }}
+                        // add loading lazy for avatar
+                        slotProps={{
+                            img: {
+                                loading: 'lazy',
+                            },
+                        }}
                     />
                     <Box sx={{ maxWidth: '375px' }}>
                         <Typography component="h5" variant="h5" sx={{ fontWeight: 'bold' }}>

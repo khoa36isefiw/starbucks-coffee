@@ -18,6 +18,7 @@ import StepCard from '../components/StepCard';
 import { HeadingTypography } from '../components/Typography/HeadingTypography';
 import { flexColCenterStyle, flexRowCenterStyle } from '../utils/styles';
 import PageTitle from '../components/PageTitle';
+import { lazy } from 'react';
 
 const UnderlinedText = styled('span')({
     textDecoration: 'underline',
@@ -246,6 +247,11 @@ function RewardsPage() {
                                     },
                                 }}
                                 onClick={() => handleOpen(index)}
+                                slotProps={{
+                                    img: {
+                                        loading: 'lazy',
+                                    },
+                                }}
                             />
                             <Box
                                 sx={{
@@ -338,25 +344,7 @@ function RewardsPage() {
                                     </HeadingTypography>
                                     <Typography>{card.subTitle}</Typography>
                                 </Box>
-                                {/* <Box
-                                    sx={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        [theme.breakpoints.down('sm')]: {
-                                            flexDirection: 'column',
-                                            my: 4,
-                                        },
-                                    }}
-                                >
-                                    {card.steps.map((step, idx) => (
-                                        <StepCard
-                                            key={idx}
-                                            image={step.image}
-                                            content={step.content}
-                                            title={step.title}
-                                        />
-                                    ))}
-                                </Box> */}
+
                                 <Grid2
                                     container
                                     spacing={4}
@@ -448,6 +436,11 @@ function RewardsPage() {
                                         [theme.breakpoints.down('sm')]: {
                                             width: '120px',
                                             height: 'auto',
+                                        },
+                                    }}
+                                    slotProps={{
+                                        img: {
+                                            loading: 'lazy',
                                         },
                                     }}
                                 />

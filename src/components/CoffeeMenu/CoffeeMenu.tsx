@@ -47,6 +47,12 @@ function CoffeeMenu({
                                         src={item.image}
                                         alt={item.title}
                                         sx={{ width: 96, height: 96 }}
+                                        // add loading lazy for avatar
+                                        slotProps={{
+                                            img: {
+                                                loading: 'lazy',
+                                            },
+                                        }}
                                     />
                                     <Typography sx={{ ml: 2, fontSize: 18 }}>
                                         {item.title}

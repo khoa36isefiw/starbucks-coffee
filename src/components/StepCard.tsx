@@ -58,7 +58,12 @@ function StepCard({
                 },
             }}
         >
-            <img src={image} alt={title} style={{ width: 'auto', height: '160px' }} />
+            <img
+                src={image}
+                alt={title}
+                style={{ width: 'auto', height: '160px' }}
+                loading="lazy"
+            />
             <Box>
                 <Typography sx={{ fontSize: '20px', fontWeight: 'bold' }}>{title}</Typography>
                 <Typography sx={{ mt: 2 }}>{content}</Typography>

@@ -159,6 +159,11 @@ export default function RatingTab() {
                                     borderRadius: 0,
                                     my: '32px',
                                 }}
+                                slotProps={{
+                                    img: {
+                                        loading: 'lazy',
+                                    },
+                                }}
                             />
                             <Box sx={{ ml: 4 }}>
                                 <Typography
