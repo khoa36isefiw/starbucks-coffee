@@ -56,12 +56,21 @@ function RewardsPage() {
                     justifyContent: { xs: 'flex-start', sm: 'center' },
                 }}
             >
-                <Box sx={{ ml: 4 }}>
+                <Box
+                    sx={{
+                        ml: 4,
+                        width: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                >
                     <Typography
                         sx={{
                             fontSize: '24px',
                             fontWeight: 'bold',
-                            // maxWidth: { xs: '60%', md: '40%' },
+                            width: '60%',
                             textAlign: 'center',
                             mt: { xs: 4, sm: 0 },
                         }}
@@ -71,6 +80,7 @@ function RewardsPage() {
                     <Typography sx={{ my: 2, fontWeight: 600 }} color="text.secondary">
                         Join now to start earning Rewards.
                     </Typography>
+
                     <CButton
                         text={'Join now'}
                         customStyle={{
