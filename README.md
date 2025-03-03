@@ -25,3 +25,10 @@ Starbucks Coffee Project is a modern web application designed to simulate a fake
 ```
 module.exports = { extends: ["@commitlint/config-conventional"] };
 ```
+
+### NestJS
+
+-   Dependency Injection
+-   Graph SQL
+-   decorator
+-   ioc - inverstion of control

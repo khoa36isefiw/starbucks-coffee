@@ -1,4 +1,4 @@
-import { IGiftCards } from "../interfaces/IGiftCard";
+import { IGiftCards, IGiftCardsType } from "../interfaces/IGiftCard";
 
 export const giftsCard: IGiftCards[] = [
     {
@@ -34,4 +34,65 @@ export const giftsCard: IGiftCards[] = [
         alt: 'Gift card image: A Big Thank You with the words A Big written in small pale blue letters and arched over the top of the larger words Thank You.'
     },
 
+];
+
+
+
+
+
+
+export const giftCardTypes: IGiftCardsType[] = [
+    {
+        heading: 'Birthday',
+        data: [
+            {
+                imageUrl: 'https://globalassets.starbucks.com/digitalassets/cards/fy25/HappyBirthdayFY25.png',
+                alt: 'Gift card image: A sliced birthday cake sits on top of a blue table with the words Happy Birthday curved across the design in dark green.'
+            },
+            {
+                imageUrl: 'https://globalassets.starbucks.com/digitalassets/cards/fy25/HolidayBirthdayFY25.png',
+                alt: 'Gift card image: Happy Birthday is written on a vibrant pink and red birthday cake with candles sitting on a green party table.'
+            },
+        ]
+    },
+    {
+        heading: 'Thank you',
+        data: [
+            {
+                imageUrl: 'https://globalassets.starbucks.com/digitalassets/cards/fy25/ThankYouFY25.png',
+                alt: 'Gift card image: Thank You is written in shuffled letters on a blue and green multi-colored geometric background with black stars. '
+            },
+            {
+                imageUrl: 'https://globalassets.starbucks.com/digitalassets/cards/fy24/MyTreatFY24.jpg',
+                alt: '  Gift card image: A hand extends from the right holding a steaming Starbucks beverage, with My Treat written in green letters above it against a shaded green and white background.'
+            },
+            {
+                imageUrl: 'https://globalassets.starbucks.com/digitalassets/cards/fy22/BigThankYouFY22.jpg',
+                alt: 'Gift card image: A Big Thank You with the words A Big written in small pale blue letters and arched over the top of the larger words Thank You.'
+            },
+        ]
+    },
+    {
+        heading: 'Celebration',
+        data: [
+            {
+                imageUrl: 'https://globalassets.starbucks.com/digitalassets/cards/fy25/CelebrationFY25.png',
+                alt: "Gift card image: An iced Starbucks cup exploding with multi-colored confetti sits in front of a dark green background."
+            },
+        ]
+
+    },
+    {
+        heading: 'Appreciation',
+        data: [
+            {
+                imageUrl: 'https://globalassets.starbucks.com/digitalassets/cards/fy25/YouAreAwesomeFY25.png',
+                alt: 'Gift card image: You are Awesome is written in punched out purple and red letters on an orange splattered background. '
+            },
+            {
+                imageUrl: 'https://globalassets.starbucks.com/digitalassets/cards/fy25/CouldntDoItWithoutYouFY25.png',
+                alt: 'Couldn\'t do it without you'
+            },
+        ]
+    },
 ];

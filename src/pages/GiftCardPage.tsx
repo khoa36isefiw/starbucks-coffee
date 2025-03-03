@@ -1,24 +1,18 @@
-import { Box, Button, Typography } from '@mui/material';
-import React, { useState } from 'react';
-import { BoxLeft107 } from '../components/CustomBox/BoxLeft107';
+import { Avatar, Box, Button, Typography } from '@mui/material';
+import { useState } from 'react';
 import { HeadingTypography } from '../components/Typography/HeadingTypography';
-import ImageSlider from '../components/ImageSlider/ImageSlider';
 import { theme } from '../theme/theme';
 import { giftsCard } from '../data/giftsCard';
 import GiftsGallery from '../components/ImageSlider/GiftsGallery';
-import MapComponent from '../components/MapComponent';
 import { VISIBLE_ITEMS } from '../utils/constants';
+import ListGiftCardHeading from '../components/ImageSlider/ListGiftCardHeading';
+import { ContainerL107 } from '../components/CustomBox/ContainerL107';
+import { OButton } from '../components/Button/OButton';
+import { CButton } from '../components/Button/CButton';
+import { TButton } from '../components/Button/TButton';
+import AspectRatioIcon from '@mui/icons-material/AspectRatio';
 
 function GiftCardPage() {
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    const handleNext = () => {
-        if (currentIndex < giftsCard.length - VISIBLE_ITEMS) {
-            setCurrentIndex((prev) => prev + 1);
-        }
-    };
-
-    console.log('currentIndex: ', currentIndex);
     return (
         <Box>
             <HeadingTypography
@@ -61,6 +55,122 @@ function GiftCardPage() {
                 </Box>
 
                 <GiftsGallery giftsCard={giftsCard} />
+
+                <Box
+                    sx={{
+                        pl: '107px',
+                        pr: '40px',
+                        mt: 2,
+                    }}
+                >
+                    <Box
+                        sx={{
+                            bgcolor: '#edebe9',
+                            minHeight: '40px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            padding: 2,
+                            gap: 1,
+                            borderRadius: 2,
+                        }}
+                    >
+                        <Avatar
+                            src={'https://www.starbucks.com/weblx/images/gift/group-gift-cards.png'}
+                            alt="Gift Cards"
+                            sx={{ height: '46px', width: '46px', borderRadius: 0 }}
+                        />
+                        <Typography>
+                            Effortlessly send up to 10 eGifts per purchase. Select a design to
+                            start!
+                        </Typography>
+                    </Box>
+                </Box>
+            </Box>
+            <Box
+                sx={{
+                    minHeight: '40px',
+                    bgcolor: theme.color.giftCardBg,
+                    mt: 2,
+                    paddingY: '4px',
+                    position: 'relative',
+                }}
+            >
+                <Box
+                    sx={{
+                        paddingLeft: '107px',
+                        paddingRight: '40px',
+                        py: 4,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 4,
+                    }}
+                >
+                    <Typography>
+                        <strong style={{ fontSize: '24px', marginRight: '16px' }}>
+                            Received a gift card?
+                        </strong>{' '}
+                        Earn 2★ per $1
+                    </Typography>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                        <OButton
+                            text={'Add or Reload'}
+                            customStyle={{
+                                color: '#000',
+                                fontWeight: 'bold',
+                                borderColor: '#000',
+                            }}
+                        />
+                        <CButton
+                            text={'Check balance'}
+                            customStyle={{
+                                fontWeight: 'bold',
+                            }}
+                        />
+                    </Box>
+                </Box>
+
+                <Box sx={{ display: 'flex', justifyContent: 'flex-end', pr: '40px' }}>
+                    <TButton
+                        sx={{
+                            fontWeight: 'bold',
+                            color: theme.color.rewardColor,
+                            fontSize: '16px',
+                        }}
+                    >
+                        Cards Term & Conditions
+                    </TButton>
+                </Box>
+            </Box>
+            <Box sx={{ pl: '107px', pr: '40px', mt: 2 }}>
+                <ListGiftCardHeading />
+            </Box>
+            <Box sx={{ minHeight: '40px', bgcolor: '#f9f9f9', paddingY: '36px' }}>
+                <ContainerL107 sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                    <Avatar
+                        src={'https://www.starbucks.com/weblx/images/gift/bulk-gift-cards.jpg'}
+                        alt="Gift IGiftCards"
+                        sx={{ borderRadius: 0, width: '30vw', height: '30vh', objectFit: 'cover' }}
+                    />
+                    <Box sx={{ maxWidth: '375px' }}>
+                        <Typography component="h5" variant="h5" sx={{ fontWeight: 'bold' }}>
+                            Business gifting — simplified
+                        </Typography>
+                        <Typography sx={{ mt: 1, mb: 2 }}>
+                            Bulk send physical or digital Starbucks Cards to gift, reward,
+                            incentivize, or show appreciation towards your customers, clients and
+                            team members. Minimum 15 cards per order.
+                        </Typography>
+                        <OButton
+                            endIcon={<AspectRatioIcon />}
+                            text="Shop now"
+                            customStyle={{
+                                '&:hover': {
+                                    bgcolor: '#d5d5d5',
+                                },
+                            }}
+                        />
+                    </Box>
+                </ContainerL107>
             </Box>
         </Box>
     );
