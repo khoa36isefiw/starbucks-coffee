@@ -19,7 +19,7 @@ function GiftCardPage() {
             <HeadingTypography
                 sx={{
                     paddingTop: '56px',
-                    marginLeft: { xs: 0, sm: '107px' },
+                    marginLeft: { xs: 0, sm: '40px', lg: '107px' },
                     paddingX: { xs: '24px', sm: 0 },
                 }}
             >
@@ -33,7 +33,7 @@ function GiftCardPage() {
                         alignItems: 'center',
                         mr: { xs: 0, sm: '40px' },
                         justifyContent: 'space-between',
-                        marginLeft: { xs: 0, sm: '107px' },
+                        marginLeft: { xs: 0, sm: '40px', lg: '107px' },
                         paddingX: { xs: '24px', sm: 0 },
                     }}
                 >
@@ -61,7 +61,8 @@ function GiftCardPage() {
 
                 <Box
                     sx={{
-                        pl: { xs: '24px', sm: '100px' },
+                        pl: { xs: '24px', sm: '40px', lg: '100px' },
+
                         pr: { xs: '24px', sm: '40px' },
                         mt: 2,
                     }}
@@ -112,16 +113,17 @@ function GiftCardPage() {
             >
                 <Box
                     sx={{
-                        // paddingLeft: '107px',
-                        // paddingRight: '40px',
-                        pl: { xs: '24px', sm: '107px' },
+                        pl: { xs: '24px', sm: '40px', lg: '107px' },
                         pr: { xs: '24px', sm: '40px' },
                         py: 4,
                         display: 'flex',
-                        // alignItems: 'center',
 
                         gap: 4,
                         [theme.breakpoints.down('sm')]: {
+                            flexDirection: 'column',
+                            justifyContent: 'flex-start',
+                        },
+                        [theme.breakpoints.down('md')]: {
                             flexDirection: 'column',
                             justifyContent: 'flex-start',
                         },
@@ -130,9 +132,9 @@ function GiftCardPage() {
                     <Box
                         sx={{
                             display: 'flex',
-                            alignItems: { xs: 'flex-start', sm: 'center' },
-                            justifyContent: { xs: 'flex-start', sm: 'center' },
-                            flexDirection: { xs: 'column', sm: 'row' },
+                            alignItems: { xs: 'flex-start', sm: 'flex-start', md: 'center' },
+                            justifyContent: { xs: 'flex-start', sm: 'flex-start', md: 'center' },
+                            flexDirection: { xs: 'column', sm: 'column', md: 'row' },
                         }}
                     >
                         <Typography
@@ -140,7 +142,7 @@ function GiftCardPage() {
                         >
                             Received a gift card?
                         </Typography>{' '}
-                        <Typography sx={{ marginLeft: { xs: 0, sm: '16px' } }}>
+                        <Typography sx={{ marginLeft: { xs: 0, sm: 0, md: '16px' } }}>
                             Earn 2★ per $1
                         </Typography>
                     </Box>
@@ -180,8 +182,13 @@ function GiftCardPage() {
                     </TButton>
                 </Box>
             </Box>
-            <Box sx={{ pl: { xs: '24px', sm: '107px' }, pr: { xs: '24px', sm: '40px' }, mt: 2 }}>
-                {/* <ListGiftCardHeading /> */}
+            <Box
+                sx={{
+                    pl: { xs: '24px', sm: '40px', lg: '107px' },
+                    pr: { xs: '24px', sm: '40px' },
+                    mt: 2,
+                }}
+            >
                 <GiftCardSlider giftCardTypes={giftCardTypes} />
             </Box>
             <Box sx={{ minHeight: '40px', bgcolor: '#f9f9f9', paddingY: '36px' }}>
@@ -190,7 +197,7 @@ function GiftCardPage() {
                         display: 'flex',
                         alignItems: 'center',
                         gap: 4,
-                        pl: { xs: '24px', sm: '107px' },
+                        pl: { xs: '24px', sm: '40px', lg: '107px' },
                         pr: { xs: '24px', sm: '40px' },
                         [theme.breakpoints.down('sm')]: {
                             flexDirection: 'column',
@@ -208,6 +215,10 @@ function GiftCardPage() {
                             [theme.breakpoints.down('sm')]: {
                                 width: '100%',
                                 height: '100%',
+                            },
+                            [theme.breakpoints.down('md')]: {
+                                width: '40vw',
+                                height: '35vw',
                             },
                         }}
                         // // add loading lazy for avatar
@@ -248,7 +259,7 @@ function GiftCardPage() {
             >
                 <Box
                     sx={{
-                        pl: { xs: '24px', sm: '107px' },
+                        pl: { xs: '24px', sm: '40px', lg: '107px' },
                         pr: { xs: '24px', sm: '40px' },
                     }}
                 >

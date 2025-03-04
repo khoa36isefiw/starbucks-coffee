@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, IconButton, Typography, useMediaQuery } from '@mui/material';
+import { Avatar, Box, IconButton, Typography, useMediaQuery } from '@mui/material';
 import { NavigateBefore, NavigateNext } from '@mui/icons-material';
 import { theme } from '../../theme/theme';
 import { IGiftCardsType } from '../../interfaces/IGiftCard';
@@ -64,8 +64,8 @@ function GiftCategory({
                             <Box
                                 key={index}
                                 sx={{
-                                    width: { xs: '180px', sm: '300px' },
-                                    height: { xs: '100px', sm: '180px' },
+                                    width: { xs: '180px', sm: '220px', md: '300px' },
+                                    height: { xs: '100px', sm: '140px', md: '180px' },
                                     background: 'lightgray',
                                     display: 'flex',
                                     alignItems: 'center',
@@ -73,13 +73,14 @@ function GiftCategory({
                                     borderRadius: '10px',
                                 }}
                             >
-                                <img
+                                <Avatar
                                     src={gift.imageUrl}
                                     alt={gift.alt}
-                                    width="100%"
-                                    height="100%"
-                                    style={{ borderRadius: '10px' }}
-                                    loading="lazy"
+                                    sx={{
+                                        borderRadius: '10px',
+                                        width: '100%',
+                                        height: '100%',
+                                    }}
                                 />
                             </Box>
                         ))}
