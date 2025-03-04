@@ -1,8 +1,8 @@
-import { Avatar, Box, Button, Typography } from '@mui/material';
+import { Avatar, Box, Button, Grid2, Typography } from '@mui/material';
 import { useState } from 'react';
 import { HeadingTypography } from '../components/Typography/HeadingTypography';
 import { theme } from '../theme/theme';
-import { giftCardTypes, giftsCard } from '../data/giftsCard';
+import { advertisements, giftCardTypes, giftsCard, IAdvertisement } from '../data/giftsCard';
 import GiftsGallery from '../components/ImageSlider/GiftsGallery';
 
 import ListGiftCardHeading from '../components/ImageSlider/ListGiftCardHeading';
@@ -202,11 +202,15 @@ function GiftCardPage() {
                         alt="Gift IGiftCards"
                         sx={{
                             borderRadius: 0,
-                            width: { xs: '100%', sm: '30vw' },
-                            height: { xs: '100%', sm: '30vw' },
+                            width: '30vw',
+                            height: '20vw',
                             objectFit: 'cover',
+                            [theme.breakpoints.down('sm')]: {
+                                width: '100%',
+                                height: '100%',
+                            },
                         }}
-                        // add loading lazy for avatar
+                        // // add loading lazy for avatar
                         slotProps={{
                             img: {
                                 loading: 'lazy',
@@ -233,6 +237,40 @@ function GiftCardPage() {
                         />
                     </Box>
                 </ContainerL107>
+            </Box>
+
+            {/* Text */}
+            <Box
+                sx={{
+                    bgcolor: '#edebe9',
+                    py: '24px',
+                }}
+            >
+                <Box
+                    sx={{
+                        pl: { xs: '24px', sm: '107px' },
+                        pr: { xs: '24px', sm: '40px' },
+                    }}
+                >
+                    <Grid2 container spacing={4}>
+                        {advertisements.map((ad: IAdvertisement, index: number) => (
+                            <Grid2 key={index} size={{ xs: 12, sm: 6 }}>
+                                <Box>
+                                    <Typography sx={{ fontSize: '24px', fontWeight: 'bold' }}>
+                                        {ad.title}
+                                    </Typography>
+                                    {ad.content.map((c, index) => (
+                                        <Typography sx={{ fontSize: '14px', mt: 1 }} key={index}>
+                                            {c}
+                                        </Typography>
+                                    ))}
+
+                                    <OButton text={ad.button} customStyle={{ mt: 2 }} />
+                                </Box>
+                            </Grid2>
+                        ))}
+                    </Grid2>
+                </Box>
             </Box>
         </Box>
     );

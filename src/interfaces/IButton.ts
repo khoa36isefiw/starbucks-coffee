@@ -1,5 +1,5 @@
 export interface IButtonProps {
-    text: string;
+    text?: string;
     customStyle?: object; // another style
     startIcon?: React.ReactNode;
     endIcon?: React.ReactNode;
