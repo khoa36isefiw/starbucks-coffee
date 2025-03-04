@@ -27,10 +27,11 @@ function RewardHeader() {
                         textTransform: 'uppercase',
                         color: '#fff',
                         fontWeight: 'bold',
-                        fontSize: '16px',
+                        fontSize: { xs: '12px', sm: '16px' },
+                        flex: 1,
                     }}
                 >
-                    Starbucks® Rewards
+                    Starbucks<sup>®</sup> Rewards
                 </Typography>
 
                 <OButton

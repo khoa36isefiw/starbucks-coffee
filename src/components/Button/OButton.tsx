@@ -9,11 +9,12 @@ export const OButton = ({ text, customStyle = {}, onHandleClick, endIcon }: IBut
             variant="outlined"
             onClick={onHandleClick}
             sx={{
-                height: '30px',
+                minHeight: '30px',
                 borderRadius: '20px',
                 borderColor: '#000',
                 textTransform: 'initial',
-                padding: '7px 16px',
+                textAlign: 'center',
+                // padding: '7px 16px',
                 color: theme.color.textBlack,
                 '&:hover': {
                     color: theme.palette.primary.main,

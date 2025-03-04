@@ -1,45 +1,66 @@
 import { useState } from 'react';
-import { Box, IconButton, useMediaQuery } from '@mui/material';
+import { Box, IconButton, Typography, useMediaQuery } from '@mui/material';
 import { NavigateBefore, NavigateNext } from '@mui/icons-material';
-import { IGiftCards } from '../../interfaces/IGiftCard';
 import { theme } from '../../theme/theme';
+import { IGiftCardsType } from '../../interfaces/IGiftCard';
 
-export default function GiftSlider({ giftsCard }: { giftsCard: IGiftCards[] }) {
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // check for mobile screen
-    const ITEMS_PER_PAGE = isMobile ? 2 : 4; // Số ảnh hiển thị mỗi lần
-    console.log('isMobile: ', isMobile);
+export default function GiftCardSlider({ giftCardTypes }: { giftCardTypes: IGiftCardsType[] }) {
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const ITEMS_PER_PAGE = isMobile ? 2 : 4;
+
+    return (
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+            {giftCardTypes.map((category) => (
+                <GiftCategory
+                    key={category.heading}
+                    category={category}
+                    itemsPerPage={ITEMS_PER_PAGE}
+                />
+            ))}
+        </Box>
+    );
+}
+
+function GiftCategory({
+    category,
+    itemsPerPage,
+}: {
+    category: IGiftCardsType;
+    itemsPerPage: number;
+}) {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handleNext = () => {
-        if (currentIndex + ITEMS_PER_PAGE < giftsCard.length) {
-            setCurrentIndex((prev) => prev + ITEMS_PER_PAGE);
+        if (currentIndex + itemsPerPage < category.data.length) {
+            setCurrentIndex((prev) => prev + itemsPerPage);
         }
     };
 
     const handlePrev = () => {
         if (currentIndex > 0) {
-            setCurrentIndex((prev) => prev - ITEMS_PER_PAGE);
+            setCurrentIndex((prev) => prev - itemsPerPage);
         }
     };
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Box sx={{ width: '100%', overflow: 'hidden', position: 'relative', height: '180px' }}>
+        <Box>
+            <Typography variant="h6" sx={{ mb: 2, fontWeight: 'bold' }}>
+                {category.heading}
+            </Typography>
+            <Box sx={{ width: '100%', overflow: 'hidden', position: 'relative' }}>
                 <Box
                     sx={{
                         display: 'flex',
-                        justifyContent: 'center',
-                        height: '100%',
+                        justifyContent: 'flex-start',
                         gap: '10px',
                         alignItems: 'center',
                         transition: 'transform 0.5s ease-in-out',
-                        marginLeft: 0,
-                        paddingX: { xs: '24px', sm: 0 },
+                        // paddingX: { xs: '24px', sm: 0 },
                     }}
                 >
-                    {giftsCard
-                        .slice(currentIndex, currentIndex + ITEMS_PER_PAGE)
-                        .map((gift: IGiftCards, index: number) => (
+                    {category.data
+                        .slice(currentIndex, currentIndex + itemsPerPage)
+                        .map((gift, index) => (
                             <Box
                                 key={index}
                                 sx={{
@@ -69,7 +90,7 @@ export default function GiftSlider({ giftsCard }: { giftsCard: IGiftCards[] }) {
                     sx={{
                         position: 'absolute',
                         top: '50%',
-                        left: '10px',
+                        left: 0,
                         transform: 'translateY(-50%)',
                         bgcolor: '#fff',
                         boxShadow: 2,
@@ -88,15 +109,15 @@ export default function GiftSlider({ giftsCard }: { giftsCard: IGiftCards[] }) {
                     sx={{
                         position: 'absolute',
                         top: '50%',
-                        right: '10px',
+                        right: 0,
                         transform: 'translateY(-50%)',
                         bgcolor: '#fff',
                         boxShadow: 2,
                         zIndex: 2,
                         '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.8)' },
-                        opacity: currentIndex + ITEMS_PER_PAGE >= giftsCard.length ? 0 : 1,
+                        opacity: currentIndex + itemsPerPage >= category.data.length ? 0 : 1,
                         pointerEvents:
-                            currentIndex + ITEMS_PER_PAGE >= giftsCard.length ? 'none' : 'auto',
+                            currentIndex + itemsPerPage >= category.data.length ? 'none' : 'auto',
                         transition: 'opacity 0.3s ease-in-out',
                     }}
                 >
