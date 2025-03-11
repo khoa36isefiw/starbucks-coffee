@@ -17,7 +17,7 @@ export const publicRoutes = [
     { path: '/menu/favorites', component: FavoritesPage },
     { path: '/rewards', component: RewardsPage },
     { path: '/gift-cards', component: GiftCardPage },
-    { path: '/hangout', component: Hangout },
+
 
 
 
