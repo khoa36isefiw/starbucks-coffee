@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DefaultLayout from './layouts/DefaultLayout';
 import { publicRoutes } from './routes/routes';
+import Hangout from './pages/Hangout';
+import UserList from './pages/Test';
 
 function App() {
     return (
@@ -12,6 +14,8 @@ function App() {
                         <Route path={route.path} element={<route.component />} key={route.path} />
                     ))}
                 </Route>
+
+                <Route path={'/hangout'} element={<UserList />} />
 
                 {/* route for authenticated user */}
 

@@ -6,8 +6,7 @@ import { theme } from '../../theme/theme';
 
 export default function GiftSlider({ giftsCard }: { giftsCard: IGiftCards[] }) {
     const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // check for mobile screen
-    const isTablet = useMediaQuery(theme.breakpoints.down('md')); // check for mobile screen
-    const ITEMS_PER_PAGE = isMobile ? 2 : isTablet ? 3 : 4; // Số ảnh hiển thị mỗi lần
+    const ITEMS_PER_PAGE = isMobile ? 2 : 4; // Số ảnh hiển thị mỗi lần
     console.log('isMobile: ', isMobile);
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -44,8 +43,8 @@ export default function GiftSlider({ giftsCard }: { giftsCard: IGiftCards[] }) {
                             <Box
                                 key={index}
                                 sx={{
-                                    width: { xs: '180px', sm: '220px', md: '230px', lg: '300px' },
-                                    height: { xs: '100px', sm: '160px', md: '160px', lg: '180px' },
+                                    width: { xs: '180px', sm: '300px' },
+                                    height: { xs: '100px', sm: '180px' },
                                     background: 'lightgray',
                                     display: 'flex',
                                     alignItems: 'center',

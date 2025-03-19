@@ -90,7 +90,7 @@ export default function MobileMenu({ open, onHandleClose }: ModalProps) {
                             mr: '16px',
                             fontWeight: 'bold',
                             color: 'black',
-                            padding: '16px',
+
                             '&:hover': {
                                 bgcolor: theme.color.hoverButtonColorOutlined,
                             },

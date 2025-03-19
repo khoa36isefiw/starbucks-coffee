@@ -25,6 +25,12 @@ const GiftCardHeading = ({ heading, data }: IGiftCardsType) => {
                                 boxShadow: '-4px 7px 11px 0px rgba(204,204,204,1)',
                             },
                         }}
+                        // add loading lazy for avatar
+                        slotProps={{
+                            img: {
+                                loading: 'lazy',
+                            },
+                        }}
                     />
                 ))}
             </Box>

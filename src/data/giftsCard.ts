@@ -96,3 +96,40 @@ export const giftCardTypes: IGiftCardsType[] = [
         ]
     },
 ];
+
+
+export interface IAdvertisement {
+    title: string;
+    content: string[];
+    button?: string;
+}
+
+
+export const advertisements: IAdvertisement[] = [
+    {
+        title: 'About eGift cards',
+        content: [
+            "A Starbucks eGift card (also known as an “eGift”) is a Starbucks Gift Card that is purchased and sent digitally.",
+            "For Senders of an eGift, go to eGift History when signed in to view, send, or resend eGifts you’ve purchased — or, to directly contact Starbucks eGift Support for help with your order.",
+        ],
+        button: '',
+    },
+    {
+        title: 'About Starbucks Gift Cards in general',
+        content: [
+            "Starbucks Gift Cards, including eGifts, can be used to pay in a Starbucks store or to join Starbucks® Rewards.",
+            "Register Gift Cards and eGifts to a Starbucks® Rewards account and earn 2★ per dollar every time you pay with that card. Those Stars quickly add up to free food, drinks, and more!",
+        ],
+        button: 'Card Terms & Conditions',
+    },
+    {
+        title: 'Questions around eGift cards?',
+        content: [
+            "Check our Frequently Asked Questions — your question might already be answered. There, you’ll find answers for all Starbucks Gift Cards in general (including eGifts).",
+
+        ],
+        button: 'Card FAQs',
+    },
+
+
+]

@@ -18,6 +18,7 @@ import StepCard from '../components/StepCard';
 import { HeadingTypography } from '../components/Typography/HeadingTypography';
 import { flexColCenterStyle, flexRowCenterStyle } from '../utils/styles';
 import PageTitle from '../components/PageTitle';
+import { lazy } from 'react';
 
 const UnderlinedText = styled('span')({
     textDecoration: 'underline',
@@ -55,12 +56,21 @@ function RewardsPage() {
                     justifyContent: { xs: 'flex-start', sm: 'center' },
                 }}
             >
-                <Box sx={{ ml: 4 }}>
+                <Box
+                    sx={{
+                        ml: 4,
+                        width: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                >
                     <Typography
                         sx={{
                             fontSize: '24px',
                             fontWeight: 'bold',
-                            // maxWidth: { xs: '60%', md: '40%' },
+                            width: '60%',
                             textAlign: 'center',
                             mt: { xs: 4, sm: 0 },
                         }}
@@ -70,6 +80,7 @@ function RewardsPage() {
                     <Typography sx={{ my: 2, fontWeight: 600 }} color="text.secondary">
                         Join now to start earning Rewards.
                     </Typography>
+
                     <CButton
                         text={'Join now'}
                         customStyle={{
@@ -246,6 +257,11 @@ function RewardsPage() {
                                     },
                                 }}
                                 onClick={() => handleOpen(index)}
+                                slotProps={{
+                                    img: {
+                                        loading: 'lazy',
+                                    },
+                                }}
                             />
                             <Box
                                 sx={{
@@ -338,25 +354,7 @@ function RewardsPage() {
                                     </HeadingTypography>
                                     <Typography>{card.subTitle}</Typography>
                                 </Box>
-                                {/* <Box
-                                    sx={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        [theme.breakpoints.down('sm')]: {
-                                            flexDirection: 'column',
-                                            my: 4,
-                                        },
-                                    }}
-                                >
-                                    {card.steps.map((step, idx) => (
-                                        <StepCard
-                                            key={idx}
-                                            image={step.image}
-                                            content={step.content}
-                                            title={step.title}
-                                        />
-                                    ))}
-                                </Box> */}
+
                                 <Grid2
                                     container
                                     spacing={4}
@@ -448,6 +446,11 @@ function RewardsPage() {
                                         [theme.breakpoints.down('sm')]: {
                                             width: '120px',
                                             height: 'auto',
+                                        },
+                                    }}
+                                    slotProps={{
+                                        img: {
+                                            loading: 'lazy',
                                         },
                                     }}
                                 />
