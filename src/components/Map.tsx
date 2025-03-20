@@ -1,7 +1,11 @@
-import React from 'react';
+import MapComponent from './MapComponent';
 
 function Map() {
-    return <div>Map</div>;
+    return (
+        <div>
+            <MapComponent />
+        </div>
+    );
 }
 
 export default Map;
