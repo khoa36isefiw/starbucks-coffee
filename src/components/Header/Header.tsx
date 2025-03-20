@@ -56,6 +56,11 @@ function Header() {
         setToggleMenu(!toggleMenu);
     };
 
+    const handleSelectLocation = () => {
+        setPageSelected('store');
+        navigate('/store-location');
+    };
+
     return (
         <AppBar
             position="static"
@@ -208,7 +213,7 @@ function Header() {
                                 color:
                                     pageSelected === 'store' ? theme.palette.primary.main : 'black',
                             }}
-                            onClick={() => setPageSelected('store')}
+                            onClick={handleSelectLocation}
                         >
                             Find a store
                         </TButton>

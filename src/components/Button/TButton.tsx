@@ -1,6 +1,6 @@
-import { styled } from '@mui/system';
 import Button from '@mui/material/Button';
 import { theme } from '../../theme/theme';
+import { styled } from '@mui/material';
 
 // default styles for button is text
 export const TButton = styled(Button)(() => ({
