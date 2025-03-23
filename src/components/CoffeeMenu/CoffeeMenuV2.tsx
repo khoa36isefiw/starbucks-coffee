@@ -1,6 +1,7 @@
 import { Avatar, Box, Divider, Typography } from '@mui/material';
 
 import Grid from '@mui/material/Grid2';
+import { useNavigate } from 'react-router-dom';
 
 type MenuContentProps = {
     label: string;
@@ -12,6 +13,10 @@ type MenuContentProps = {
 
 function CoffeeMenuV2({ label, menuList }: MenuContentProps) {
     console.log('menuList: ', menuList);
+    const navigate = useNavigate();
+    const handleCoffeeSelected = (id: number, name: string) => {
+        navigate(`/menu/prouduct/1/${name}`);
+    };
     return (
         <Box>
             <Box
@@ -26,7 +31,10 @@ function CoffeeMenuV2({ label, menuList }: MenuContentProps) {
                 <Grid container>
                     {menuList.map((item, index) => (
                         <Grid size={{ lg: 6 }}>
-                            <Box sx={{ display: 'flex', alignItems: 'center', my: 2 }}>
+                            <Box
+                                sx={{ display: 'flex', alignItems: 'center', my: 2 }}
+                                onClick={() => handleCoffeeSelected(index, item.pName)}
+                            >
                                 <Avatar
                                     src={item.pImage}
                                     alt={item.pName}

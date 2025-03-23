@@ -18,7 +18,9 @@ declare module '@mui/material/styles' {
             rewardContainer?: string;
             policyBg?: string;
             giftCardBg?: string;
-
+            pDetailBg?: string;
+            bgDetail: string;
+            borderDetail: string;
 
         };
     }
@@ -38,6 +40,9 @@ declare module '@mui/material/styles' {
             rewardContainer?: string;
             policyBg?: string;
             giftCardBg?: string;
+            pDetailBg?: string;
+            bgDetail: string;
+            borderDetail: string;
 
 
         };
@@ -50,7 +55,8 @@ export const theme = createTheme({
         primary: {
             main: '#00754a',
 
-        }
+        },
+
     },
     color: {
         textBlack: '#000000de',
@@ -64,7 +70,11 @@ export const theme = createTheme({
         rewardTabBg: '#f1f7f5',
         rewardContainer: '#d4e9e2',
         policyBg: '#f9f9f9',
-        giftCardBg: '#d4e9e2'
+        giftCardBg: '#d4e9e2',
+        pDetailBg: '#1e3932',
+        bgDetail: '#d4e9e2',
+        borderDetail: '#036141'
+
     }
 });
 
