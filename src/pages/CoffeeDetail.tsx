@@ -1,7 +1,8 @@
-import { Box, Divider, Typography } from '@mui/material';
+import { Box, Button, Divider, Typography } from '@mui/material';
 import { theme } from '../theme/theme';
 import { coffeeOptions } from '../data/coffeeOptions';
 import { useState } from 'react';
+import { CButton } from '../components/Button/CButton';
 
 function CoffeeDetail() {
     const [sizeSelected, setSizeSelected] = useState<string>('');
@@ -120,6 +121,21 @@ function CoffeeDetail() {
                     ))}
                 </Box>
             </Box>
+
+            <CButton
+                text={'Add to Cart'}
+                customStyle={{
+                    bgcolor: theme.color.borderDetail,
+                    borderRadius: '36px',
+                    boxShadow: '4px 2px 4px #ccc',
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    padding: '28px',
+                    position: 'fixed',
+                    top: '90%',
+                    right: '5%',
+                }}
+            />
         </Box>
     );
 }

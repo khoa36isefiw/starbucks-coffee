@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { theme } from '../../theme/theme';
+
 import { IButtonProps } from '../../interfaces/IButton';
 
 export const CButton = ({ text, customStyle = {} }: IButtonProps) => {
