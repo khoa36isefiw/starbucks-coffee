@@ -1,6 +1,7 @@
 
 
 import StarbuckLocation from "../components/ui/Map";
+import AdminPage from "../pages/Admin/AdminPage";
 import CoffeeDetail from "../pages/CoffeeDetail";
 import FavoritesPage from "../pages/FavoritesPage";
 import FeaturePage from "../pages/FeaturePage";
@@ -20,7 +21,9 @@ export const publicRoutes = [
     { path: '/rewards', component: RewardsPage },
     { path: '/gift-cards', component: GiftCardPage },
     { path: '/store-location', component: StarbuckLocation },
-    { path: '/menu/prouduct/:id/:coffeeType', component: CoffeeDetail }
+    { path: '/menu/prouduct/:id/:coffeeType', component: CoffeeDetail },
+
+    
 
 
 

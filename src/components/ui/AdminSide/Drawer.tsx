@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
@@ -10,18 +9,15 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import Typography from '@mui/material/Typography';
 
-export default function TemporaryDrawer() {
-    const [open, setOpen] = React.useState(false);
+const drawerWidth = 240;
 
-    const toggleDrawer = (newOpen: boolean) => () => {
-        setOpen(newOpen);
-    };
-
+export default function AdminDashboard() {
     const DrawerList = (
-        <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+        <Box sx={{ width: drawerWidth, mt: 2 }} role="presentation">
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                {['Dashboard', 'Users', 'Orders', 'Products'].map((text, index) => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
@@ -34,7 +30,7 @@ export default function TemporaryDrawer() {
             </List>
             <Divider />
             <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                {['Settings', 'Logout'].map((text, index) => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
@@ -49,11 +45,26 @@ export default function TemporaryDrawer() {
     );
 
     return (
-        <div>
-            <Button onClick={toggleDrawer(true)}>Open drawer</Button>
-            <Drawer open={open} onClose={toggleDrawer(false)}>
+        <Box sx={{ display: 'flex' }}>
+            <Drawer
+                variant="permanent"
+                sx={{
+                    width: drawerWidth,
+                    flexShrink: 0,
+                    [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
+                }}
+            >
                 {DrawerList}
             </Drawer>
-        </div>
+            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                <Typography variant="h4" fontWeight="bold" mb={2}>
+                    Dashboard Content
+                </Typography>
+                <Typography>
+                    Đây là phần dữ liệu bên phải. Bạn có thể render bảng, biểu đồ, hoặc bất kỳ dữ
+                    liệu nào ở đây.
+                </Typography>
+            </Box>
+        </Box>
     );
 }
