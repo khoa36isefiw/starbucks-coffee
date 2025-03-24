@@ -14,7 +14,7 @@ export const coffeeOptions: ICoffeeOptios[] = [
 
         images: {
             inactive: 'https://www.starbucks.com/app-assets/0295bad53506b2b3c22b.svg',
-            active: 'ac: https://www.starbucks.com/app-assets/06ea008c02e29bbc7f8f.svg',
+            active: 'https://www.starbucks.com/app-assets/06ea008c02e29bbc7f8f.svg',
 
         }
 

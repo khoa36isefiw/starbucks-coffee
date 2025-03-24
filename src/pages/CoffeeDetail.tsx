@@ -1,8 +1,10 @@
 import { Box, Divider, Typography } from '@mui/material';
 import { theme } from '../theme/theme';
 import { coffeeOptions } from '../data/coffeeOptions';
+import { useState } from 'react';
 
 function CoffeeDetail() {
+    const [sizeSelected, setSizeSelected] = useState<string>('');
     return (
         <Box>
             <Box sx={{ bgcolor: theme.color.pDetailBg, width: '100%', height: '300px' }}>
@@ -65,14 +67,52 @@ function CoffeeDetail() {
                     }}
                 >
                     {coffeeOptions.map((size, index) => (
-                        <Box key={index} sx={{ textAlign: 'center' }}>
+                        <Box
+                            key={index}
+                            sx={{ textAlign: 'center' }}
+                            onClick={() => setSizeSelected(size.size)}
+                        >
                             <Box
-                                component={'img'}
-                                src={size.images.inactive}
-                                alt={size.size}
-                                sx={{ maxWidth: '300px' }}
-                            />
-                            <Typography sx={{ fontSize: '16px', fontWeight: 'bold' }}>
+                                sx={{
+                                    border:
+                                        sizeSelected === size.size
+                                            ? `2px solid ${theme.color.borderDetail}`
+                                            : null,
+                                    bgcolor:
+                                        sizeSelected === size.size ? theme.color.bgDetail : null,
+                                    borderRadius: '50%',
+                                    // backgroundImage: `url(${size.images.active})`,
+                                    // backgroundRepeat: 'no-repeat',
+                                    // backgroundPosition: 'center',
+                                    width: '60px',
+                                    height: '60px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    zIndex: 1,
+                                    transition:
+                                        'border 0.3s ease-in-out, backgroundColor 0.3s ease-in-out',
+                                }}
+                            >
+                                <Box
+                                    component={'img'}
+                                    src={
+                                        sizeSelected === size.size
+                                            ? size.images.active
+                                            : size.images.inactive
+                                    }
+                                    alt={size.size}
+                                    sx={{
+                                        zIndex: 2,
+                                        maxWidth: '180px',
+                                        '&:hover': {
+                                            cursor: 'pointer',
+                                        },
+                                        transition: 'all 0.3s ease',
+                                    }}
+                                />
+                            </Box>
+                            <Typography sx={{ fontSize: '16px', fontWeight: 'bold', mt: 1 }}>
                                 {size.size}
                             </Typography>
                             <Typography sx={{ fontSize: '14px' }}>{size.capacity} fl oz</Typography>
