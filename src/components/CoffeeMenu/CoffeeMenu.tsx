@@ -1,6 +1,7 @@
 import { Avatar, Box, Divider, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import { menuData } from '../../data/menu';
+import { useLocationContext } from '../../context/LocationContext';
 
 function CoffeeMenu({
     setMenuSelected,
@@ -12,6 +13,14 @@ function CoffeeMenu({
         }>
     >;
 }) {
+    const { saveLocation } = useLocationContext();
+    const handleMenuSelected = (path: string, title: string) => {
+        saveLocation({
+            path: title,
+        });
+        setMenuSelected({ path, title });
+    };
+
     return (
         <Box>
             {menuData.map((menu, index) => (
@@ -32,9 +41,7 @@ function CoffeeMenu({
                             <Grid
                                 size={{ xs: 12, sm: 6, md: 6, lg: 6 }}
                                 key={index}
-                                onClick={() =>
-                                    setMenuSelected({ path: item.path, title: item.title })
-                                }
+                                onClick={() => handleMenuSelected(item.path, item.title)}
                             >
                                 <Box
                                     sx={{

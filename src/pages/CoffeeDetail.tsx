@@ -3,11 +3,16 @@ import { theme } from '../theme/theme';
 import { coffeeOptions } from '../data/coffeeOptions';
 import { useState } from 'react';
 import { CButton } from '../components/Button/CButton';
+import { useLocationContext } from '../context/LocationContext';
+import CoffeeDetailBreadcrumb from '../components/Breadcrumbs/CoffeeDetailBreadcrumb';
 
 function CoffeeDetail() {
+    const { locations } = useLocationContext();
+    console.log('locations: ', locations);
     const [sizeSelected, setSizeSelected] = useState<string>('');
     return (
         <Box>
+            <CoffeeDetailBreadcrumb />
             <Box sx={{ bgcolor: theme.color.pDetailBg, width: '100%', height: '300px' }}>
                 <Box
                     sx={{

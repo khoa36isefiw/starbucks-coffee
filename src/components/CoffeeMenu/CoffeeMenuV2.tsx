@@ -2,6 +2,7 @@ import { Avatar, Box, Divider, Typography } from '@mui/material';
 
 import Grid from '@mui/material/Grid2';
 import { useNavigate } from 'react-router-dom';
+import { useLocationContext } from '../../context/LocationContext';
 
 type MenuContentProps = {
     label: string;
@@ -13,8 +14,12 @@ type MenuContentProps = {
 
 function CoffeeMenuV2({ label, menuList }: MenuContentProps) {
     console.log('menuList: ', menuList);
+    const { saveLocation } = useLocationContext();
     const navigate = useNavigate();
     const handleCoffeeSelected = (id: number, name: string) => {
+        saveLocation({
+            title: name,
+        });
         navigate(`/menu/prouduct/1/${name}`);
     };
     return (

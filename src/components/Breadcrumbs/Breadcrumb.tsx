@@ -13,12 +13,7 @@ export default function ActiveLastBreadcrumb({ menuSelected }: IActiveLastBreadc
                 Menu
             </Link>
             {menuSelected.title && (
-                <Link
-                    underline="hover"
-                    color="text.primary"
-                    // href="/material-ui/getting-started/installation/"
-                >
-                    {/* {(menuSelected as { title: string }).title} */}
+                <Link underline="hover" color="text.primary">
                     {menuSelected.title}
                 </Link>
             )}

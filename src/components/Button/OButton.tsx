@@ -12,7 +12,7 @@ export const OButton = ({ text, customStyle = {}, onHandleClick, endIcon }: IBut
                     variant="outlined"
                     onClick={onHandleClick}
                     sx={{
-                        minHeight: '30px',
+                        height: '30px',
                         borderRadius: '20px',
                         borderColor: '#000',
                         textTransform: 'initial',

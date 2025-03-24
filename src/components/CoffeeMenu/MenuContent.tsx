@@ -2,7 +2,7 @@ import Grid from '@mui/material/Grid2';
 import { Box, Button, Typography } from '@mui/material';
 import { menuData } from '../../data/menu';
 import { theme } from '../../theme/theme';
-import ActiveLastBreadcrumb from '../Breadcrumb';
+import ActiveLastBreadcrumb from '../Breadcrumbs/Breadcrumb';
 
 import { useState } from 'react';
 import CoffeeMenu from './CoffeeMenu';
