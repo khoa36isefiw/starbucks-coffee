@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import DefaultLayout from './layouts/DefaultLayout';
 import { publicRoutes } from './routes/routes';
 import Hangout from './pages/Hangout';
 import UserList from './pages/Test';
+import DefaultLayout from './components/layouts/DefaultLayout';
+import AdminPage from './pages/Admin/AdminPage';
 
 function App() {
     return (
@@ -16,6 +17,8 @@ function App() {
                 </Route>
 
                 <Route path={'/hangout'} element={<UserList />} />
+
+                <Route path={'/starbucks-manager'} element={<AdminPage />} />
 
                 {/* route for authenticated user */}
 

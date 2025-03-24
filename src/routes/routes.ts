@@ -1,9 +1,12 @@
 
 
+import StarbuckLocation from "../components/ui/Map";
+import AdminPage from "../pages/Admin/AdminPage";
+import CoffeeDetail from "../pages/CoffeeDetail";
 import FavoritesPage from "../pages/FavoritesPage";
 import FeaturePage from "../pages/FeaturePage";
 import GiftCardPage from "../pages/GiftCardPage";
-import Hangout from "../pages/Hangout";
+
 import HomePage from "../pages/HomePage";
 import Menu from "../pages/Menu";
 import PreviousPage from "../pages/PreviousPage";
@@ -17,6 +20,10 @@ export const publicRoutes = [
     { path: '/menu/favorites', component: FavoritesPage },
     { path: '/rewards', component: RewardsPage },
     { path: '/gift-cards', component: GiftCardPage },
+    { path: '/store-location', component: StarbuckLocation },
+    { path: '/menu/prouduct/:id/:coffeeType', component: CoffeeDetail },
+
+    
 
 
 

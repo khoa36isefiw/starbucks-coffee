@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
-import MenuContent from '../components/CoffeeMenu/MenuContent';
-import PageTitle from '../components/PageTitle';
+import MenuContent from '../components/ui/CoffeeMenu/MenuContent';
+import PageTitle from '../components/ui/PageTitle';
 
 function Menu() {
     return (

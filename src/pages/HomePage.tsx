@@ -1,8 +1,8 @@
 import { Box } from '@mui/material';
 
-import HomeBanner from '../components/HomeBanner';
-import { Box32 } from '../components/CustomBox/Box32';
-import PageTitle from '../components/PageTitle';
+import { Box32 } from '../components/ui/CustomBox/Box32';
+import PageTitle from '../components/ui/PageTitle';
+import HomeBanner from '../components/ui/HomeBanner';
 
 function HomePage() {
     return (
