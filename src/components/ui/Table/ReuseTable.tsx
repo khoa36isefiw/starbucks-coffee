@@ -15,14 +15,7 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete';
 import { blue } from '@mui/material/colors';
 import React, { useState } from 'react';
-
-interface Column {
-    id: string;
-    label: string;
-    minWidth?: number;
-    align?: 'right' | 'center' | 'left';
-    format?: (value: any) => React.ReactNode;
-}
+import { Column } from '../../../interfaces/ITable';
 
 interface ReusableTableProps {
     columns: Column[];
