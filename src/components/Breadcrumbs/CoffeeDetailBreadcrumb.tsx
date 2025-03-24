@@ -5,7 +5,10 @@ function CoffeeDetailBreadcrumb() {
     const { locations } = useLocationContext();
 
     return (
-        <Breadcrumbs aria-label="breadcrumb" sx={{ ml: '107px', my: 2 }}>
+        <Breadcrumbs
+            aria-label="breadcrumb"
+            sx={{ ml: { xs: 0, lg: '107px' }, my: 2, px: { xs: 3 } }}
+        >
             <Link underline="hover" color="text.primary" href="/menu" sx={{ fontSize: '14px' }}>
                 Menu
             </Link>

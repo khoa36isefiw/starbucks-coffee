@@ -13,13 +13,24 @@ function CoffeeDetail() {
     return (
         <Box>
             <CoffeeDetailBreadcrumb />
-            <Box sx={{ bgcolor: theme.color.pDetailBg, width: '100%', height: '300px' }}>
+            <Box
+                sx={{
+                    bgcolor: theme.color.pDetailBg,
+                    width: '100%',
+                    height: { xs: '350px', sm: '300px' },
+                }}
+            >
                 <Box
                     sx={{
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         gap: 4,
+                        p: 1,
+                        [theme.breakpoints.down('sm')]: {
+                            flexDirection: ' column',
+                            gap: 0,
+                        },
                     }}
                 >
                     <Box
@@ -28,20 +39,29 @@ function CoffeeDetail() {
                             'https://globalassets.starbucks.com/digitalassets/products/bev/BrewedCoffee.jpg?impolicy=1by1_wide_topcrop_630'
                         }
                         alt={'coffee'}
-                        sx={{ maxWidth: '300px' }}
+                        sx={{ maxWidth: { xs: 250, lg: 300 } }}
                     />
-                    <Box>
+                    <Box
+                        sx={{
+                            [theme.breakpoints.down('sm')]: {
+                                textAlign: 'center',
+                            },
+                        }}
+                    >
                         <Typography
                             sx={{
-                                fontSize: '24px',
+                                fontSize: { xs: 18, lg: 24 },
                                 color: '#fff',
                                 fontWeight: 'bold',
                                 maxWidth: 400,
+                                [theme.breakpoints.down('sm')]: {
+                                    width: 300,
+                                },
                             }}
                         >
                             Featured Medium Roast - Pike Place® Roast
                         </Typography>
-                        <Typography sx={{ fontSize: '20px', color: '#f9f9f9' }}>
+                        <Typography sx={{ fontSize: { xs: 14, lg: 20 }, color: '#f9f9f9' }}>
                             5 Calogries
                         </Typography>
                     </Box>
@@ -50,8 +70,8 @@ function CoffeeDetail() {
             {/* Select Size */}
             <Box
                 sx={{
-                    my: 8,
-                    mx: { lg: '80px' },
+                    my: { xs: 4, lg: 8 },
+                    mx: { xs: '20px', lg: '80px' },
                 }}
             >
                 <Typography
@@ -63,7 +83,13 @@ function CoffeeDetail() {
                     Size options
                 </Typography>
                 <Divider
-                    sx={{ borderWidth: 2, bgcolor: '#d4e9e2', borderRadius: 2, width: 400, my: 2 }}
+                    sx={{
+                        borderWidth: 2,
+                        bgcolor: '#d4e9e2',
+                        borderRadius: 2,
+                        width: { xs: '95%', lg: 400 },
+                        my: 2,
+                    }}
                 />
                 <Box
                     sx={{
@@ -139,6 +165,7 @@ function CoffeeDetail() {
                     position: 'fixed',
                     top: '90%',
                     right: '5%',
+                    zIndex: 3,
                 }}
             />
         </Box>
