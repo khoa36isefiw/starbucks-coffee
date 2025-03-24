@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -16,8 +16,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
 import LogoDevIcon from '@mui/icons-material/LogoDev';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
@@ -105,20 +103,21 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     ],
 }));
 
-export default function AdminDrawer() {
-    const drawerData: {
-        text: string;
-        icon: React.JSX.Element;
-    }[] = [
-        { text: 'User', icon: <SupervisedUserCircleIcon /> },
-        { text: 'Menu', icon: <RestaurantMenuIcon /> },
-        { text: 'Category', icon: <CategoryIcon /> },
-        { text: 'Menu Coffee', icon: <CoffeeIcon /> },
-        { text: 'Logger', icon: <LogoDevIcon /> },
-    ];
+const drawerData: {
+    text: string;
+    icon: React.JSX.Element;
+}[] = [
+    { text: 'User', icon: <SupervisedUserCircleIcon /> },
+    { text: 'Menu', icon: <RestaurantMenuIcon /> },
+    { text: 'Category', icon: <CategoryIcon /> },
+    { text: 'Menu Coffee', icon: <CoffeeIcon /> },
+    { text: 'Logger', icon: <LogoDevIcon /> },
+];
 
+export default function AdminDrawer() {
     const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    const [drawerSelected, setDrawerSelected] = useState('');
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -127,6 +126,12 @@ export default function AdminDrawer() {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    const handleDrawerSelected = (drawer: string) => {
+        setDrawerSelected(drawer);
+    };
+
+    console.log('drawerSelected: ', drawerSelected);
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -160,14 +165,24 @@ export default function AdminDrawer() {
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
-                <List>
+                <List sx={{ padding: 1 }}>
                     {drawerData.map((drawer) => (
-                        <ListItem key={drawer.text} disablePadding sx={{ display: 'block' }}>
+                        <ListItem
+                            key={drawer.text}
+                            disablePadding
+                            sx={{
+                                display: 'block',
+                                bgcolor: drawerSelected === drawer.text ? '#17bd81' : '',
+                                borderRadius: 1,
+                            }}
+                            onClick={() => handleDrawerSelected(drawer.text)}
+                        >
                             <ListItemButton
                                 sx={[
                                     {
                                         minHeight: 48,
                                         px: 2.5,
+                                        color: drawerSelected === drawer.text ? '#fff' : '#000',
                                     },
                                     open
                                         ? {
@@ -183,6 +198,7 @@ export default function AdminDrawer() {
                                         {
                                             minWidth: 0,
                                             justifyContent: 'center',
+                                            color: drawerSelected === drawer.text ? '#fff' : '#000',
                                         },
                                         open
                                             ? {
@@ -198,6 +214,10 @@ export default function AdminDrawer() {
                                 <ListItemText
                                     primary={drawer.text}
                                     sx={[
+                                        {
+                                            fontWeight:
+                                                drawerSelected === drawer.text ? 'bold' : 'normal',
+                                        },
                                         open
                                             ? {
                                                   opacity: 1,
