@@ -25,10 +25,10 @@ export const COL_USER_TABLE: Column[] = [
         minWidth: 170,
         align: 'center',
     },
-    {
-        id: 'actions',
-        label: 'Actions',
-        minWidth: 170,
-        align: 'center',
-    }
+
+]
+
+
+export const DATA_USER_TABLE = [
+    { id: 1, name: 'John Doe', email: 'Khoanek2e@gmail.com', role: 'user' }
 ]

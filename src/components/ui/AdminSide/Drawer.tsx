@@ -23,7 +23,7 @@ import CategoryIcon from '@mui/icons-material/Category';
 import CoffeeIcon from '@mui/icons-material/Coffee';
 import { DRAWER_WIDTH } from '../../util/constants';
 import ReusableTable from '../Table/ReuseTable';
-import { COL_USER_TABLE } from '../../../data/table';
+import { COL_USER_TABLE, DATA_USER_TABLE } from '../../../data/table';
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: DRAWER_WIDTH,
@@ -236,7 +236,9 @@ export default function AdminDrawer() {
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
-                {drawerSelected === 'User' && <ReusableTable columns={COL_USER_TABLE} rows={[]} />}
+                {drawerSelected === 'User' && (
+                    <ReusableTable columns={COL_USER_TABLE} rows={DATA_USER_TABLE} />
+                )}
                 {drawerSelected === 'Menu' && <Typography>Menu</Typography>}
                 {drawerSelected === 'Category' && <Typography>Category</Typography>}
                 {drawerSelected === 'Menu Coffee' && <Typography>Menu Coffee</Typography>}

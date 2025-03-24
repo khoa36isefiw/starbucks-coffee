@@ -101,10 +101,6 @@ const ReusableTable: React.FC<ReusableTableProps> = ({
                                                     ) : null
                                                 ) : column.format ? (
                                                     column.format(value)
-                                                ) : column.id === 'name' ? (
-                                                    <Typography sx={{ fontSize: '14px' }}>
-                                                        {row.firstName} {row.lastName}
-                                                    </Typography>
                                                 ) : (
                                                     value
                                                 )}
