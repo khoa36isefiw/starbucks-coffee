@@ -1,8 +1,8 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
-import HomeBanner from '../components/HomeBanner';
 import { features } from '../data/features';
-import FeatureSepcial from '../components/FeatureSepcial';
+import HomeBanner from '../components/ui/HomeBanner';
+import FeatureSepcial from '../components/ui/FeatureSepcial';
 
 function FeaturePage() {
     // get feature index item in 3, 4

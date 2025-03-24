@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import DefaultLayout from './layouts/DefaultLayout';
 import { publicRoutes } from './routes/routes';
 import Hangout from './pages/Hangout';
 import UserList from './pages/Test';
+import DefaultLayout from './components/layouts/DefaultLayout';
 
 function App() {
     return (

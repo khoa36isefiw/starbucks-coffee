@@ -1,10 +1,10 @@
-import { Box, Button, Divider, Typography } from '@mui/material';
+import { Box, Divider, Typography } from '@mui/material';
 import { theme } from '../theme/theme';
 import { coffeeOptions } from '../data/coffeeOptions';
 import { useState } from 'react';
-import { CButton } from '../components/Button/CButton';
+import { CButton } from '../components/ui/Button/CButton';
 import { useLocationContext } from '../context/LocationContext';
-import CoffeeDetailBreadcrumb from '../components/Breadcrumbs/CoffeeDetailBreadcrumb';
+import CoffeeDetailBreadcrumb from '../components/ui/Breadcrumbs/CoffeeDetailBreadcrumb';
 
 function CoffeeDetail() {
     const { locations } = useLocationContext();
@@ -17,7 +17,7 @@ function CoffeeDetail() {
                 sx={{
                     bgcolor: theme.color.pDetailBg,
                     width: '100%',
-                    height: { xs: '350px', sm: '300px' },
+                    height: { xs: '350px', lg: '300px' },
                 }}
             >
                 <Box
@@ -39,7 +39,7 @@ function CoffeeDetail() {
                             'https://globalassets.starbucks.com/digitalassets/products/bev/BrewedCoffee.jpg?impolicy=1by1_wide_topcrop_630'
                         }
                         alt={'coffee'}
-                        sx={{ maxWidth: { xs: 250, lg: 300 } }}
+                        sx={{ maxWidth: 250 }}
                     />
                     <Box
                         sx={{

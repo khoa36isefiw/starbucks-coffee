@@ -1,6 +1,6 @@
 import { Avatar, Box, Divider, Grid2, styled, Typography } from '@mui/material';
 import banner_hero from '../assets/images/starbucks-hero.webp';
-import { CButton } from '../components/Button/CButton';
+import { CButton } from '../components/ui/Button/CButton';
 import {
     cashCardContent,
     endlessExtra,
@@ -10,14 +10,14 @@ import {
     rewardsComming,
 } from '../data/rewards';
 import { theme } from '../theme/theme';
-import RatingTab from '../components/RatingTab';
-import { TButton } from '../components/Button/TButton';
-import { useOpenModal } from '../hooks/useOpenModal';
-import ExtraModal from '../components/ExtraModal';
-import StepCard from '../components/StepCard';
-import { HeadingTypography } from '../components/Typography/HeadingTypography';
-import { flexColCenterStyle, flexRowCenterStyle } from '../utils/styles';
-import PageTitle from '../components/PageTitle';
+import RatingTab from '../components/ui/RatingTab';
+import { TButton } from '../components/ui/Button/TButton';
+import { useOpenModal } from '../components/hooks/useOpenModal';
+import ExtraModal from '../components/ui/ExtraModal';
+import StepCard from '../components/ui/StepCard';
+import { HeadingTypography } from '../components/ui/Typography/HeadingTypography';
+import { flexColCenterStyle, flexRowCenterStyle } from '../components/util/styles';
+import PageTitle from '../components/ui/PageTitle';
 import { lazy } from 'react';
 
 const UnderlinedText = styled('span')({

@@ -1,6 +1,6 @@
 
 
-import StarbuckLocation from "../components/Map";
+import StarbuckLocation from "../components/ui/Map";
 import CoffeeDetail from "../pages/CoffeeDetail";
 import FavoritesPage from "../pages/FavoritesPage";
 import FeaturePage from "../pages/FeaturePage";

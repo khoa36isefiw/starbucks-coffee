@@ -1,7 +1,7 @@
-import { Box } from '@mui/material';
 import { previousData } from '../data/subMenu';
-import SubMenu from '../components/SubMenu';
-import { BoxLeft107 } from '../components/CustomBox/BoxLeft107';
+
+import { BoxLeft107 } from '../components/ui/CustomBox/BoxLeft107';
+import SubMenu from '../components/ui/SubMenu';
 
 function PreviousPage() {
     return (

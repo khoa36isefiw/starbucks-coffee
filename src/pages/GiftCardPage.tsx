@@ -1,17 +1,17 @@
 import { Avatar, Box, Button, Grid2, Typography } from '@mui/material';
 import { useState } from 'react';
-import { HeadingTypography } from '../components/Typography/HeadingTypography';
+import { HeadingTypography } from '../components/ui/Typography/HeadingTypography';
 import { theme } from '../theme/theme';
 import { advertisements, giftCardTypes, giftsCard, IAdvertisement } from '../data/giftsCard';
-import GiftsGallery from '../components/ImageSlider/GiftsGallery';
+import GiftsGallery from '../components/ui/ImageSlider/GiftsGallery';
 
-import ListGiftCardHeading from '../components/ImageSlider/ListGiftCardHeading';
-import { ContainerL107 } from '../components/CustomBox/ContainerL107';
-import { OButton } from '../components/Button/OButton';
-import { CButton } from '../components/Button/CButton';
-import { TButton } from '../components/Button/TButton';
+import ListGiftCardHeading from '../components/ui/ImageSlider/ListGiftCardHeading';
+import { ContainerL107 } from '../components/ui/CustomBox/ContainerL107';
+import { OButton } from '../components/ui/Button/OButton';
+import { CButton } from '../components/ui/Button/CButton';
+import { TButton } from '../components/ui/Button/TButton';
 import AspectRatioIcon from '@mui/icons-material/AspectRatio';
-import GiftCardSlider from '../components/ImageSlider/GiftCardHeadingV2';
+import GiftCardSlider from '../components/ui/ImageSlider/GiftCardHeadingV2';
 
 function GiftCardPage() {
     return (
