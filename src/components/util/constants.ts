@@ -7,6 +7,19 @@ export const DRAWER_WIDTH = 240;
 
 
 
+export const ROUTES = {
+    LOGIN: '/auth/login'
+}
+
+export const messageTypes = {
+    SUCCESS: 'success',
+    ERROR: 'error',
+    INFO: 'info',
+    WARNING: 'warning',
+};
+
+
+
 
 export const HEADER_DATA: IHeader[] = [
     {

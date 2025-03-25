@@ -26,8 +26,9 @@ import ReusableTable from '../Table/ReuseTable';
 import { COL_USER_TABLE, DATA_USER_TABLE } from '../../../data/table';
 import { OButton } from '../Button/OButton';
 import { useNavigate } from 'react-router-dom';
-import CreateMenuModal from '../AdminMenu/CreateMenuModal';
-import ModalLayout from '../AdminMenu/CreateMenuModal';
+import CreateMenuModal from '../AdminMenu/ModalLayout';
+import ModalLayout from '../AdminMenu/ModalLayout';
+import AdminCreateMenu from '../AdminMenu/AdminCreateMenu';
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: DRAWER_WIDTH,
@@ -246,7 +247,7 @@ export default function AdminDrawer() {
                 )}
                 {drawerSelected === 'Menu' && (
                     <Box>
-                        <ModalLayout>hihihi</ModalLayout>
+                        <AdminCreateMenu />
                         <ReusableTable columns={COL_USER_TABLE} rows={DATA_USER_TABLE} />
                     </Box>
                 )}
