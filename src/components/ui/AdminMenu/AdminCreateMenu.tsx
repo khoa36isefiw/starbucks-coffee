@@ -1,14 +1,15 @@
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box, TextField, Typography } from '@mui/material';
 import ModalLayout from './ModalLayout';
 import { useState } from 'react';
 import { ICreateMenu } from '../../../interfaces/IMenu';
 import { TButton } from '../Button/TButton';
 import { OButton } from '../Button/OButton';
 import { useMenu } from '../../../services/menu';
+import { useAdminModal } from '../../hooks/useAdminModal';
 
 function AdminCreateMenu() {
     const { POST_CREATE_MENU } = useMenu();
-    const [openModal, setOpenModal] = useState<boolean>(false);
+    const { open, handleOpen, handleClose } = useAdminModal();
     const [formData, setFormData] = useState<ICreateMenu>({
         name: '',
     });
@@ -28,13 +29,6 @@ function AdminCreateMenu() {
         console.log('resCreate: ', resCreate);
     };
 
-    const handleOpenModal = () => {
-        setOpenModal(true);
-    };
-
-    const handleCloseModal = () => {
-        setOpenModal(false);
-    };
     return (
         <Box>
             <OButton
@@ -47,10 +41,10 @@ function AdminCreateMenu() {
                     },
                     mb: 2,
                 }}
-                onHandleClick={handleOpenModal}
+                onHandleClick={handleOpen}
             />
 
-            <ModalLayout open={openModal} handleClose={handleCloseModal}>
+            <ModalLayout open={open} handleClose={handleClose}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: 300 }}>
                     <Typography sx={{ fontSize: '18px', fontWeight: 'bold' }}>
                         Create new menu
