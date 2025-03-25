@@ -14,9 +14,14 @@ export type APIResponse<T = any> = {
     success?: boolean;
     remarks?: any;
 };
+
+
+
+
 export const publicApi = (subPath = '') => {
     const api = axios.create({
         baseURL: `${process.env.REACT_APP_API_URL}/${subPath}`,
+
     });
 
     api.interceptors.request.use(

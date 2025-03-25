@@ -3,12 +3,11 @@ import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { OButton } from '../Button/OButton';
+
 import { useAdminModal } from '../../hooks/useAdminModal';
 import { IconButton } from '@mui/material';
 import { Close } from '@mui/icons-material';
+import { IAdminModal } from '../../../interfaces/IModal';
 
 const style = {
     position: 'absolute',
@@ -23,22 +22,9 @@ const style = {
     p: 4,
 };
 
-export default function ModalLayout({ children }: { children: React.ReactNode }) {
-    const { open, handleOpen, handleClose } = useAdminModal();
+export default function ModalLayout({ children, open, handleClose }: IAdminModal) {
     return (
         <div>
-            <OButton
-                text={'Create Menu'}
-                customStyle={{
-                    height: 40,
-                    borderRadius: '12px',
-                    '&:hover': {
-                        fontWeight: 'bold',
-                    },
-                    mb: 2,
-                }}
-                onHandleClick={handleOpen}
-            />
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
