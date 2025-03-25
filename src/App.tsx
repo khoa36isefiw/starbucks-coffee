@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { publicRoutes } from './routes/routes';
-import Hangout from './pages/Hangout';
+import { privateRoutes, publicRoutes } from './routes/routes';
+
 import UserList from './pages/Test';
 import DefaultLayout from './components/layouts/DefaultLayout';
 import AdminPage from './pages/Admin/AdminPage';
@@ -15,6 +15,11 @@ function App() {
                         <Route path={route.path} element={<route.component />} key={route.path} />
                     ))}
                 </Route>
+
+                {privateRoutes.map((route) => {
+                    const Component = route.component;
+                    return <Route path={route.path} element={<Component />} key={route.path} />;
+                })}
 
                 <Route path={'/hangout'} element={<UserList />} />
 

@@ -28,3 +28,9 @@ export interface ISubMenu {
     content: string;
 
 }
+
+
+
+export interface ICreateMenu {
+    name: string;
+}
