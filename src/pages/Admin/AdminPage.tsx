@@ -1,4 +1,4 @@
-import AdminDashboard from '../../components/ui/AdminSide/Drawer';
+import AdminDashboard from '../../components/ui/AdminSide/AdminDrawer';
 
 function AdminPage() {
     return <AdminDashboard />;

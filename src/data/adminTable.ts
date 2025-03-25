@@ -32,3 +32,19 @@ export const COL_USER_TABLE: Column[] = [
 export const DATA_USER_TABLE = [
     { id: 1, name: 'John Doe', email: 'Khoanek2e@gmail.com', role: 'user' }
 ]
+
+
+export const COL_MENU_TABLE = [
+    {
+        id: 'id',
+        label: 'ID',
+        minWidth: 50,
+        align: 'center',
+    },
+    {
+        id: 'name',
+        label: 'Name',
+        minWidth: 170,
+        align: 'center',
+    },
+]
