@@ -1,5 +1,6 @@
 
 
+import AdminCreateMenu from "../components/ui/AdminMenu/AdminCreateMenu";
 import StarbuckLocation from "../components/ui/Map";
 import AdminPage from "../pages/Admin/AdminPage";
 import CoffeeDetail from "../pages/CoffeeDetail";
@@ -23,10 +24,10 @@ export const publicRoutes = [
     { path: '/store-location', component: StarbuckLocation },
     { path: '/menu/prouduct/:id/:coffeeType', component: CoffeeDetail },
 
-    
-
-
-
-
 ];
-export const privateRoutes = [];
+export const privateRoutes = [
+    {
+        path: 'starbucks-manager/menu/create',
+        component: AdminCreateMenu
+    }
+];

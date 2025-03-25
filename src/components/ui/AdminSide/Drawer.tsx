@@ -24,6 +24,10 @@ import CoffeeIcon from '@mui/icons-material/Coffee';
 import { DRAWER_WIDTH } from '../../util/constants';
 import ReusableTable from '../Table/ReuseTable';
 import { COL_USER_TABLE, DATA_USER_TABLE } from '../../../data/table';
+import { OButton } from '../Button/OButton';
+import { useNavigate } from 'react-router-dom';
+import CreateMenuModal from '../AdminMenu/CreateMenuModal';
+import ModalLayout from '../AdminMenu/CreateMenuModal';
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: DRAWER_WIDTH,
@@ -117,6 +121,7 @@ const drawerData: {
 ];
 
 export default function AdminDrawer() {
+    const navigate = useNavigate();
     const theme = useTheme();
     const [open, setOpen] = useState(false);
     const [drawerSelected, setDrawerSelected] = useState('');
@@ -239,7 +244,12 @@ export default function AdminDrawer() {
                 {drawerSelected === 'User' && (
                     <ReusableTable columns={COL_USER_TABLE} rows={DATA_USER_TABLE} />
                 )}
-                {drawerSelected === 'Menu' && <Typography>Menu</Typography>}
+                {drawerSelected === 'Menu' && (
+                    <Box>
+                        <ModalLayout>hihihi</ModalLayout>
+                        <ReusableTable columns={COL_USER_TABLE} rows={DATA_USER_TABLE} />
+                    </Box>
+                )}
                 {drawerSelected === 'Category' && <Typography>Category</Typography>}
                 {drawerSelected === 'Menu Coffee' && <Typography>Menu Coffee</Typography>}
                 {drawerSelected === 'Logger' && <Typography>Logger</Typography>}
