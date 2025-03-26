@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box, TextField, Typography } from '@mui/material';
 import ModalLayout from './ModalLayout';
 import { useState } from 'react';
 import { ICreateMenu } from '../../../interfaces/IMenu';
@@ -28,12 +28,15 @@ function AdminCreateMenu() {
 
     const handleSubmit = async () => {
         const resCreate = await POST_CREATE_MENU(formData.name);
+        if (resCreate.statusCode === 201) {
+            toast.success('Create new menu successfully!');
+            handleClose();
+        }
         console.log('resCreate: ', resCreate);
     };
-    const notify = () => toast('Wow so easy !');
+
     return (
         <Box>
-            <Button onClick={notify}>Notify !</Button>
             <OButton
                 text={'Create Menu'}
                 customStyle={{

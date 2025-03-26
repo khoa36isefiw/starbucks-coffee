@@ -29,6 +29,7 @@ import AdminMenuTable from '../AdminMenu/AdminMenuTable';
 import AdminCategoryTable from '../AdminCategory/AdminCategoryTable';
 import { OButton } from '../Button/OButton';
 import AdminCreateCategory from '../AdminCategory/AdminCreateCategory';
+import AdminEditCategory from '../AdminCategory/AdminEditCategory';
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: DRAWER_WIDTH,
@@ -126,6 +127,7 @@ export default function AdminDrawer() {
     const [open, setOpen] = useState(false);
     const [drawerSelected, setDrawerSelected] = useState('');
     const [action, setAction] = useState<'create' | 'edit' | ''>('');
+    const [editId, setEditId] = useState<number | null>(null);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -252,7 +254,7 @@ export default function AdminDrawer() {
                 )}
                 {drawerSelected === 'Category' && (
                     <Box>
-                        {action !== 'create' && (
+                        {action !== 'create' && action !== 'edit' && (
                             <OButton
                                 text={'Create Category'}
                                 customStyle={{
@@ -267,10 +269,14 @@ export default function AdminDrawer() {
                             />
                         )}
 
-                        {action === '' && <AdminCategoryTable />}
+                        {/* menu category  dashboard*/}
+                        {action === '' && <AdminCategoryTable setAction={setAction} />}
 
                         {/* create menu category */}
                         {action === 'create' && <AdminCreateCategory setAction={setAction} />}
+
+                        {/* eidt category */}
+                        {action === 'edit' && <AdminEditCategory />}
                     </Box>
                 )}
                 {drawerSelected === 'Menu Coffee' && <Typography>Menu Coffee</Typography>}

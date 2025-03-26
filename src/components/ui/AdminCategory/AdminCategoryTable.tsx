@@ -8,7 +8,11 @@ import { IMenuData } from '../../../interfaces/IMenu';
 import ReusableTable from '../Table/ReuseTable';
 import { COL_CATEGORY_TABLE } from '../../../data/adminTable';
 
-function AdminCategoryTable() {
+function AdminCategoryTable({
+    setAction,
+}: {
+    setAction: React.Dispatch<React.SetStateAction<'' | 'create' | 'edit'>>;
+}) {
     const { category, loading } = useAllMenuCategory();
 
     // Đợi dữ liệu load
@@ -29,6 +33,7 @@ function AdminCategoryTable() {
 
     const handleEdit = (id: number) => {
         console.log('Edit ID:', id);
+        setAction('edit');
         // Ở đây có thể mở modal hoặc chuyển trang để edit
     };
 
