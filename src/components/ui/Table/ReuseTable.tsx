@@ -60,6 +60,16 @@ const ReusableTable: React.FC<ReusableTableProps> = ({
         setPage(0);
     };
 
+    const handleEdit = (id: number) => {
+        console.log('Edit ID:', id);
+        // Thêm logic mở form edit hoặc điều hướng sang trang edit
+    };
+
+    const handleDelete = (id: number) => {
+        console.log('Delete ID:', id);
+        // Gọi API xóa hoặc confirm trước khi xóa
+    };
+
     return (
         <Box sx={{ borderRadius: 1, bgcolor: '#fff', border: '1px solid #ccc' }}>
             <TableContainer sx={{ maxHeight: 440 }}>
@@ -101,7 +111,25 @@ const ReusableTable: React.FC<ReusableTableProps> = ({
                                                         sx={{ height: '56px', width: '56px' }}
                                                     />
                                                 ) : column.id === 'actions' ? (
-                                                    renderActions(row)
+                                                    // renderActions(row)
+                                                    <>
+                                                        <Tooltip title="Edit">
+                                                            <IconButton
+                                                                onClick={() => handleEdit(row.id)}
+                                                                color="primary"
+                                                            >
+                                                                <EditIcon />
+                                                            </IconButton>
+                                                        </Tooltip>
+                                                        <Tooltip title="Delete">
+                                                            <IconButton
+                                                                onClick={() => handleDelete(row.id)}
+                                                                color="error"
+                                                            >
+                                                                <DeleteIcon />
+                                                            </IconButton>
+                                                        </Tooltip>
+                                                    </>
                                                 ) : //  (
                                                 //     customActionsRender ? (
                                                 //         renderActions(row)
