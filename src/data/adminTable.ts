@@ -34,7 +34,7 @@ export const DATA_USER_TABLE = [
 ]
 
 
-export const COL_MENU_TABLE = [
+export const COL_MENU_TABLE: Column[] = [
     {
         id: 'id',
         label: 'ID',
@@ -44,6 +44,12 @@ export const COL_MENU_TABLE = [
     {
         id: 'name',
         label: 'Name',
+        minWidth: 170,
+        align: 'center',
+    },
+    {
+        id: 'actions',
+        label: 'Actions',
         minWidth: 170,
         align: 'center',
     },

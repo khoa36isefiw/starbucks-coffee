@@ -667,7 +667,6 @@ export const menuData = [
                 title: 'Snacks',
                 path: 'snacks',
                 menu: [
-
                     {
                         pType: 'Brewed Coffee',
                         pList: [

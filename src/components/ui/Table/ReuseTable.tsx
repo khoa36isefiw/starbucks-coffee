@@ -7,7 +7,6 @@ import {
     TableCell,
     TableBody,
     Avatar,
-    Typography,
     TablePagination,
     IconButton,
     Tooltip,
@@ -16,6 +15,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { blue } from '@mui/material/colors';
 import React, { useState } from 'react';
 import { Column } from '../../../interfaces/ITable';
+import { IMenuData } from '../../../interfaces/IMenu';
+import EditIcon from '@mui/icons-material/Edit';
 
 interface ReusableTableProps {
     columns: Column[];
@@ -23,6 +24,21 @@ interface ReusableTableProps {
     onDelete?: (id: string) => void;
     customActionsRender?: (row: any) => React.ReactNode;
 }
+
+const renderActions = (row: IMenuData) => (
+    <>
+        <Tooltip title="Edit">
+            <IconButton onClick={() => handleEdit(row.id)} color="primary">
+                <EditIcon />
+            </IconButton>
+        </Tooltip>
+        <Tooltip title="Delete">
+            <IconButton onClick={() => handleDelete(row.id)} color="error">
+                <DeleteIcon />
+            </IconButton>
+        </Tooltip>
+    </>
+);
 
 const ReusableTable: React.FC<ReusableTableProps> = ({
     columns,
@@ -85,21 +101,23 @@ const ReusableTable: React.FC<ReusableTableProps> = ({
                                                         sx={{ height: '56px', width: '56px' }}
                                                     />
                                                 ) : column.id === 'actions' ? (
-                                                    customActionsRender ? (
-                                                        customActionsRender(row)
-                                                    ) : onDelete ? (
-                                                        <Tooltip title="Delete">
-                                                            <IconButton
-                                                                onClick={() => onDelete(row.id)}
-                                                                color="secondary"
-                                                            >
-                                                                <DeleteIcon
-                                                                    sx={{ fontSize: '22px' }}
-                                                                />
-                                                            </IconButton>
-                                                        </Tooltip>
-                                                    ) : null
-                                                ) : column.format ? (
+                                                    renderActions(row)
+                                                ) : //  (
+                                                //     customActionsRender ? (
+                                                //         renderActions(row)
+                                                //     ) : onDelete ? (
+                                                //         <Tooltip title="Delete">
+                                                //             <IconButton
+                                                //                 onClick={() => onDelete(row.id)}
+                                                //                 color="secondary"
+                                                //             >
+                                                //                 <DeleteIcon
+                                                //                     sx={{ fontSize: '22px' }}
+                                                //                 />
+                                                //             </IconButton>
+                                                //         </Tooltip>
+                                                //     ) : null
+                                                column.format ? (
                                                     column.format(value)
                                                 ) : (
                                                     value
@@ -133,3 +151,10 @@ const ReusableTable: React.FC<ReusableTableProps> = ({
 };
 
 export default ReusableTable;
+function handleDelete(id: number): void {
+    throw new Error('Function not implemented.');
+}
+
+function handleEdit(id: number): void {
+    throw new Error('Function not implemented.');
+}

@@ -248,9 +248,7 @@ export default function AdminDrawer() {
                 )}
                 {drawerSelected === 'Menu' && (
                     <Box>
-                        <AdminCreateMenu />
                         <AdminMenuTable />
-                        <ReusableTable columns={COL_USER_TABLE} rows={DATA_USER_TABLE} />
                     </Box>
                 )}
                 {drawerSelected === 'Category' && <Typography>Category</Typography>}
