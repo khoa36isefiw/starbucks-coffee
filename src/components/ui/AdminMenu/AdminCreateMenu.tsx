@@ -1,4 +1,4 @@
-import { Box, TextField, Typography } from '@mui/material';
+import { Box, Button, TextField, Typography } from '@mui/material';
 import ModalLayout from './ModalLayout';
 import { useState } from 'react';
 import { ICreateMenu } from '../../../interfaces/IMenu';
@@ -6,9 +6,11 @@ import { TButton } from '../Button/TButton';
 import { OButton } from '../Button/OButton';
 import { useMenu } from '../../../services/menu';
 import { useAdminModal } from '../../hooks/useAdminModal';
+import { toast } from 'react-toastify';
 
 function AdminCreateMenu() {
     const { POST_CREATE_MENU } = useMenu();
+
     const { open, handleOpen, handleClose } = useAdminModal();
     const [formData, setFormData] = useState<ICreateMenu>({
         name: '',
@@ -28,9 +30,10 @@ function AdminCreateMenu() {
         const resCreate = await POST_CREATE_MENU(formData.name);
         console.log('resCreate: ', resCreate);
     };
-
+    const notify = () => toast('Wow so easy !');
     return (
         <Box>
+            <Button onClick={notify}>Notify !</Button>
             <OButton
                 text={'Create Menu'}
                 customStyle={{

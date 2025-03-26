@@ -34,3 +34,8 @@ export interface ISubMenu {
 export interface ICreateMenu {
     name: string;
 }
+
+export interface IMenuData {
+    id: number;
+    name: string;
+}

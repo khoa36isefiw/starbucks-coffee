@@ -2,9 +2,11 @@ import { useState } from 'react';
 
 export const useAdminModal = () => {
     const [open, setOpen] = useState(false);
+    const [index, setIndex] = useState<number | null>(null);
 
-    const handleOpen = () => {
+    const handleOpen = (id: number | null) => {
         setOpen(true);
+        setIndex(id);
     };
 
     const handleClose = () => setOpen(false);
@@ -12,5 +14,6 @@ export const useAdminModal = () => {
         open,
         handleOpen,
         handleClose,
+        index,
     };
 };

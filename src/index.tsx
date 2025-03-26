@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { theme } from './theme/theme';
 import { LocationProvider } from './context/LocationContext';
+import { Bounce, ToastContainer } from 'react-toastify';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -13,6 +14,19 @@ root.render(
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <LocationProvider>
+                <ToastContainer
+                    position="top-right"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick={false}
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                    transition={Bounce}
+                />
                 <App />
             </LocationProvider>
         </ThemeProvider>

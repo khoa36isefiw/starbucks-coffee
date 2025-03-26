@@ -3,5 +3,5 @@ export interface IButtonProps {
     customStyle?: object; // another style
     startIcon?: React.ReactNode;
     endIcon?: React.ReactNode;
-    onHandleClick?: () => void;
+    onHandleClick?: (...args: any[]) => void;
 }

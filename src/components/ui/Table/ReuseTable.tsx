@@ -7,7 +7,6 @@ import {
     TableCell,
     TableBody,
     Avatar,
-    Typography,
     TablePagination,
     IconButton,
     Tooltip,
@@ -16,10 +15,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { blue } from '@mui/material/colors';
 import React, { useState } from 'react';
 import { Column } from '../../../interfaces/ITable';
+import { IMenuData } from '../../../interfaces/IMenu';
+import EditIcon from '@mui/icons-material/Edit';
 
 interface ReusableTableProps {
     columns: Column[];
     rows: any[];
+    onHandleEdit?: () => void;
+    onHandleDelete?: (id: number) => void;
     onDelete?: (id: string) => void;
     customActionsRender?: (row: any) => React.ReactNode;
 }
@@ -27,7 +30,8 @@ interface ReusableTableProps {
 const ReusableTable: React.FC<ReusableTableProps> = ({
     columns,
     rows,
-    onDelete,
+    onHandleEdit,
+    onHandleDelete,
     customActionsRender,
 }) => {
     const [page, setPage] = useState(0);
@@ -42,6 +46,16 @@ const ReusableTable: React.FC<ReusableTableProps> = ({
     ) => {
         setRowsPerPage(+event.target.value);
         setPage(0);
+    };
+
+    const handleEdit = (id: number) => {
+        console.log('Edit ID:', id);
+        // Thêm logic mở form edit hoặc điều hướng sang trang edit
+    };
+
+    const handleDelete = (id: number) => {
+        console.log('Delete ID:', id);
+        // Gọi API xóa hoặc confirm trước khi xóa
     };
 
     return (
@@ -85,21 +99,41 @@ const ReusableTable: React.FC<ReusableTableProps> = ({
                                                         sx={{ height: '56px', width: '56px' }}
                                                     />
                                                 ) : column.id === 'actions' ? (
-                                                    customActionsRender ? (
-                                                        customActionsRender(row)
-                                                    ) : onDelete ? (
-                                                        <Tooltip title="Delete">
-                                                            <IconButton
-                                                                onClick={() => onDelete(row.id)}
-                                                                color="secondary"
-                                                            >
-                                                                <DeleteIcon
-                                                                    sx={{ fontSize: '22px' }}
-                                                                />
-                                                            </IconButton>
-                                                        </Tooltip>
-                                                    ) : null
-                                                ) : column.format ? (
+                                                    customActionsRender && customActionsRender(row)
+                                                ) : // <>
+                                                //     <Tooltip title="Edit">
+                                                //         <IconButton
+                                                //             onClick={onHandleEdit}
+                                                //             color="primary"
+                                                //         >
+                                                //             <EditIcon />
+                                                //         </IconButton>
+                                                //     </Tooltip>
+                                                //     <Tooltip title="Delete">
+                                                //         <IconButton
+                                                //             onClick={() => handleDelete(row.id)}
+                                                //             color="error"
+                                                //         >
+                                                //             <DeleteIcon />
+                                                //         </IconButton>
+                                                //     </Tooltip>
+                                                // </>
+                                                //  (
+                                                //     customActionsRender ? (
+                                                //         renderActions(row)
+                                                //     ) : onDelete ? (
+                                                //         <Tooltip title="Delete">
+                                                //             <IconButton
+                                                //                 onClick={() => onDelete(row.id)}
+                                                //                 color="secondary"
+                                                //             >
+                                                //                 <DeleteIcon
+                                                //                     sx={{ fontSize: '22px' }}
+                                                //                 />
+                                                //             </IconButton>
+                                                //         </Tooltip>
+                                                //     ) : null
+                                                column.format ? (
                                                     column.format(value)
                                                 ) : (
                                                     value

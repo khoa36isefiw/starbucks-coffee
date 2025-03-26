@@ -23,12 +23,13 @@ import CategoryIcon from '@mui/icons-material/Category';
 import CoffeeIcon from '@mui/icons-material/Coffee';
 import { DRAWER_WIDTH } from '../../util/constants';
 import ReusableTable from '../Table/ReuseTable';
-import { COL_USER_TABLE, DATA_USER_TABLE } from '../../../data/table';
+import { COL_USER_TABLE, DATA_USER_TABLE } from '../../../data/adminTable';
 import { OButton } from '../Button/OButton';
 import { useNavigate } from 'react-router-dom';
 import CreateMenuModal from '../AdminMenu/ModalLayout';
 import ModalLayout from '../AdminMenu/ModalLayout';
 import AdminCreateMenu from '../AdminMenu/AdminCreateMenu';
+import AdminMenuTable from '../AdminMenu/AdminMenuTable';
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: DRAWER_WIDTH,
@@ -247,8 +248,7 @@ export default function AdminDrawer() {
                 )}
                 {drawerSelected === 'Menu' && (
                     <Box>
-                        <AdminCreateMenu />
-                        <ReusableTable columns={COL_USER_TABLE} rows={DATA_USER_TABLE} />
+                        <AdminMenuTable />
                     </Box>
                 )}
                 {drawerSelected === 'Category' && <Typography>Category</Typography>}
