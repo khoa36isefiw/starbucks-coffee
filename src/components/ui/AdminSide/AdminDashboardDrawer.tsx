@@ -24,12 +24,12 @@ import CoffeeIcon from '@mui/icons-material/Coffee';
 import { DRAWER_WIDTH } from '../../util/constants';
 import ReusableTable from '../Table/ReuseTable';
 import { COL_USER_TABLE, DATA_USER_TABLE } from '../../../data/adminTable';
-import { OButton } from '../Button/OButton';
-import { useNavigate } from 'react-router-dom';
-import CreateMenuModal from '../AdminMenu/ModalLayout';
-import ModalLayout from '../AdminMenu/ModalLayout';
-import AdminCreateMenu from '../AdminMenu/AdminCreateMenu';
+
 import AdminMenuTable from '../AdminMenu/AdminMenuTable';
+import AdminCategoryTable from '../AdminCategory/AdminCategoryTable';
+import { OButton } from '../Button/OButton';
+import AdminCreateCategory from '../AdminCategory/AdminCreateCategory';
+import AdminEditCategory from '../AdminCategory/AdminEditCategory';
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: DRAWER_WIDTH,
@@ -123,10 +123,11 @@ const drawerData: {
 ];
 
 export default function AdminDrawer() {
-    const navigate = useNavigate();
     const theme = useTheme();
     const [open, setOpen] = useState(false);
     const [drawerSelected, setDrawerSelected] = useState('');
+    const [action, setAction] = useState<'create' | 'edit' | ''>('');
+    const [editId, setEditId] = useState<number | null>(null);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -251,7 +252,33 @@ export default function AdminDrawer() {
                         <AdminMenuTable />
                     </Box>
                 )}
-                {drawerSelected === 'Category' && <Typography>Category</Typography>}
+                {drawerSelected === 'Category' && (
+                    <Box>
+                        {action !== 'create' && action !== 'edit' && (
+                            <OButton
+                                text={'Create Category'}
+                                customStyle={{
+                                    height: 40,
+                                    borderRadius: '12px',
+                                    '&:hover': {
+                                        fontWeight: 'bold',
+                                    },
+                                    mb: 2,
+                                }}
+                                onHandleClick={() => setAction('create')}
+                            />
+                        )}
+
+                        {/* menu category  dashboard*/}
+                        {action === '' && <AdminCategoryTable setAction={setAction} />}
+
+                        {/* create menu category */}
+                        {action === 'create' && <AdminCreateCategory setAction={setAction} />}
+
+                        {/* eidt category */}
+                        {action === 'edit' && <AdminEditCategory />}
+                    </Box>
+                )}
                 {drawerSelected === 'Menu Coffee' && <Typography>Menu Coffee</Typography>}
                 {drawerSelected === 'Logger' && <Typography>Logger</Typography>}
             </Box>

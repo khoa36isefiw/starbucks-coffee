@@ -1,11 +1,10 @@
 import { Avatar, Box, Button, Grid2, Typography } from '@mui/material';
-import { useState } from 'react';
+
 import { HeadingTypography } from '../components/ui/Typography/HeadingTypography';
 import { theme } from '../theme/theme';
 import { advertisements, giftCardTypes, giftsCard, IAdvertisement } from '../data/giftsCard';
 import GiftsGallery from '../components/ui/ImageSlider/GiftsGallery';
 
-import ListGiftCardHeading from '../components/ui/ImageSlider/ListGiftCardHeading';
 import { ContainerL107 } from '../components/ui/CustomBox/ContainerL107';
 import { OButton } from '../components/ui/Button/OButton';
 import { CButton } from '../components/ui/Button/CButton';

@@ -14,7 +14,7 @@ import { useMenu } from '../../../services/menu';
 
 function AdminMenuTable() {
     const { open, handleClose, handleOpen, index } = useAdminModal();
-    const { menu, mutate, loading } = useAllMenu();
+    const { menu, loading } = useAllMenu();
     const { DELETE_MENU } = useMenu();
 
     if (loading) {

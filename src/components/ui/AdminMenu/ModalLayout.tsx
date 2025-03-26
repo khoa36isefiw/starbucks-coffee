@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 
-import { useAdminModal } from '../../hooks/useAdminModal';
 import { IconButton } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import { IAdminModal } from '../../../interfaces/IModal';
