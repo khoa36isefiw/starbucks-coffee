@@ -54,3 +54,33 @@ export const COL_MENU_TABLE: Column[] = [
         align: 'center',
     },
 ]
+
+
+
+export const COL_CATEGORY_TABLE: Column[] = [
+    {
+        id: 'id',
+        label: 'ID',
+        minWidth: 50,
+        align: 'center',
+    },
+    {
+        id: 'imageCategory',
+        label: 'Image',
+        minWidth: 170,
+        align: 'center',
+    },
+    {
+        id: 'menuCategory',
+        label: 'Menu',
+        minWidth: 170,
+        align: 'center',
+    },
+
+    {
+        id: 'actions',
+        label: 'Actions',
+        minWidth: 170,
+        align: 'center',
+    },
+]

@@ -11,11 +11,10 @@ export const uploadImageToCloudinary = async (file: File) => {
 
 
     const res = await fetch(`https://api.cloudinary.com/v1_1/dxulhqdp3/image/upload`, {
-
         method: 'POST',
         body: formData,
     });
 
     const data = await res.json();
-    return data.secure_url;
+    return data.secure_url; // return image url
 };

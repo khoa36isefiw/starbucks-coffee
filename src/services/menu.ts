@@ -8,7 +8,6 @@ export const useMenu = () => {
         const configApi = publicApi(subPath);
         const res = await configApi.post('', { name })
         return res.data;
-
     }
 
     const POST_EDIT_MENU = async (id: number, name: string) => {
@@ -16,7 +15,6 @@ export const useMenu = () => {
         const res = await configApi.put('', { name })
         return res.data;
     }
-
 
     const DELETE_MENU = async (id: number) => {
         const configApi = publicApi(`${subPath}/${id}`);

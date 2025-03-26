@@ -18,7 +18,6 @@ import StepCard from '../components/ui/StepCard';
 import { HeadingTypography } from '../components/ui/Typography/HeadingTypography';
 import { flexColCenterStyle, flexRowCenterStyle } from '../components/util/styles';
 import PageTitle from '../components/ui/PageTitle';
-import { lazy } from 'react';
 
 const UnderlinedText = styled('span')({
     textDecoration: 'underline',

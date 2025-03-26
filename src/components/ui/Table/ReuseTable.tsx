@@ -8,32 +8,21 @@ import {
     TableBody,
     Avatar,
     TablePagination,
-    IconButton,
-    Tooltip,
+    Typography,
 } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
+
 import { blue } from '@mui/material/colors';
 import React, { useState } from 'react';
 import { Column } from '../../../interfaces/ITable';
-import { IMenuData } from '../../../interfaces/IMenu';
-import EditIcon from '@mui/icons-material/Edit';
 
 interface ReusableTableProps {
     columns: Column[];
     rows: any[];
-    onHandleEdit?: () => void;
-    onHandleDelete?: (id: number) => void;
     onDelete?: (id: string) => void;
     customActionsRender?: (row: any) => React.ReactNode;
 }
 
-const ReusableTable: React.FC<ReusableTableProps> = ({
-    columns,
-    rows,
-    onHandleEdit,
-    onHandleDelete,
-    customActionsRender,
-}) => {
+const ReusableTable: React.FC<ReusableTableProps> = ({ columns, rows, customActionsRender }) => {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -46,16 +35,6 @@ const ReusableTable: React.FC<ReusableTableProps> = ({
     ) => {
         setRowsPerPage(+event.target.value);
         setPage(0);
-    };
-
-    const handleEdit = (id: number) => {
-        console.log('Edit ID:', id);
-        // Thêm logic mở form edit hoặc điều hướng sang trang edit
-    };
-
-    const handleDelete = (id: number) => {
-        console.log('Delete ID:', id);
-        // Gọi API xóa hoặc confirm trước khi xóa
     };
 
     return (
@@ -79,7 +58,7 @@ const ReusableTable: React.FC<ReusableTableProps> = ({
                     <TableBody>
                         {rows
                             ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            .map((row) => (
+                            .map((row, index) => (
                                 <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
                                     {columns.map((column) => {
                                         const value = row[column.id];
@@ -97,6 +76,21 @@ const ReusableTable: React.FC<ReusableTableProps> = ({
                                                             'https://static.vecteezy.com/system/resources/thumbnails/030/353/225/small_2x/beautiful-night-sky-background-ai-generated-photo.jpg'
                                                         }
                                                         sx={{ height: '56px', width: '56px' }}
+                                                    />
+                                                ) : column.id === 'id' ? (
+                                                    <Typography>{index + 1}</Typography>
+                                                ) : column.id === 'imageCategory' ? (
+                                                    <Avatar
+                                                        alt={row.menuCategory}
+                                                        src={
+                                                            row.imageCategory ||
+                                                            'https://static.vecteezy.com/system/resources/thumbnails/030/353/225/small_2x/beautiful-night-sky-background-ai-generated-photo.jpg'
+                                                        }
+                                                        sx={{
+                                                            height: '100px',
+                                                            width: '100px',
+                                                            borderRadius: 0,
+                                                        }}
                                                     />
                                                 ) : column.id === 'actions' ? (
                                                     customActionsRender && customActionsRender(row)

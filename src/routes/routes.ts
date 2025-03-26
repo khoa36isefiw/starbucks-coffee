@@ -2,7 +2,7 @@
 
 import AdminCreateMenu from "../components/ui/AdminMenu/AdminCreateMenu";
 import StarbuckLocation from "../components/ui/Map";
-import AdminPage from "../pages/Admin/AdminPage";
+
 import CoffeeDetail from "../pages/CoffeeDetail";
 import FavoritesPage from "../pages/FavoritesPage";
 import FeaturePage from "../pages/FeaturePage";
