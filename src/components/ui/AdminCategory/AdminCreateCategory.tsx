@@ -6,8 +6,13 @@ import { IMenuData } from '../../../interfaces/IMenu';
 import { useState } from 'react';
 import { uploadImageToCloudinary } from '../../util/uploadImage';
 import { useMenuCategory } from '../../../services/menuCategory';
+import { toast } from 'react-toastify';
 
-function AdminCreateCategory() {
+function AdminCreateCategory({
+    setAction,
+}: {
+    setAction: React.Dispatch<React.SetStateAction<'' | 'create' | 'edit'>>;
+}) {
     const { menu, loading } = useAllMenu();
     const { POST_CREATE_CATEGORY } = useMenuCategory();
     const [selectedMenu, setSelectedMenu] = useState<{ id: number; name: string } | null>(null);
@@ -20,7 +25,7 @@ function AdminCreateCategory() {
     const handleSubmit = async () => {
         // check null
         if (!selectedMenu || !categoryName || !imageFile) {
-            alert('Please select menu, enter category name, and choose an image!');
+            toast.warning('Please select menu, enter category name, and choose an image!');
             return;
         }
         try {
@@ -32,6 +37,10 @@ function AdminCreateCategory() {
             };
             const createRes = await POST_CREATE_CATEGORY(data);
             console.log('createRes: ', createRes);
+            if (createRes.statusCode === 201) {
+                setAction('');
+                toast.success('Create new menu category successfully!!!');
+            }
         } catch (error) {
             console.log(error);
         }
