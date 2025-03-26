@@ -1,32 +1,39 @@
 import { Box, Typography, IconButton, Tooltip } from '@mui/material';
-import { useMenu } from '../../../data/menu';
+
 import { IMenuData } from '../../../interfaces/IMenu';
 import AdminCreateMenu from './AdminCreateMenu';
 import ReusableTable from '../Table/ReuseTable';
 import { COL_MENU_TABLE } from '../../../data/adminTable';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useAdminModal } from '../../hooks/useAdminModal';
+import ModalLayout from './ModalLayout';
+import AdminEditMenu from './AdminEditMenu';
+import { useAllMenu } from '../../../data/menu';
+import { useMenu } from '../../../services/menu';
 
 function AdminMenuTable() {
-    const { menu, mutate, loading } = useMenu();
+    const { open, handleClose, handleOpen, index } = useAdminModal();
+    const { menu, mutate, loading } = useAllMenu();
+    const { DELETE_MENU } = useMenu();
 
     if (loading) {
         return <Typography>Loading...</Typography>;
     }
 
     const menuv2 = menu?.data?.map((menu: IMenuData) => ({
-        id: menu.id,
+        id: menu.id as number,
         name: menu.name,
     }));
 
     const handleEdit = (id: number) => {
         console.log('Edit ID:', id);
-        // Thêm logic mở form edit hoặc điều hướng sang trang edit
+        handleOpen(id);
     };
 
-    const handleDelete = (id: number) => {
-        console.log('Delete ID:', id);
-        // Gọi API xóa hoặc confirm trước khi xóa
+    const handleDelete = async (id: number) => {
+        const deleteRes = await DELETE_MENU(id);
+        console.log('Delete ID:', deleteRes);
     };
 
     const renderActions = (row: IMenuData) => (
@@ -50,8 +57,11 @@ function AdminMenuTable() {
             <ReusableTable
                 columns={COL_MENU_TABLE}
                 rows={menuv2}
-                // customActionsRender={renderActions}
+                customActionsRender={renderActions}
             />
+            <ModalLayout open={open} handleClose={handleClose}>
+                <AdminEditMenu id={index!} />
+            </ModalLayout>
         </Box>
     );
 }

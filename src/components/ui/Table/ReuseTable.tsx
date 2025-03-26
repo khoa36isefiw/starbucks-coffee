@@ -21,29 +21,17 @@ import EditIcon from '@mui/icons-material/Edit';
 interface ReusableTableProps {
     columns: Column[];
     rows: any[];
+    onHandleEdit?: () => void;
+    onHandleDelete?: (id: number) => void;
     onDelete?: (id: string) => void;
     customActionsRender?: (row: any) => React.ReactNode;
 }
 
-const renderActions = (row: IMenuData) => (
-    <>
-        <Tooltip title="Edit">
-            <IconButton onClick={() => handleEdit(row.id)} color="primary">
-                <EditIcon />
-            </IconButton>
-        </Tooltip>
-        <Tooltip title="Delete">
-            <IconButton onClick={() => handleDelete(row.id)} color="error">
-                <DeleteIcon />
-            </IconButton>
-        </Tooltip>
-    </>
-);
-
 const ReusableTable: React.FC<ReusableTableProps> = ({
     columns,
     rows,
-    onDelete,
+    onHandleEdit,
+    onHandleDelete,
     customActionsRender,
 }) => {
     const [page, setPage] = useState(0);
@@ -111,26 +99,26 @@ const ReusableTable: React.FC<ReusableTableProps> = ({
                                                         sx={{ height: '56px', width: '56px' }}
                                                     />
                                                 ) : column.id === 'actions' ? (
-                                                    // renderActions(row)
-                                                    <>
-                                                        <Tooltip title="Edit">
-                                                            <IconButton
-                                                                onClick={() => handleEdit(row.id)}
-                                                                color="primary"
-                                                            >
-                                                                <EditIcon />
-                                                            </IconButton>
-                                                        </Tooltip>
-                                                        <Tooltip title="Delete">
-                                                            <IconButton
-                                                                onClick={() => handleDelete(row.id)}
-                                                                color="error"
-                                                            >
-                                                                <DeleteIcon />
-                                                            </IconButton>
-                                                        </Tooltip>
-                                                    </>
-                                                ) : //  (
+                                                    customActionsRender && customActionsRender(row)
+                                                ) : // <>
+                                                //     <Tooltip title="Edit">
+                                                //         <IconButton
+                                                //             onClick={onHandleEdit}
+                                                //             color="primary"
+                                                //         >
+                                                //             <EditIcon />
+                                                //         </IconButton>
+                                                //     </Tooltip>
+                                                //     <Tooltip title="Delete">
+                                                //         <IconButton
+                                                //             onClick={() => handleDelete(row.id)}
+                                                //             color="error"
+                                                //         >
+                                                //             <DeleteIcon />
+                                                //         </IconButton>
+                                                //     </Tooltip>
+                                                // </>
+                                                //  (
                                                 //     customActionsRender ? (
                                                 //         renderActions(row)
                                                 //     ) : onDelete ? (
@@ -179,10 +167,3 @@ const ReusableTable: React.FC<ReusableTableProps> = ({
 };
 
 export default ReusableTable;
-function handleDelete(id: number): void {
-    throw new Error('Function not implemented.');
-}
-
-function handleEdit(id: number): void {
-    throw new Error('Function not implemented.');
-}

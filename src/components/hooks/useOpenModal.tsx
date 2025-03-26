@@ -7,7 +7,10 @@ export const useOpenModal = () => {
         setOpen(true);
         setIndex(index);
     };
-    const handleClose = () => setOpen(false);
+    const handleClose = () => {
+        setOpen(false);
+        setIndex(0);
+    };
 
     return {
         open,
