@@ -7,6 +7,7 @@ import { IMenuCategory } from '../../../interfaces/IMenuCategory';
 import { IMenuData } from '../../../interfaces/IMenu';
 import ReusableTable from '../Table/ReuseTable';
 import { COL_CATEGORY_TABLE } from '../../../data/adminTable';
+import { useAdminContext } from '../../../context/AdminContext';
 
 function AdminCategoryTable({
     setAction,
@@ -14,6 +15,7 @@ function AdminCategoryTable({
     setAction: React.Dispatch<React.SetStateAction<'' | 'create' | 'edit'>>;
 }) {
     const { category, loading } = useAllMenuCategory();
+    const { setEditId } = useAdminContext();
 
     // Đợi dữ liệu load
     if (loading) {
@@ -34,6 +36,7 @@ function AdminCategoryTable({
     const handleEdit = (id: number) => {
         console.log('Edit ID:', id);
         setAction('edit');
+        setEditId('Category', id);
         // Ở đây có thể mở modal hoặc chuyển trang để edit
     };
 

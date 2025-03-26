@@ -94,40 +94,7 @@ const ReusableTable: React.FC<ReusableTableProps> = ({ columns, rows, customActi
                                                     />
                                                 ) : column.id === 'actions' ? (
                                                     customActionsRender && customActionsRender(row)
-                                                ) : // <>
-                                                //     <Tooltip title="Edit">
-                                                //         <IconButton
-                                                //             onClick={onHandleEdit}
-                                                //             color="primary"
-                                                //         >
-                                                //             <EditIcon />
-                                                //         </IconButton>
-                                                //     </Tooltip>
-                                                //     <Tooltip title="Delete">
-                                                //         <IconButton
-                                                //             onClick={() => handleDelete(row.id)}
-                                                //             color="error"
-                                                //         >
-                                                //             <DeleteIcon />
-                                                //         </IconButton>
-                                                //     </Tooltip>
-                                                // </>
-                                                //  (
-                                                //     customActionsRender ? (
-                                                //         renderActions(row)
-                                                //     ) : onDelete ? (
-                                                //         <Tooltip title="Delete">
-                                                //             <IconButton
-                                                //                 onClick={() => onDelete(row.id)}
-                                                //                 color="secondary"
-                                                //             >
-                                                //                 <DeleteIcon
-                                                //                     sx={{ fontSize: '22px' }}
-                                                //                 />
-                                                //             </IconButton>
-                                                //         </Tooltip>
-                                                //     ) : null
-                                                column.format ? (
+                                                ) : column.format ? (
                                                     column.format(value)
                                                 ) : (
                                                     value

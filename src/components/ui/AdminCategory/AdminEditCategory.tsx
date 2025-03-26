@@ -7,9 +7,11 @@ import { useState } from 'react';
 import { uploadImageToCloudinary } from '../../util/uploadImage';
 import { useMenuCategory } from '../../../services/menuCategory';
 import { toast } from 'react-toastify';
+import { useAdminContext } from '../../../context/AdminContext';
 
 function AdminEditCategory() {
     const { menu, loading } = useAllMenu();
+    const { editIds } = useAdminContext();
     const { POST_CREATE_CATEGORY } = useMenuCategory();
     const [selectedMenu, setSelectedMenu] = useState<{ id: number; name: string } | null>(null);
     const [categoryName, setCategoryName] = useState('');
@@ -18,6 +20,7 @@ function AdminEditCategory() {
         return <Typography>Getting data....</Typography>;
     }
 
+    console.log('editId: ', editIds);
     const handleSubmit = async () => {
         // check null
         if (!selectedMenu || !categoryName || !imageFile) {
