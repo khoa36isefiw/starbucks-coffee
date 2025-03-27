@@ -12,5 +12,18 @@ export const useAllMenuCategory = () => {
         category: data || {},
         mutate
     }
+}
 
+
+export const useMenuCategoryById = (id: number) => {
+    const { FETCH_PUBLIC_DATA } = useCommonApi();
+    const key = `/menu-category/${id}`  // this key will be passed into FETCH_PUBLIC_DATA function as a parameter
+    const { data, mutate, error } = useSWR(key, FETCH_PUBLIC_DATA)
+    const loading = !data && !error;
+
+    return {
+        isLoading:loading,
+        category: data || {},
+        mutate
+    }
 }

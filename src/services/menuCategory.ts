@@ -16,7 +16,23 @@ export const useMenuCategory = () => {
         return res.data;
     }
 
+
+    const PUT_UPDATE_CATEGORY = async (id: number, data: {
+        imageCategory?: string;
+        menuCategory?: string;
+        menuId?: number;
+    }) => {
+        const configApi = publicApi(`${subPath}/${id}`);
+        const res = await configApi.put('', data)
+        return res.data;
+    }
+
+
+
+
+
     return {
-        POST_CREATE_CATEGORY
+        POST_CREATE_CATEGORY,
+        PUT_UPDATE_CATEGORY
     }
 }

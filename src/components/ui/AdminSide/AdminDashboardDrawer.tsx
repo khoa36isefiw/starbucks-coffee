@@ -276,7 +276,7 @@ export default function AdminDrawer() {
                         {action === 'create' && <AdminCreateCategory setAction={setAction} />}
 
                         {/* eidt category */}
-                        {action === 'edit' && <AdminEditCategory />}
+                        {action === 'edit' && <AdminEditCategory setAction={setAction} />}
                     </Box>
                 )}
                 {drawerSelected === 'Menu Coffee' && <Typography>Menu Coffee</Typography>}

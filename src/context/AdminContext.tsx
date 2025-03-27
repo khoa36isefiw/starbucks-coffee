@@ -1,7 +1,7 @@
 // AdminContext.tsx
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
 
-interface AdminContextType {
+interface IAdminContextType {
     action: 'create' | 'edit' | 'delete' | '';
     setAction: (action: 'create' | 'edit' | '') => void;
     editIds: Record<'User' | 'Menu' | 'Category' | 'Menu Coffee' | 'Logger', number | null>;
@@ -11,7 +11,7 @@ interface AdminContextType {
     ) => void;
 }
 
-const AdminContext = createContext<AdminContextType | undefined>(undefined);
+const AdminContext = createContext<IAdminContextType | undefined>(undefined);
 
 export const AdminProvider = ({ children }: { children: ReactNode }) => {
     const [action, setAction] = useState<'create' | 'edit' | 'delete' | ''>('');
