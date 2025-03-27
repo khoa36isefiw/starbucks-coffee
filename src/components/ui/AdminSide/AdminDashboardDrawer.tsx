@@ -126,7 +126,7 @@ export default function AdminDrawer() {
     const theme = useTheme();
     const [open, setOpen] = useState(false);
     const [drawerSelected, setDrawerSelected] = useState('');
-    const [action, setAction] = useState<'create' | 'edit' | ''>('');
+    const [action, setAction] = useState<'create' | 'edit' | 'delete' | ''>('');
     const [editId, setEditId] = useState<number | null>(null);
 
     const handleDrawerOpen = () => {
@@ -270,7 +270,9 @@ export default function AdminDrawer() {
                         )}
 
                         {/* menu category  dashboard*/}
-                        {action === '' && <AdminCategoryTable setAction={setAction} />}
+                        {action !== 'create' && action !== 'edit' && (
+                            <AdminCategoryTable setAction={setAction} />
+                        )}
 
                         {/* create menu category */}
                         {action === 'create' && <AdminCreateCategory setAction={setAction} />}

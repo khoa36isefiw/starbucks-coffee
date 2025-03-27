@@ -14,7 +14,7 @@ import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 function AdminEditCategory({
     setAction,
 }: {
-    setAction: React.Dispatch<React.SetStateAction<'' | 'create' | 'edit'>>;
+    setAction: React.Dispatch<React.SetStateAction<'' | 'create' | 'edit' | 'delete'>>;
 }) {
     const { menu, loading } = useAllMenu();
     const { editIds } = useAdminContext();

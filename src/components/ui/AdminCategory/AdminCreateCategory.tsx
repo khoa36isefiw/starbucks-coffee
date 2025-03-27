@@ -12,7 +12,7 @@ import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 function AdminCreateCategory({
     setAction,
 }: {
-    setAction: React.Dispatch<React.SetStateAction<'' | 'create' | 'edit'>>;
+    setAction: React.Dispatch<React.SetStateAction<'' | 'create' | 'edit' | 'delete'>>;
 }) {
     const { menu, loading } = useAllMenu();
     const { POST_CREATE_CATEGORY } = useMenuCategory();

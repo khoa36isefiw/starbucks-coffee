@@ -8,14 +8,20 @@ import { IMenuData } from '../../../interfaces/IMenu';
 import ReusableTable from '../Table/ReuseTable';
 import { COL_CATEGORY_TABLE } from '../../../data/adminTable';
 import { useAdminContext } from '../../../context/AdminContext';
+import ConfirmMessage from '../ConfirmMessage/ConfirmMessage';
+import { useAdminModal } from '../../hooks/useAdminModal';
+import { useMenuCategory } from '../../../services/menuCategory';
+import { toast } from 'react-toastify';
 
 function AdminCategoryTable({
     setAction,
 }: {
-    setAction: React.Dispatch<React.SetStateAction<'' | 'create' | 'edit'>>;
+    setAction: React.Dispatch<React.SetStateAction<'' | 'create' | 'edit' | 'delete'>>;
 }) {
+    const { open, handleOpen, handleClose } = useAdminModal();
     const { category, loading } = useAllMenuCategory();
-    const { setEditId } = useAdminContext();
+    const { setEditId, editIds } = useAdminContext();
+    const { DELTE_CATEGORY } = useMenuCategory();
 
     // Đợi dữ liệu load
     if (loading) {
@@ -43,6 +49,9 @@ function AdminCategoryTable({
     const handleDelete = async (id: number) => {
         // Thêm logic gọi API xóa
         console.log('Delete ID:', id);
+        setAction('delete');
+        setEditId('Category', id);
+        handleOpen(id);
     };
 
     const renderActions = (row: IMenuData) => (
@@ -60,12 +69,30 @@ function AdminCategoryTable({
         </>
     );
 
+    const handleConfirm = async () => {
+        const deleteRes = await DELTE_CATEGORY(editIds.Category ?? 0);
+        if (deleteRes.statusCode === 200) {
+            handleClose();
+            toast.success('Delete Successfully!');
+        }
+    };
+    const handleCancel = () => {
+        handleClose();
+    };
+
     return (
         <div>
             <ReusableTable
                 columns={COL_CATEGORY_TABLE}
                 rows={data}
                 customActionsRender={renderActions}
+            />
+            <ConfirmMessage
+                open={open}
+                handleClose={handleClose}
+                onHandleConfirm={handleConfirm}
+                onHandleCancel={handleCancel}
+                message={'Delete menu category'}
             />
         </div>
     );

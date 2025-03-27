@@ -29,10 +29,19 @@ export const useMenuCategory = () => {
 
 
 
+    const DELTE_CATEGORY = async (id: number) => {
+        const configApi = publicApi(`${subPath}/${id}`);
+        const res = await configApi.delete('')
+        return res.data;
+    }
+
+
+
 
 
     return {
         POST_CREATE_CATEGORY,
-        PUT_UPDATE_CATEGORY
+        PUT_UPDATE_CATEGORY, DELTE_CATEGORY
+
     }
 }
