@@ -92,6 +92,19 @@ const ReusableTable: React.FC<ReusableTableProps> = ({ columns, rows, customActi
                                                             borderRadius: 0,
                                                         }}
                                                     />
+                                                ) : column.id === 'image' ? (
+                                                    <Avatar
+                                                        alt={row.name}
+                                                        src={
+                                                            row.image ||
+                                                            'https://static.vecteezy.com/system/resources/thumbnails/030/353/225/small_2x/beautiful-night-sky-background-ai-generated-photo.jpg'
+                                                        }
+                                                        sx={{
+                                                            height: '100px',
+                                                            width: '100px',
+                                                            borderRadius: 0,
+                                                        }}
+                                                    />
                                                 ) : column.id === 'actions' ? (
                                                     customActionsRender && customActionsRender(row)
                                                 ) : column.format ? (

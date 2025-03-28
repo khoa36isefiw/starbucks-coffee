@@ -84,3 +84,39 @@ export const COL_CATEGORY_TABLE: Column[] = [
         align: 'center',
     },
 ]
+
+
+
+
+export const COL_MENU_COFFEE_TABLE: Column[] = [
+    {
+        id: 'id',
+        label: 'ID',
+        minWidth: 50,
+        align: 'center',
+    },
+    {
+        id: 'image',
+        label: 'Image',
+        minWidth: 170,
+        align: 'center',
+    },
+    {
+        id: 'name',
+        label: 'Name',
+        minWidth: 170,
+        align: 'center',
+    },
+    {
+        id: 'description',
+        label: 'Description',
+        minWidth: 170,
+        align: 'center',
+    },
+    {
+        id: 'actions',
+        label: 'Actions',
+        minWidth: 170,
+        align: 'center',
+    },
+]
