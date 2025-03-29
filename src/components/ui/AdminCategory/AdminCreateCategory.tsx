@@ -73,16 +73,27 @@ function AdminCreateCategory({
     console.log('imageUrl: ', imageUrl);
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                width: '300px',
+            }}
+        >
             <BackButton text={'Back Category'} onHandleClick={() => setAction('')} />
-            <Typography sx={{ fontSize: 18, fontWeight: 'bold' }}>Create New Category</Typography>
+            <Typography sx={{ fontSize: 18, fontWeight: 'bold', my: 1 }}>
+                Create New Category
+            </Typography>
 
             <TextField
                 label="Category Name"
                 value={categoryName}
                 onChange={(e) => setCategoryName(e.target.value)}
+                fullWidth
+                sx={{ mb: 1 }}
             />
-            <Typography sx={{ fontSize: 18, fontWeight: 'bold' }}>Select Menu</Typography>
+            <Typography sx={{ fontSize: 14 }}>Select Menu</Typography>
             <Autocomplete
                 disablePortal
                 options={menu.data}
@@ -144,14 +155,20 @@ function AdminCreateCategory({
                 <Box sx={{ mt: 2 }}>
                     <TextField
                         label="Enter Image URL"
-                        fullWidth
+                        fullWidth={true}
                         value={imageUrl}
                         onChange={handleImageUrlChange}
                     />
                 </Box>
             )}
 
-            <Button onClick={handleSubmit}>Create</Button>
+            <Button
+                variant="contained"
+                onClick={handleSubmit}
+                sx={{ mt: 2, textTransform: 'initial' }}
+            >
+                Create
+            </Button>
         </Box>
     );
 }

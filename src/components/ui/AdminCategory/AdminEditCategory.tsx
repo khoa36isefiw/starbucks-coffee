@@ -94,6 +94,7 @@ function AdminEditCategory({
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'flex-start',
+                width: '300px',
             }}
         >
             <BackButton text={'Back Category'} onHandleClick={() => setAction('')} />
@@ -105,10 +106,11 @@ function AdminEditCategory({
                 value={categoryName}
                 onChange={(e) => setCategoryName(e.target.value)}
                 sx={{ my: 2 }}
+                fullWidth
             />
 
             {/* Chọn Menu */}
-            <Typography sx={{ fontSize: 18, fontWeight: 'bold' }}>Select Menu</Typography>
+            <Typography sx={{ fontSize: 16 }}>Select Menu</Typography>
             <Autocomplete
                 disablePortal
                 options={menu.data}

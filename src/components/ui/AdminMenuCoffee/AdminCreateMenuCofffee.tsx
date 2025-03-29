@@ -69,21 +69,27 @@ function AdminCreateMenuCofffee({
     };
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+        <Box
+            sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: '300px' }}
+        >
             <BackButton text={'Back Category'} onHandleClick={() => setAction('')} />
             <Typography sx={{ fontSize: 18, fontWeight: 'bold' }}>Create New Category</Typography>
 
             <TextField
                 label="Category Name"
+                fullWidth
                 value={categoryName}
                 onChange={(e) => setCategoryName(e.target.value)}
+                sx={{ my: 1 }}
             />
             <TextField
                 label="Category Description"
+                fullWidth
                 value={categoryDescription}
                 onChange={(e) => setCategoryDescription(e.target.value)}
+                sx={{ my: 1 }}
             />
-            <Typography sx={{ fontSize: 18, fontWeight: 'bold' }}>Select Menu</Typography>
+            <Typography sx={{ fontSize: 16 }}>Select Menu</Typography>
             <Autocomplete
                 disablePortal
                 options={category.data}

@@ -86,7 +86,14 @@ function AdminEditMenuCofffee({
     };
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                width: '300px',
+            }}
+        >
             <BackButton text={'Back Category'} onHandleClick={() => setAction('')} />
             <Typography sx={{ fontSize: 18, fontWeight: 'bold' }}>
                 Update Menu Coffee Category
@@ -96,13 +103,19 @@ function AdminEditMenuCofffee({
                 label="Category Name"
                 value={categoryName}
                 onChange={(e) => setCategoryName(e.target.value)}
+                fullWidth
+                sx={{ my: 1 }}
             />
             <TextField
                 label="Category Description"
                 value={categoryDescription}
                 onChange={(e) => setCategoryDescription(e.target.value)}
+                fullWidth
+                multiline
+                rows={4}
+                sx={{ my: 1 }}
             />
-            <Typography sx={{ fontSize: 18, fontWeight: 'bold' }}>Select Menu</Typography>
+            <Typography sx={{ fontSize: 16 }}>Select Menu</Typography>
             <Autocomplete
                 disablePortal
                 options={category.data}
@@ -128,7 +141,7 @@ function AdminEditMenuCofffee({
                         borderRadius: 0,
                         height: '120px',
                         width: '120px',
-                        mb: 2,
+                        my: 2,
                         objectFit: 'cover',
                         border: '2px solid #ccc',
                     }}

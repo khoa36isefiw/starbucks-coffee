@@ -9,10 +9,10 @@ import { COL_MENU_COFFEE_TABLE } from '../../../data/adminTable';
 import { useAdminContext } from '../../../context/AdminContext';
 import ConfirmMessage from '../ConfirmMessage/ConfirmMessage';
 import { useAdminModal } from '../../hooks/useAdminModal';
-
 import { toast } from 'react-toastify';
 import { useAllCoffeeMenu } from '../../../data/coffeeMenu';
 import { useMenuCoffee } from '../../../services/menuCoffee';
+import Loading from '../Loading/Loading';
 
 function AdminMenuCoffeeTable({
     setAction,
@@ -26,7 +26,7 @@ function AdminMenuCoffeeTable({
 
     // Đợi dữ liệu load
     if (loading) {
-        return <Typography>Getting data...</Typography>;
+        return <Loading />;
     }
 
     // Trường hợp không có dữ liệu

@@ -34,6 +34,8 @@ import AdminMenuCoffeeTable from '../AdminMenuCoffee/AdminMenuCoffeeTable';
 import AdminCreateMenuCofffee from '../AdminMenuCoffee/AdminCreateMenuCofffee';
 import AdminEditMenuCofffee from '../AdminMenuCoffee/AdminEditMenuCofffee';
 
+import UploadImage from '../UploadImage/UploadImage';
+
 const openedMixin = (theme: Theme): CSSObject => ({
     width: DRAWER_WIDTH,
     transition: theme.transitions.create('width', {
@@ -128,9 +130,8 @@ const drawerData: {
 export default function AdminDrawer() {
     const theme = useTheme();
     const [open, setOpen] = useState(false);
-    const [drawerSelected, setDrawerSelected] = useState('');
+    const [drawerSelected, setDrawerSelected] = useState('User');
     const [action, setAction] = useState<'create' | 'edit' | 'delete' | ''>('');
-    const [editId, setEditId] = useState<number | null>(null);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -248,7 +249,10 @@ export default function AdminDrawer() {
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
                 {drawerSelected === 'User' && (
-                    <ReusableTable columns={COL_USER_TABLE} rows={DATA_USER_TABLE} />
+                    <Box>
+                        {/* <UploadImage /> */}
+                        <ReusableTable columns={COL_USER_TABLE} rows={DATA_USER_TABLE} />
+                    </Box>
                 )}
                 {drawerSelected === 'Menu' && (
                     <Box>
