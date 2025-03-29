@@ -1,29 +1,29 @@
 import useSWR from "swr";
 import { useCommonApi } from "../api/common";
 
-export const useAllMenuCategory = () => {
+export const useAllCoffeeMenu = () => {
     const { FETCH_PUBLIC_DATA } = useCommonApi();
-    const key = '/menu-category'  // this key will be passed into FETCH_PUBLIC_DATA function as a parameter
+    const key = '/menu-item-category'  // this key will be passed into FETCH_PUBLIC_DATA function as a parameter
     const { data, mutate, error } = useSWR(key, FETCH_PUBLIC_DATA)
     const loading = !data && !error;
 
     return {
         loading,
-        category: data || {},
+        coffeeMenu: data || {},
         mutate
     }
 }
 
 
-export const useMenuCategoryById = (id: number) => {
+export const useCoffeeMenuById = (id: number) => {
     const { FETCH_PUBLIC_DATA } = useCommonApi();
-    const key = `/menu-category/${id}`  // this key will be passed into FETCH_PUBLIC_DATA function as a parameter
+    const key = `/menu-item-category/${id}`  // this key will be passed into FETCH_PUBLIC_DATA function as a parameter
     const { data, mutate, error } = useSWR(key, FETCH_PUBLIC_DATA)
     const loading = !data && !error;
 
     return {
-        isLoading:loading,
-        category: data || {},
+        isLoading: loading,
+        coffeeMenu: data || {},
         mutate
     }
 }

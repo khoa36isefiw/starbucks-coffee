@@ -1,48 +1,50 @@
-import { useEffect } from 'react';
 import { Typography, IconButton, Tooltip } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useAllMenuCategory } from '../../../data/coffeeCategory';
-import { IMenuCategory } from '../../../interfaces/IMenuCategory';
+import { IMenuCategory, IMenuCoffee } from '../../../interfaces/IMenuCategory';
 import { IMenuData } from '../../../interfaces/IMenu';
 import ReusableTable from '../Table/ReuseTable';
-import { COL_CATEGORY_TABLE } from '../../../data/adminTable';
+import { COL_MENU_COFFEE_TABLE } from '../../../data/adminTable';
 import { useAdminContext } from '../../../context/AdminContext';
 import ConfirmMessage from '../ConfirmMessage/ConfirmMessage';
 import { useAdminModal } from '../../hooks/useAdminModal';
-import { useMenuCategory } from '../../../services/menuCategory';
 import { toast } from 'react-toastify';
+import { useAllCoffeeMenu } from '../../../data/coffeeMenu';
+import { useMenuCoffee } from '../../../services/menuCoffee';
+import Loading from '../Loading/Loading';
 
-function AdminCategoryTable({
+function AdminMenuCoffeeTable({
     setAction,
 }: {
     setAction: React.Dispatch<React.SetStateAction<'' | 'create' | 'edit' | 'delete'>>;
 }) {
     const { open, handleOpen, handleClose } = useAdminModal();
-    const { category, loading } = useAllMenuCategory();
+    const { coffeeMenu, loading, mutate } = useAllCoffeeMenu();
     const { setEditId, editIds } = useAdminContext();
-    const { DELTE_CATEGORY } = useMenuCategory();
+    const { DELTE_MENU_CATEGORY } = useMenuCoffee();
 
     // Đợi dữ liệu load
     if (loading) {
-        return <Typography>Getting data...</Typography>;
+        return <Loading />;
     }
 
     // Trường hợp không có dữ liệu
-    if (!category?.data?.length) {
-        return <Typography>No category data found.</Typography>;
+    if (!coffeeMenu?.data?.length) {
+        return <Typography>No coffeeMenu data found.</Typography>;
     }
 
-    const data = category.data.map((c: IMenuCategory) => ({
+    const data = coffeeMenu.data.map((c: IMenuCoffee) => ({
         id: c.id,
-        imageCategory: c.imageCategory,
-        menuCategory: c.menuCategory,
+        image: c.image,
+        name: c.name,
+        description: c.description,
     }));
 
     const handleEdit = (id: number) => {
         console.log('Edit ID:', id);
         setAction('edit');
-        setEditId('Category', id);
+        setEditId('Menu Coffee', id);
         // Ở đây có thể mở modal hoặc chuyển trang để edit
     };
 
@@ -50,7 +52,7 @@ function AdminCategoryTable({
         // Thêm logic gọi API xóa
         console.log('Delete ID:', id);
         setAction('delete');
-        setEditId('Category', id);
+        setEditId('Menu Coffee', id);
         handleOpen(id);
     };
 
@@ -70,10 +72,11 @@ function AdminCategoryTable({
     );
 
     const handleConfirm = async () => {
-        const deleteRes = await DELTE_CATEGORY(editIds.Category ?? 0);
+        const deleteRes = await DELTE_MENU_CATEGORY(editIds['Menu Coffee'] ?? 0);
         if (deleteRes.statusCode === 200) {
             handleClose();
             toast.success('Delete Successfully!');
+            mutate();
         }
     };
     const handleCancel = () => {
@@ -83,7 +86,7 @@ function AdminCategoryTable({
     return (
         <div>
             <ReusableTable
-                columns={COL_CATEGORY_TABLE}
+                columns={COL_MENU_COFFEE_TABLE}
                 rows={data}
                 customActionsRender={renderActions}
             />
@@ -92,10 +95,10 @@ function AdminCategoryTable({
                 handleClose={handleClose}
                 onHandleConfirm={handleConfirm}
                 onHandleCancel={handleCancel}
-                message={'Delete menu category'}
+                message={'Delete menu coffeeMenu'}
             />
         </div>
     );
 }
 
-export default AdminCategoryTable;
+export default AdminMenuCoffeeTable;

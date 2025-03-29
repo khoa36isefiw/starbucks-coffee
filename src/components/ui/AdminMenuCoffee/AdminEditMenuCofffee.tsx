@@ -1,52 +1,71 @@
 import { Avatar, Box, Button, IconButton, Typography } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { useAllMenu } from '../../../data/menu';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { uploadImageToCloudinary } from '../../util/uploadImage';
-import { useMenuCategory } from '../../../services/menuCategory';
 import { toast } from 'react-toastify';
 import { BackButton } from '../Button/BackButton';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
-import { CButton } from '../Button/CButton';
-import { blue } from '@mui/material/colors';
+import { useAllMenuCategory } from '../../../data/coffeeCategory';
+import { useMenuCoffee } from '../../../services/menuCoffee';
+import { useAdminContext } from '../../../context/AdminContext';
+import { useCoffeeMenuById } from '../../../data/coffeeMenu';
 
-function AdminCreateCategory({
+function AdminEditMenuCofffee({
     setAction,
 }: {
     setAction: React.Dispatch<React.SetStateAction<'' | 'create' | 'edit' | 'delete'>>;
 }) {
-    const { menu, loading } = useAllMenu();
-    const { POST_CREATE_CATEGORY } = useMenuCategory();
-    const [selectedMenu, setSelectedMenu] = useState<{ id: number; name: string } | null>(null);
-    const [categoryName, setCategoryName] = useState('');
-    const [imageUrl, setImageUrl] = useState<string | null>(null);
-    const [imageInputType, setImageInputType] = useState<'file' | 'url' | ''>('');
-    const [imageUrlInput, setImageUrlInput] = useState('');
+    const { editIds } = useAdminContext();
+    const { category, loading } = useAllMenuCategory();
+    const { isLoading, coffeeMenu } = useCoffeeMenuById(editIds['Menu Coffee'] ?? 0);
+    console.log('category: ', category);
+    console.log('coffeeMenu: ', coffeeMenu);
 
+    const { PUT_UPDATE_MENU_CATEGORY } = useMenuCoffee();
+
+    const [selectedMenu, setSelectedMenu] = useState<{ id: number; menuCategory: string } | null>(
+        null,
+    );
+    const [categoryName, setCategoryName] = useState('');
+    const [categoryDescription, setCategoryDescription] = useState('');
+    const [imageUrl, setImageUrl] = useState<string | null>(null);
     const fileInputRef = useRef<HTMLInputElement | null>(null);
-    if (loading) {
+    useEffect(() => {
+        if (coffeeMenu.data) {
+            setSelectedMenu({
+                id: coffeeMenu.data.category.id,
+                menuCategory: coffeeMenu.data.category.menuCategory,
+            });
+            setCategoryName(coffeeMenu.data.name);
+            setCategoryDescription(coffeeMenu.data.description);
+            setImageUrl(coffeeMenu.data.image);
+        }
+    }, [coffeeMenu]);
+
+    if (loading || isLoading) {
         return <Typography>Getting data....</Typography>;
     }
 
     const handleSubmit = async () => {
         // check null
         if (!selectedMenu || !categoryName || !imageUrl) {
-            toast.warning('Please select menu, enter category name, and choose an image!');
+            toast.warning('Please select category, enter category name, and choose an image!');
             return;
         }
         try {
             // const imageUrl = await uploadImageToCloudinary(imageUrl);
             const data = {
-                imageCategory: imageUrl,
-                menuCategory: categoryName,
-                menuId: selectedMenu.id,
+                image: imageUrl,
+                name: categoryName,
+                description: categoryDescription,
+                categoryId: selectedMenu.id,
             };
-            const createRes = await POST_CREATE_CATEGORY(data);
+            const createRes = await PUT_UPDATE_MENU_CATEGORY(editIds['Menu Coffee'] ?? 0, data);
             console.log('createRes: ', createRes);
-            if (createRes.statusCode === 201) {
+            if (createRes.statusCode === 200) {
                 setAction('');
-                toast.success('Create new menu category successfully!!!');
+                toast.success('Update Menu category successfully!!!');
             }
         } catch (error) {
             console.log(error);
@@ -66,12 +85,6 @@ function AdminCreateCategory({
         }
     };
 
-    const handleImageUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setImageUrl(e.target.value);
-    };
-
-    console.log('imageUrl: ', imageUrl);
-
     return (
         <Box
             sx={{
@@ -82,8 +95,8 @@ function AdminCreateCategory({
             }}
         >
             <BackButton text={'Back Category'} onHandleClick={() => setAction('')} />
-            <Typography sx={{ fontSize: 18, fontWeight: 'bold', my: 1 }}>
-                Create New Category
+            <Typography sx={{ fontSize: 18, fontWeight: 'bold' }}>
+                Update Menu Coffee Category
             </Typography>
 
             <TextField
@@ -91,37 +104,27 @@ function AdminCreateCategory({
                 value={categoryName}
                 onChange={(e) => setCategoryName(e.target.value)}
                 fullWidth
-                sx={{ mb: 1 }}
+                sx={{ my: 1 }}
             />
-            <Typography sx={{ fontSize: 14 }}>Select Menu</Typography>
+            <TextField
+                label="Category Description"
+                value={categoryDescription}
+                onChange={(e) => setCategoryDescription(e.target.value)}
+                fullWidth
+                multiline
+                rows={4}
+                sx={{ my: 1 }}
+            />
+            <Typography sx={{ fontSize: 16 }}>Select Menu</Typography>
             <Autocomplete
                 disablePortal
-                options={menu.data}
-                getOptionLabel={(option) => option.name}
+                options={category.data}
+                getOptionLabel={(option) => option.menuCategory}
                 value={selectedMenu}
                 sx={{ width: 300 }}
                 onChange={(e, newValue) => setSelectedMenu(newValue)}
                 renderInput={(params) => <TextField {...params} label="Menu" />}
             />
-
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 4, mt: 2 }}>
-                <CButton
-                    text={'Image Url'}
-                    customStyle={{
-                        borderRadius: 1,
-                    }}
-                    onHandleClick={() => setImageInputType('url')}
-                />
-
-                <CButton
-                    text={'Upload Image'}
-                    customStyle={{
-                        borderRadius: 1,
-                        bgcolor: blue[500],
-                    }}
-                    onHandleClick={() => setImageInputType('file')}
-                />
-            </Box>
 
             <input
                 type="file"
@@ -138,39 +141,20 @@ function AdminCreateCategory({
                         borderRadius: 0,
                         height: '120px',
                         width: '120px',
-                        mb: 2,
+                        my: 2,
                         objectFit: 'cover',
                         border: '2px solid #ccc',
                     }}
                 />
             )}
 
-            {imageInputType === 'file' && (
-                <IconButton color="primary" onClick={() => fileInputRef.current?.click()}>
-                    <PhotoCameraIcon fontSize="medium" />
-                </IconButton>
-            )}
+            <IconButton color="primary" onClick={() => fileInputRef.current?.click()}>
+                <PhotoCameraIcon fontSize="medium" />
+            </IconButton>
 
-            {imageInputType === 'url' && (
-                <Box sx={{ mt: 2 }}>
-                    <TextField
-                        label="Enter Image URL"
-                        fullWidth={true}
-                        value={imageUrl}
-                        onChange={handleImageUrlChange}
-                    />
-                </Box>
-            )}
-
-            <Button
-                variant="contained"
-                onClick={handleSubmit}
-                sx={{ mt: 2, textTransform: 'initial' }}
-            >
-                Create
-            </Button>
+            <Button onClick={handleSubmit}>Update</Button>
         </Box>
     );
 }
 
-export default AdminCreateCategory;
+export default AdminEditMenuCofffee;

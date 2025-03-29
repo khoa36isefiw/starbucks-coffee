@@ -6,7 +6,9 @@ export const useAdminModal = () => {
 
     const handleOpen = (id: number | null) => {
         setOpen(true);
-        setIndex(id);
+        if (id !== null) {
+            setIndex(id);
+        }
     };
 
     const handleClose = () => setOpen(false);

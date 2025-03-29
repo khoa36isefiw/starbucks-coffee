@@ -7,28 +7,31 @@ import { ThemeProvider, CssBaseline } from '@mui/material';
 import { theme } from './theme/theme';
 import { LocationProvider } from './context/LocationContext';
 import { Bounce, ToastContainer } from 'react-toastify';
+import { AdminProvider } from './context/AdminContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
     <React.StrictMode>
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <LocationProvider>
-                <ToastContainer
-                    position="top-right"
-                    autoClose={3000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick={false}
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="light"
-                    transition={Bounce}
-                />
-                <App />
-            </LocationProvider>
+            <AdminProvider>
+                <LocationProvider>
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={3000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick={false}
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="light"
+                        transition={Bounce}
+                    />
+                    <App />
+                </LocationProvider>
+            </AdminProvider>
         </ThemeProvider>
     </React.StrictMode>,
 );

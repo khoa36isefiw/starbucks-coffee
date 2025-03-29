@@ -11,6 +11,7 @@ import ModalLayout from './ModalLayout';
 import AdminEditMenu from './AdminEditMenu';
 import { useAllMenu } from '../../../data/menu';
 import { useMenu } from '../../../services/menu';
+import Loading from '../Loading/Loading';
 
 function AdminMenuTable() {
     const { open, handleClose, handleOpen, index } = useAdminModal();
@@ -18,7 +19,7 @@ function AdminMenuTable() {
     const { DELETE_MENU } = useMenu();
 
     if (loading) {
-        return <Typography>Loading...</Typography>;
+        return <Loading />;
     }
 
     const menuv2 = menu?.data?.map((menu: IMenuData) => ({
@@ -53,6 +54,7 @@ function AdminMenuTable() {
 
     return (
         <Box>
+            {/* <Loading /> */}
             <AdminCreateMenu />
             <ReusableTable
                 columns={COL_MENU_TABLE}

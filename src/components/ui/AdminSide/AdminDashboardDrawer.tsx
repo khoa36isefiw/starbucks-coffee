@@ -30,6 +30,11 @@ import AdminCategoryTable from '../AdminCategory/AdminCategoryTable';
 import { OButton } from '../Button/OButton';
 import AdminCreateCategory from '../AdminCategory/AdminCreateCategory';
 import AdminEditCategory from '../AdminCategory/AdminEditCategory';
+import AdminMenuCoffeeTable from '../AdminMenuCoffee/AdminMenuCoffeeTable';
+import AdminCreateMenuCofffee from '../AdminMenuCoffee/AdminCreateMenuCofffee';
+import AdminEditMenuCofffee from '../AdminMenuCoffee/AdminEditMenuCofffee';
+
+import UploadImage from '../UploadImage/UploadImage';
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: DRAWER_WIDTH,
@@ -125,9 +130,8 @@ const drawerData: {
 export default function AdminDrawer() {
     const theme = useTheme();
     const [open, setOpen] = useState(false);
-    const [drawerSelected, setDrawerSelected] = useState('');
-    const [action, setAction] = useState<'create' | 'edit' | ''>('');
-    const [editId, setEditId] = useState<number | null>(null);
+    const [drawerSelected, setDrawerSelected] = useState('User');
+    const [action, setAction] = useState<'create' | 'edit' | 'delete' | ''>('');
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -245,7 +249,10 @@ export default function AdminDrawer() {
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
                 {drawerSelected === 'User' && (
-                    <ReusableTable columns={COL_USER_TABLE} rows={DATA_USER_TABLE} />
+                    <Box>
+                        {/* <UploadImage /> */}
+                        <ReusableTable columns={COL_USER_TABLE} rows={DATA_USER_TABLE} />
+                    </Box>
                 )}
                 {drawerSelected === 'Menu' && (
                     <Box>
@@ -270,16 +277,41 @@ export default function AdminDrawer() {
                         )}
 
                         {/* menu category  dashboard*/}
-                        {action === '' && <AdminCategoryTable setAction={setAction} />}
+                        {action !== 'create' && action !== 'edit' && (
+                            <AdminCategoryTable setAction={setAction} />
+                        )}
 
                         {/* create menu category */}
                         {action === 'create' && <AdminCreateCategory setAction={setAction} />}
 
                         {/* eidt category */}
-                        {action === 'edit' && <AdminEditCategory />}
+                        {action === 'edit' && <AdminEditCategory setAction={setAction} />}
                     </Box>
                 )}
-                {drawerSelected === 'Menu Coffee' && <Typography>Menu Coffee</Typography>}
+                {drawerSelected === 'Menu Coffee' && (
+                    <Box>
+                        {action !== 'create' && action !== 'edit' && (
+                            <OButton
+                                text={'Create Menu'}
+                                customStyle={{
+                                    height: 40,
+                                    borderRadius: '12px',
+                                    '&:hover': {
+                                        fontWeight: 'bold',
+                                    },
+                                    mb: 2,
+                                }}
+                                onHandleClick={() => setAction('create')}
+                            />
+                        )}
+
+                        {action === 'create' && <AdminCreateMenuCofffee setAction={setAction} />}
+                        {action === 'edit' && <AdminEditMenuCofffee setAction={setAction} />}
+                        {action !== 'create' && action !== 'edit' && (
+                            <AdminMenuCoffeeTable setAction={setAction} />
+                        )}
+                    </Box>
+                )}
                 {drawerSelected === 'Logger' && <Typography>Logger</Typography>}
             </Box>
         </Box>

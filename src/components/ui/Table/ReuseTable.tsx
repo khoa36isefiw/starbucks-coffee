@@ -92,42 +92,22 @@ const ReusableTable: React.FC<ReusableTableProps> = ({ columns, rows, customActi
                                                             borderRadius: 0,
                                                         }}
                                                     />
+                                                ) : column.id === 'image' ? (
+                                                    <Avatar
+                                                        alt={row.name}
+                                                        src={
+                                                            row.image ||
+                                                            'https://static.vecteezy.com/system/resources/thumbnails/030/353/225/small_2x/beautiful-night-sky-background-ai-generated-photo.jpg'
+                                                        }
+                                                        sx={{
+                                                            height: '100px',
+                                                            width: '100px',
+                                                            borderRadius: 0,
+                                                        }}
+                                                    />
                                                 ) : column.id === 'actions' ? (
                                                     customActionsRender && customActionsRender(row)
-                                                ) : // <>
-                                                //     <Tooltip title="Edit">
-                                                //         <IconButton
-                                                //             onClick={onHandleEdit}
-                                                //             color="primary"
-                                                //         >
-                                                //             <EditIcon />
-                                                //         </IconButton>
-                                                //     </Tooltip>
-                                                //     <Tooltip title="Delete">
-                                                //         <IconButton
-                                                //             onClick={() => handleDelete(row.id)}
-                                                //             color="error"
-                                                //         >
-                                                //             <DeleteIcon />
-                                                //         </IconButton>
-                                                //     </Tooltip>
-                                                // </>
-                                                //  (
-                                                //     customActionsRender ? (
-                                                //         renderActions(row)
-                                                //     ) : onDelete ? (
-                                                //         <Tooltip title="Delete">
-                                                //             <IconButton
-                                                //                 onClick={() => onDelete(row.id)}
-                                                //                 color="secondary"
-                                                //             >
-                                                //                 <DeleteIcon
-                                                //                     sx={{ fontSize: '22px' }}
-                                                //                 />
-                                                //             </IconButton>
-                                                //         </Tooltip>
-                                                //     ) : null
-                                                column.format ? (
+                                                ) : column.format ? (
                                                     column.format(value)
                                                 ) : (
                                                     value

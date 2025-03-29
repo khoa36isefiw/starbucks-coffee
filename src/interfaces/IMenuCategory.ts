@@ -7,3 +7,12 @@ export interface IMenuCategory {
         name: string;
     }
 }
+
+
+
+export interface IMenuCoffee {
+    id: number;
+    name: string;
+    image: string;
+    description: string;
+}
