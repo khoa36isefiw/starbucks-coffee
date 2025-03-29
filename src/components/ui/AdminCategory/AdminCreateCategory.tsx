@@ -8,6 +8,8 @@ import { useMenuCategory } from '../../../services/menuCategory';
 import { toast } from 'react-toastify';
 import { BackButton } from '../Button/BackButton';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
+import { CButton } from '../Button/CButton';
+import { blue } from '@mui/material/colors';
 
 function AdminCreateCategory({
     setAction,
@@ -19,6 +21,9 @@ function AdminCreateCategory({
     const [selectedMenu, setSelectedMenu] = useState<{ id: number; name: string } | null>(null);
     const [categoryName, setCategoryName] = useState('');
     const [imageUrl, setImageUrl] = useState<string | null>(null);
+    const [imageInputType, setImageInputType] = useState<'file' | 'url' | ''>('');
+    const [imageUrlInput, setImageUrlInput] = useState('');
+
     const fileInputRef = useRef<HTMLInputElement | null>(null);
     if (loading) {
         return <Typography>Getting data....</Typography>;
@@ -61,6 +66,12 @@ function AdminCreateCategory({
         }
     };
 
+    const handleImageUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setImageUrl(e.target.value);
+    };
+
+    console.log('imageUrl: ', imageUrl);
+
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
             <BackButton text={'Back Category'} onHandleClick={() => setAction('')} />
@@ -81,6 +92,25 @@ function AdminCreateCategory({
                 onChange={(e, newValue) => setSelectedMenu(newValue)}
                 renderInput={(params) => <TextField {...params} label="Menu" />}
             />
+
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 4, mt: 2 }}>
+                <CButton
+                    text={'Image Url'}
+                    customStyle={{
+                        borderRadius: 1,
+                    }}
+                    onHandleClick={() => setImageInputType('url')}
+                />
+
+                <CButton
+                    text={'Upload Image'}
+                    customStyle={{
+                        borderRadius: 1,
+                        bgcolor: blue[500],
+                    }}
+                    onHandleClick={() => setImageInputType('file')}
+                />
+            </Box>
 
             <input
                 type="file"
@@ -104,9 +134,22 @@ function AdminCreateCategory({
                 />
             )}
 
-            <IconButton color="primary" onClick={() => fileInputRef.current?.click()}>
-                <PhotoCameraIcon fontSize="medium" />
-            </IconButton>
+            {imageInputType === 'file' && (
+                <IconButton color="primary" onClick={() => fileInputRef.current?.click()}>
+                    <PhotoCameraIcon fontSize="medium" />
+                </IconButton>
+            )}
+
+            {imageInputType === 'url' && (
+                <Box sx={{ mt: 2 }}>
+                    <TextField
+                        label="Enter Image URL"
+                        fullWidth
+                        value={imageUrl}
+                        onChange={handleImageUrlChange}
+                    />
+                </Box>
+            )}
 
             <Button onClick={handleSubmit}>Create</Button>
         </Box>

@@ -2,9 +2,10 @@ import { Button } from '@mui/material';
 
 import { IButtonProps } from '../../../interfaces/IButton';
 
-export const CButton = ({ text, customStyle = {} }: IButtonProps) => {
+export const CButton = ({ text, customStyle = {}, onHandleClick }: IButtonProps) => {
     return (
         <Button
+            onClick={onHandleClick}
             disableTouchRipple
             variant="contained"
             sx={{
