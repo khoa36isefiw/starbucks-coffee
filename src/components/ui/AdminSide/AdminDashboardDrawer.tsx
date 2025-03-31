@@ -34,7 +34,7 @@ import AdminMenuCoffeeTable from '../AdminMenuCoffee/AdminMenuCoffeeTable';
 import AdminCreateMenuCofffee from '../AdminMenuCoffee/AdminCreateMenuCofffee';
 import AdminEditMenuCofffee from '../AdminMenuCoffee/AdminEditMenuCofffee';
 
-import UploadImage from '../UploadImage/UploadImage';
+
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: DRAWER_WIDTH,

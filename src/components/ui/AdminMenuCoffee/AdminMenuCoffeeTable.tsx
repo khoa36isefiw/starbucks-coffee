@@ -1,8 +1,8 @@
 import { Typography, IconButton, Tooltip } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useAllMenuCategory } from '../../../data/coffeeCategory';
-import { IMenuCategory, IMenuCoffee } from '../../../interfaces/IMenuCategory';
+
+import { IMenuCoffee } from '../../../interfaces/IMenuCategory';
 import { IMenuData } from '../../../interfaces/IMenu';
 import ReusableTable from '../Table/ReuseTable';
 import { COL_MENU_COFFEE_TABLE } from '../../../data/adminTable';

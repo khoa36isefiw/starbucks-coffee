@@ -1,4 +1,4 @@
-import { Box, Typography, IconButton, Tooltip } from '@mui/material';
+import { Box, IconButton, Tooltip } from '@mui/material';
 
 import { IMenuData } from '../../../interfaces/IMenu';
 import AdminCreateMenu from './AdminCreateMenu';
