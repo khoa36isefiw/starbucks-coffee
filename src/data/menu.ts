@@ -879,6 +879,24 @@ export const useAllMenu = () => {
 
 }
 
+
+
+export const useAllMenuData = () => {
+    const { FETCH_PUBLIC_DATA } = useCommonApi();
+    const key = '/menu/all'  // this key will be passed into FETCH_PUBLIC_DATA function as a parameter
+    const { data, mutate, error } = useSWR(key, FETCH_PUBLIC_DATA)
+    const loading = !data && !error;
+
+    return {
+        loading,
+        menu: data || {},
+        mutate
+    }
+
+}
+
+
+
 export const useMenuById = (id: number) => {
     const { FETCH_PUBLIC_DATA } = useCommonApi()
 
