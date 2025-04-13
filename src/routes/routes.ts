@@ -21,7 +21,7 @@ export const publicRoutes = [
     { path: '/gift-cards', component: GiftCardPage },
     { path: '/store-location', component: StarbuckLocation },
     { path: '/menu/prouduct/:id/:coffeeType', component: CoffeeDetail },
-    { path: '/test', component: ExpensiveCalculationComponent }
+    { path: '/test', component: ExpensiveCalculationComponent },
 
 ];
 export const privateRoutes = [

@@ -4,6 +4,7 @@ import { privateRoutes, publicRoutes } from './routes/routes';
 import UserList from './pages/Test';
 import DefaultLayout from './components/layouts/DefaultLayout';
 import AdminPage from './pages/Admin/AdminPage';
+import Zustand from './pages/Zustand';
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                 })}
 
                 <Route path={'/hangout'} element={<UserList />} />
+                <Route path={'/zustand'} element={<Zustand />} />
 
                 <Route path={'/starbucks-manager'} element={<AdminPage />} />
 
