@@ -36,3 +36,9 @@ module.exports = { extends: ["@commitlint/config-conventional"] };
 -   memo: tính toán giá trị
 -   callback: function
 -   useEffect: chỉ cần mấy cái thật sự cần thay đổi
+
+### Tanstack query
+
+-   `staleTime`: default 0ms. Sau thời gian này sẽ refetch lại data, nếu không set time cho nó thì cứ mỗi lần chuyển qua lại page chẳng hạn thì nó sẽ fetch lại api
+-   `cacheTime`: default 5p `(5*60*1000)`ms, sau 5p thì data sẽ bị xoá ra khỏi bộ nhớ đệm --> data cũ, nhưng có thể vẫn chưa bị oá ra khỏi bộ nhớ điệm nếu set staleTime (sẽ refresh lại data sau khoảng thời gian nào đó) < cacheTime
+-   `inactive`: data không còn component nào subscribe cả
