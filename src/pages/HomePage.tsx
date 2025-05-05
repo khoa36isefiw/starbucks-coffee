@@ -3,6 +3,7 @@ import { Box } from '@mui/material';
 import { Box32 } from '../components/ui/CustomBox/Box32';
 import PageTitle from '../components/ui/PageTitle';
 import HomeBanner from '../components/ui/HomeBanner';
+import Tanstack from '../components/Tanstack';
 
 function HomePage() {
     return (
@@ -79,6 +80,8 @@ function HomePage() {
                 with other offers or discounts. Excludes delivery services. Sign up before
                 3/30/2025.
             </Box32>
+
+            <Tanstack />
         </Box>
     );
 }

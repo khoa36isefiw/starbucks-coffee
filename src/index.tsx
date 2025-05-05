@@ -8,8 +8,13 @@ import { theme } from './theme/theme';
 import { LocationProvider } from './context/LocationContext';
 import { Bounce, ToastContainer } from 'react-toastify';
 import { AdminProvider } from './context/AdminContext';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+
+const queryClient = new QueryClient();
+
 root.render(
     <React.StrictMode>
         <ThemeProvider theme={theme}>
@@ -29,7 +34,10 @@ root.render(
                         theme="light"
                         transition={Bounce}
                     />
-                    <App />
+                    <QueryClientProvider client={queryClient}>
+                        <ReactQueryDevtools initialIsOpen={false} />
+                        <App />
+                    </QueryClientProvider>
                 </LocationProvider>
             </AdminProvider>
         </ThemeProvider>
