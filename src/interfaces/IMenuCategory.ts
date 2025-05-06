@@ -16,3 +16,7 @@ export interface IMenuCoffee {
     image: string;
     description: string;
 }
+
+
+// remove id
+export type IMenuCoffeeWithoutId = Omit<IMenuCoffee, 'id'>; // 
